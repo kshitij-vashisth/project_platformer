@@ -48,7 +48,8 @@ Want to try it out? The previous version of the game is available as a **demo on
 ## What's Next?
 
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
-[Old Version Gameplay video](https://github.com/user-attachments/assets/540882e3-70de-4c55-8e5a-6076d1aec031)
+### Old Version Gameplay video 
+https://github.com/user-attachments/assets/540882e3-70de-4c55-8e5a-6076d1aec031)
 
 ### State Machine Updates Video
 https://github.com/user-attachments/assets/7d70a0f9-07ef-4f89-92b6-ed7dff48a589
