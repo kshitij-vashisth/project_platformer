@@ -43,8 +43,6 @@ Want to try it out? The previous version of the game is available as a **demo on
 
 [Download the old Demo on Itch.io](https://kshitijvashisth.itch.io/dangerous-dave-20)
 
-
-
 ## What's Next?
 
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
@@ -52,8 +50,8 @@ This project has gone back to early stages, with many updates and features plann
 https://github.com/user-attachments/assets/540882e3-70de-4c55-8e5a-6076d1aec031
 
 ### State Machine Updates Video
-https://github.com/user-attachments/assets/3e6bc3ad-ef58-4c7b-bd9f-29b80d265114
 
+https://github.com/user-attachments/assets/d62c3719-7766-4dd5-ae4a-de23139a2d5b
 ---
 
 *Note*: The game is a **remake** of a previous retro-inspired action platformer made by me inspired from a game known as Dangerous Dave, but has been rebranded under a new name to avoid copyright issues. Stay tuned for the official title reveal!
