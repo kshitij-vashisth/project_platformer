@@ -52,7 +52,8 @@ This project has gone back to early stages, with many updates and features plann
 https://github.com/user-attachments/assets/540882e3-70de-4c55-8e5a-6076d1aec031
 
 ### State Machine Updates Video
-https://github.com/user-attachments/assets/7d70a0f9-07ef-4f89-92b6-ed7dff48a589
+https://github.com/user-attachments/assets/3e6bc3ad-ef58-4c7b-bd9f-29b80d265114
+
 ---
 
 *Note*: The game is a **remake** of a previous retro-inspired action platformer made by me inspired from a game known as Dangerous Dave, but has been rebranded under a new name to avoid copyright issues. Stay tuned for the official title reveal!
