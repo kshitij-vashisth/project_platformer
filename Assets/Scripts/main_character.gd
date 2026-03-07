@@ -1,0 +1,158 @@
+extends CharacterBody2D
+var jump_count: int = 0
+var isLeft: bool
+var look_dir: int = 0
+@export var player_sprites :AnimatedSprite2D
+@export var slide_speed: int = 4000
+var input_direction = Vector2.ZERO
+var last_direction: float
+@export var move_speed: float = 200.0
+@export var move_accel: float = 15.0
+# finer parameters for smoother movement=====================================#
+var wall_pushoff_available: bool = true
+@export var hang_time: float = 0.15
+@export var coyote_time: float
+@export var wall_pushback_hang_time: float = 0.15
+#============================================================================#
+
+# air maneuverability parameters=============================================#
+@export var air_accel: float = 10.0
+@export var push_off: float = 20.0
+#============================================================================#
+
+func check_look_dir() -> void:
+	var dir_check: int
+	dir_check = 0
+	if look_dir != dir_check:
+		print(look_dir)
+		dir_check = look_dir
+func flip_sprite() -> void:
+	isLeft = direction_calculate(velocity.x)
+	player_sprites.flip_h = isLeft
+
+# finer movement functions===================================================#
+func coyote_checker(was_on_floor: bool) -> void:
+	#if was_on_floor and !is_on_floor():
+		#coyote_timer.start()
+	pass
+		
+func jump_using_coyote_timer(state_machine) -> void:
+	#if Input.is_action_just_pressed("up") and (is_on_floor() or coyote_timer.is_stopped()):
+		#change_state("jump", state_machine)
+	pass
+#============================================================================#
+
+#wall_checker_ray casts------------------------------------------------------#
+@onready var wall_check_left: RayCast2D = %wall_direction_checker_left       #
+@onready var wall_check_right: RayCast2D = %wall_direction_checker_right     #
+#----------------------------------------------------------------------------#
+@export var knockback_velocity: float = 800.0
+#gravity_parameters_for jump---------------------------------------------------------------------------------------#
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descent : float
+
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+@export  var state_access : StateMachine
+#-------------------------------------------------------------------------------------------------------------------#
+
+
+#Functions======================================================================================================#
+#function to change state
+func change_state(desired_state_name: String, state_machine):
+		var current_state_name = str(state_access.current_state)
+		print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
+		state_machine.change_state(desired_state_name)
+
+
+# orients face for wall jumps and wall slides===#
+func face_orientation() -> void:
+	if velocity.x != 0:	
+		look_dir = sign(velocity.x)
+		#print("This is sign: "+str(look_dir))
+#================================================#
+
+# air control function==========================================#
+func air_control(delta: float) -> void:
+	var input_x = input_direction.x
+	var target_x = input_x * move_speed  # use your player's SPEED
+	velocity.x = lerp(velocity.x, target_x, air_accel * delta)
+#===============================================================#
+
+# Functions for wall jump and knockback--------------------#
+#func direction_collision()-> int:
+	#var direction_wall: int
+	#if wall_check_left.is_colliding() and wall_check_right.is_colliding():
+		#if wall_check_left.get_collision_normal().x < 0:
+			## If RayCast on the left detects the wall, face right
+			##scale.x = 1
+			##player_sprites.flip_h = !isLeft
+			#direction_wall = -1
+		#elif wall_check_right.get_collision_normal().x > 0:
+			## If RayCast on the right detects the wall, face left
+			##scale.x = -1
+			##player_sprites.flip_h = isLeft
+			#direction_wall = 1
+	#return direction_wall
+		#
+		##if wall_check_left.is_colliding() or wall_check_right.is_colliding():
+			###scale.x = -1
+			##input_direction.x *= -1
+			#
+#func calculate_knockback_velocity(is_dir_Left: bool) -> float:
+	##var knockback_velocity: float = 800.0
+	#if is_dir_Left == true:
+		#return knockback_velocity
+	#else:
+		#return -knockback_velocity 
+#
+#func check_wall() -> int:
+	##var isLeft: bool
+	#var wall_check: int
+	#if wall_check_left.is_colliding():
+		##isLeft = true
+		#wall_check = -1
+	#elif wall_check_right.is_colliding():
+		##isLeft = false
+		#wall_check = 1
+	#return wall_check
+# End of functions for wall jump and knockback-------------#
+
+# Functions for handling gravity==============================#
+func gravity_get() -> float:
+	return jump_gravity if velocity.y < 0.0 else fall_gravity
+	
+func apply_gravity(delta) -> void:
+	if not is_on_floor():
+		velocity.y += gravity_get() * delta
+
+func direction_calculate(x_velocity: float) -> bool:
+	var PlayerisLeft: bool = x_velocity < 0
+	return PlayerisLeft
+
+func gravity_for_jump(delta) -> void:
+	velocity.y += gravity_get() * delta
+# End of functions for handling gravity=======================#
+
+
+# End of functions==============================================================================================#
+#func _ready() -> void:
+	#coyote_timer.wait_time = coyote_time 
+
+func _physics_process(delta: float) -> void:
+	#orients face for wall jumps and wall slides===#
+	face_orientation()
+	# for debugging look_dir
+	#check_look_dir()
+	#==============================================#
+	
+	
+	
+	if is_on_floor():
+		jump_count = 0
+	input_direction.x = Input.get_axis("left", "right")
+	#input_direction.y = Input.get_axis("up", "down")
+	var was_on_floor: bool = is_on_floor()
+	coyote_checker(was_on_floor)
