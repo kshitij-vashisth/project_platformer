@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="2d_platformer"
-run/main_scene="uid://m2wci0lnrx7n"
+run/main_scene="uid://r20ijxfrhi7q"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Assets/Scripts/game_manager.gd"
 
 [input]
 

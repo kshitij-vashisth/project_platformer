@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bewj7fuvjnk7s"
-path="res://.godot/imported/Terrain (16x16).png-52ffa97a3eb7526a2029bf68a5c91779.ctex"
+uid="uid://ddtn6ljtbuwbi"
+path="res://.godot/imported/death.png-b64fe044448a18ac25d442c293e6cd9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-52ffa97a3eb7526a2029bf68a5c91779.ctex"]
+source_file="res://Assets/Art/Enemies/Main_menu_mushroom/death.png"
+dest_files=["res://.godot/imported/death.png-b64fe044448a18ac25d442c293e6cd9e.ctex"]
 
 [params]
 

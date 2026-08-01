@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var jump_count: int = 0
 var isLeft: bool
+var playerLastLeft: bool
 var look_dir: int = 0
 @export var player_sprites :AnimatedSprite2D
 @export var slide_speed: int = 4000
@@ -13,6 +14,7 @@ var wall_pushoff_available: bool = true
 @export var hang_time: float = 0.15
 @export var coyote_time: float
 @export var wall_pushback_hang_time: float = 0.15
+@export var wall_push_off_hang_time: float = 0.25
 #============================================================================#
 
 # air maneuverability parameters=============================================#
@@ -66,6 +68,8 @@ func change_state(desired_state_name: String, state_machine):
 		print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
 		state_machine.change_state(desired_state_name)
 
+func jump()-> void:
+	change_state("jump", state_access)
 
 # orients face for wall jumps and wall slides===#
 func face_orientation() -> void:
@@ -79,6 +83,10 @@ func air_control(delta: float) -> void:
 	var input_x = input_direction.x
 	var target_x = input_x * move_speed  # use your player's SPEED
 	velocity.x = lerp(velocity.x, target_x, air_accel * delta)
+	if velocity.x < 0:
+		playerLastLeft = true
+	elif velocity.x > 0:
+		playerLastLeft = false
 #===============================================================#
 
 # Functions for wall jump and knockback--------------------#

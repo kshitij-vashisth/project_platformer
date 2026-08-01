@@ -264,6 +264,7 @@ animations = [{
 size = Vector2(34, 50)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprites", "state_access")]
+collision_layer = 2
 script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
 coyote_time = 100.0
@@ -274,6 +275,9 @@ jump_time_to_descent = 0.25
 state_access = NodePath("StateMachine")
 
 [node name="Timer_Nodes" type="Node" parent="."]
+
+[node name="coyote_time" type="Timer" parent="Timer_Nodes"]
+autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -1,19 +1,21 @@
-[gd_scene load_steps=14 format=4 uid="uid://m2wci0lnrx7n"]
+[gd_scene load_steps=16 format=4 uid="uid://m2wci0lnrx7n"]
 
-[ext_resource type="Texture2D" uid="uid://cdxrokjqhv8ie" path="res://Assets/Art/background/Green.png" id="1_l26l0"]
-[ext_resource type="Texture2D" uid="uid://bewj7fuvjnk7s" path="res://Assets/Terrain/Terrain (16x16).png" id="2_elf4b"]
-[ext_resource type="PackedScene" uid="uid://cu2l60p4jewmu" path="res://Assets/Scenes/main_character/main_character.tscn" id="3_guoxd"]
-[ext_resource type="Texture2D" uid="uid://tx258uh578fw" path="res://Assets/Art/measuring_background.png" id="4_guoxd"]
-[ext_resource type="Script" uid="uid://boy0y6w6gpv7r" path="res://Assets/Scripts/Debug_labels/debug_label_on_wall_checker.gd" id="5_4357x"]
-[ext_resource type="Script" uid="uid://bcsn0d4qsioe4" path="res://Assets/Scripts/Debug_labels/debug_label_state_checker.gd" id="5_rvsrt"]
-[ext_resource type="Script" uid="uid://ns46qsdgsgwh" path="res://Assets/Scripts/Debug_labels/debug_label_look_dir.gd" id="6_f1jyc"]
-[ext_resource type="Script" uid="uid://bcly2bkdb6m7q" path="res://Assets/Scripts/Debug_labels/debug_label_on_floor_checker.gd" id="6_nacht"]
-[ext_resource type="Script" uid="uid://3a58vpwt0ywb" path="res://Assets/Scripts/Debug_labels/debug_label_jump_counter.gd" id="7_acsc0"]
-[ext_resource type="Script" uid="uid://c8gyen1bedd0l" path="res://Assets/Scripts/Debug_labels/debug_label_velocity_checker.gd" id="7_vlji8"]
-[ext_resource type="Script" uid="uid://ceaxnn106n4xf" path="res://Assets/Scripts/Debug_labels/debug_label_is_left.gd" id="8_f8o6k"]
+[ext_resource type="Script" uid="uid://bcsn0d4qsioe4" path="res://Assets/Scripts/Debug_labels/debug_label_state_checker.gd" id="1_nrism"]
+[ext_resource type="Script" uid="uid://bcly2bkdb6m7q" path="res://Assets/Scripts/Debug_labels/debug_label_on_floor_checker.gd" id="2_wnoc0"]
+[ext_resource type="Script" uid="uid://3a58vpwt0ywb" path="res://Assets/Scripts/Debug_labels/debug_label_jump_counter.gd" id="3_d2prd"]
+[ext_resource type="Script" uid="uid://ceaxnn106n4xf" path="res://Assets/Scripts/Debug_labels/debug_label_is_left.gd" id="4_5tcgr"]
+[ext_resource type="Script" uid="uid://boy0y6w6gpv7r" path="res://Assets/Scripts/Debug_labels/debug_label_on_wall_checker.gd" id="5_uwflc"]
+[ext_resource type="Script" uid="uid://ns46qsdgsgwh" path="res://Assets/Scripts/Debug_labels/debug_label_look_dir.gd" id="6_n1vnx"]
+[ext_resource type="Script" uid="uid://c8gyen1bedd0l" path="res://Assets/Scripts/Debug_labels/debug_label_velocity_checker.gd" id="7_vcnwt"]
+[ext_resource type="Script" uid="uid://b7hk1lctnaw4g" path="res://Assets/Scripts/Debug_labels/debug_label_coyote_timer_value.gd" id="8_8lgdd"]
+[ext_resource type="Texture2D" uid="uid://cdxrokjqhv8ie" path="res://Assets/Art/background/Green.png" id="9_chlgl"]
+[ext_resource type="Texture2D" uid="uid://bewj7fuvjnk7s" path="res://Assets/Art/Terrain/Terrain (16x16).png" id="10_uybai"]
+[ext_resource type="PackedScene" uid="uid://cu2l60p4jewmu" path="res://Assets/Scenes/main_character/main_character.tscn" id="11_nkldq"]
+[ext_resource type="Texture2D" uid="uid://tx258uh578fw" path="res://Assets/Art/measuring_background.png" id="12_0p5ug"]
+[ext_resource type="PackedScene" uid="uid://d1hki1ryp8g1j" path="res://Assets/Scenes/Enemies/mushroom.tscn" id="13_wnoc0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvsrt"]
-texture = ExtResource("2_elf4b")
+texture = ExtResource("10_uybai")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -205,6 +207,7 @@ texture = ExtResource("2_elf4b")
 
 [sub_resource type="TileSet" id="TileSet_nacht"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 
 [node name="Node" type="Node"]
@@ -212,6 +215,7 @@ sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 [node name="Debug_Layer" type="CanvasLayer" parent="."]
 
 [node name="Current State Panel" type="Panel" parent="Debug_Layer"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -232,11 +236,12 @@ grow_horizontal = 2
 size_flags_vertical = 0
 text = "State:"
 horizontal_alignment = 1
-script = ExtResource("5_rvsrt")
+script = ExtResource("1_nrism")
 Player = NodePath("../../../MainCharacter")
 current_state_label = NodePath(".")
 
 [node name="Attributes Panel" type="Panel" parent="Debug_Layer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -255,7 +260,7 @@ offset_right = -12.0
 offset_bottom = 76.0
 grow_horizontal = 0
 text = "On Floor: "
-script = ExtResource("6_nacht")
+script = ExtResource("2_wnoc0")
 Player = NodePath("../../../MainCharacter")
 
 [node name="jump_counter" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" node_paths=PackedStringArray("Player")]
@@ -272,7 +277,7 @@ offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Jump Count: "
-script = ExtResource("7_acsc0")
+script = ExtResource("3_d2prd")
 Player = NodePath("../../../MainCharacter")
 
 [node name="isLeft" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" node_paths=PackedStringArray("Player")]
@@ -285,7 +290,7 @@ offset_right = -43.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "isLeft: "
-script = ExtResource("8_f8o6k")
+script = ExtResource("4_5tcgr")
 Player = NodePath("../../../MainCharacter")
 
 [node name="on_wall" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" node_paths=PackedStringArray("Player")]
@@ -295,7 +300,7 @@ offset_top = 72.0
 offset_right = 127.0
 offset_bottom = 112.0
 text = "On Wall:"
-script = ExtResource("5_4357x")
+script = ExtResource("5_uwflc")
 Player = NodePath("../../../MainCharacter")
 
 [node name="look_dir" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" node_paths=PackedStringArray("Player")]
@@ -305,7 +310,7 @@ offset_top = 132.0
 offset_right = 107.0
 offset_bottom = 172.0
 text = "Look Dir : "
-script = ExtResource("6_f1jyc")
+script = ExtResource("6_n1vnx")
 Player = NodePath("../../../MainCharacter")
 
 [node name="velocity_checker" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" node_paths=PackedStringArray("Player")]
@@ -315,8 +320,17 @@ offset_top = 158.0
 offset_right = 165.0
 offset_bottom = 190.0
 text = "Velocity: "
-script = ExtResource("7_vlji8")
+script = ExtResource("7_vcnwt")
 Player = NodePath("../../../MainCharacter")
+
+[node name="coyote_timer" type="RichTextLabel" parent="Debug_Layer/Attributes Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 158.0
+offset_right = 165.0
+offset_bottom = 190.0
+text = "Velocity: "
+script = ExtResource("8_8lgdd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -325,7 +339,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_l26l0")
+texture = ExtResource("9_chlgl")
 stretch_mode = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -334,10 +348,15 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD/////AAAMAAEAAAD//w0AAAAMAAEAAAAYAA0AAAAMAAEAAAAYAP//AAAMAAEAAAAAAP//AAANAAAAAAABAP//AAANAAAAAAACAP//AAANAAAAAAADAP//AAANAAAAAAAEAP//AAANAAAAAAAFAP//AAANAAAAAAAGAP//AAANAAAAAAAHAP//AAANAAAAAAAIAP//AAANAAAAAAAJAP//AAANAAAAAAAKAP//AAANAAAAAAALAP//AAANAAAAAAAMAP//AAANAAAAAAANAP//AAANAAAAAAAOAP//AAANAAAAAAAPAP//AAANAAAAAAAQAP//AAANAAAAAAARAP//AAANAAAAAAASAP//AAANAAAAAAATAP//AAANAAAAAAAUAP//AAANAAAAAAAVAP//AAANAAAAAAAWAP//AAANAAAAAAAXAP//AAANAAAAAAAYAAAAAAAPAAEAAAAYAAEAAAAPAAEAAAAYAAIAAAAPAAEAAAAYAAMAAAAPAAEAAAAYAAQAAAAPAAEAAAAYAAUAAAAPAAEAAAAYAAYAAAAPAAEAAAAYAAcAAAAPAAEAAAAYAAgAAAAPAAEAAAAYAAkAAAAPAAEAAAAYAAoAAAAPAAEAAAAYAAsAAAAPAAEAAAAYAAwAAAAPAAEAAAAXAA0AAAANAAAAAAAWAA0AAAANAAAAAAAVAA0AAAANAAAAAAAUAA0AAAANAAAAAAATAA0AAAANAAAAAAASAA0AAAANAAAAAAARAA0AAAANAAAAAAAQAA0AAAANAAAAAAAPAA0AAAANAAAAAAAOAA0AAAANAAAAAAANAA0AAAANAAAAAAAMAA0AAAANAAAAAAAKAA0AAAANAAAAAAAJAA0AAAANAAAAAAAIAA0AAAANAAAAAAAHAA0AAAANAAAAAAAGAA0AAAANAAAAAAAFAA0AAAANAAAAAAAEAA0AAAANAAAAAAADAA0AAAANAAAAAAACAA0AAAANAAAAAAABAA0AAAANAAAAAAAAAA0AAAANAAAAAAD//wwAAAAPAAEAAAD//wsAAAAPAAEAAAD//woAAAAPAAEAAAD//wkAAAAPAAEAAAD//wgAAAAPAAEAAAD//wcAAAAPAAEAAAD//wYAAAAPAAEAAAD//wUAAAAPAAEAAAD//wQAAAAPAAEAAAD//wMAAAAPAAEAAAD//wIAAAAPAAEAAAD//wEAAAAPAAEAAAD//wAAAAAPAAEAAAABAAoAAAAHAAAAAAACAAoAAAAHAAAAAAADAAoAAAAHAAAAAAAEAAoAAAAIAAAAAAABAAsAAAAHAAEAAAAEAAsAAAAIAAEAAAACAAsAAAAHAAEAAAADAAsAAAAHAAEAAAABAAwAAAAHAAIAAAAEAAwAAAAIAAIAAAACAAwAAAAHAAIAAAADAAwAAAAHAAIAAAAFAAoAAAAMAAgAAAAQAAoAAAANAAgAAAAGAAoAAAANAAgAAAAHAAoAAAANAAgAAAAIAAoAAAANAAgAAAAOAAoAAAANAAgAAAAPAAoAAAANAAgAAAARAAwAAAARAAYAAAASAAwAAAASAAYAAAATAAwAAAATAAYAAAARAAsAAAARAAUAAAATAAsAAAATAAUAAAASAAsAAAASAAUAAAATAAoAAAAOAAgAAAARAAoAAAANAAgAAAASAAoAAAANAAgAAAAAAAoAAAAGAAAAAAAAAAsAAAAGAAEAAAAAAAwAAAAGAAIAAAALAAgAAAAPAAEAAAALAAcAAAAPAAEAAAALAAYAAAAPAAEAAAALAAUAAAAPAAAAAAALAA0AAAAMAAEAAAAJAAoAAAANAAgAAAAKAAoAAAANAAgAAAALAAoAAAANAAgAAAAMAAoAAAANAAgAAAANAAoAAAANAAgAAAALAAkAAAAPAAIAAAAPAAgAAAAPAAEAAAAPAAcAAAAPAAEAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAAAAAAPAAkAAAAPAAIAAAA=")
 tile_set = SubResource("TileSet_nacht")
 
-[node name="MainCharacter" parent="." instance=ExtResource("3_guoxd")]
+[node name="MainCharacter" parent="." instance=ExtResource("11_nkldq")]
 position = Vector2(78, 36)
 
 [node name="MeasuringBackground" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(612, 369)
-texture = ExtResource("4_guoxd")
+texture = ExtResource("12_0p5ug")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Mushroom" parent="Enemies" instance=ExtResource("13_wnoc0")]
+position = Vector2(331, 440)

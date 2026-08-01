@@ -1,13 +1,19 @@
 extends State
+var leftStore : bool
+
+@export var player: CharacterBody2D
+@export var ACCEL: float = 10.0
+
+func enter() -> void:
+	leftStore = player.playerLastLeft
+	player.player_sprites.play("idle")
+	player.player_sprites.flip_h = leftStore
 
 func change_to_wall_slide():
 	if player.is_on_wall_only():
 		player.change_state("wall_slide", state_machine)
 
-@export var player: CharacterBody2D
-@export var ACCEL: float = 10.0
 func physics_update(delta: float) -> void:
-	player.player_sprites.play("idle")
 	#gravity
 	player.apply_gravity(delta)
 	

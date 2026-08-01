@@ -6,8 +6,12 @@ extends State
 # wall_pushoff timer function =======================#
 func wall_pushoff_timeout() -> void:
 	player.wall_pushoff_available = true
-func wall_pushoff_timer () -> void:
+func wall_pushoff_timer() -> void:
 	get_tree().create_timer(player.wall_pushback_hang_time).timeout.connect(wall_pushoff_timeout)
+	
+func wall_gravity_act_after_push() -> void:
+	get_tree().create_timer(player.wall_push_off_hang_time).timeout.connect(wall_pushoff_timeout)
+	#pass
 #====================================================#
 
 
@@ -53,7 +57,10 @@ func physics_update(delta: float) -> void:
 			player.isLeft = false
 			player.player_sprites.flip_h = player.isLeft
 			player.velocity.x = player.push_off
+			player.air_control(delta)
+			wall_gravity_act_after_push()
 			player.player_sprites.play("double_jump")
+			player.wall_pushoff_available = false
 			player.change_state("in_air", state_machine)
 	
 	if Input.is_action_just_pressed("left"):
@@ -62,7 +69,10 @@ func physics_update(delta: float) -> void:
 			player.isLeft = true
 			player.player_sprites.flip_h = player.isLeft
 			player.velocity.x = -player.push_off
+			player.air_control(delta)
+			wall_gravity_act_after_push()
 			player.player_sprites.play("double_jump")
+			player.wall_pushoff_available = false
 			player.change_state("in_air", state_machine)
 	
 	player.move_and_slide()

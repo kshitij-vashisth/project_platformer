@@ -18,6 +18,7 @@ func physics_update(delta: float) -> void:
 	#player.jump_using_coyote_timer(state_machine)
 		
 	if player.input_direction.x == 0:
+		player.playerLastLeft = player.isLeft
 		print("move->idle")
 		state_machine.change_state("idle")
 	
