@@ -216,6 +216,7 @@ sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 [node name="Debug_Layer" type="CanvasLayer" parent="." unique_id=1113041852]
 
 [node name="Current State Panel" type="Panel" parent="Debug_Layer" unique_id=1210209622]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -241,6 +242,7 @@ Player = NodePath("../../../MainCharacter")
 current_state_label = NodePath(".")
 
 [node name="Attributes Panel" type="Panel" parent="Debug_Layer" unique_id=774266971]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

@@ -10,7 +10,7 @@ var last_direction: float
 @export var move_speed: float = 200.0
 @export var move_accel: float = 15.0
 @export var jump_sound: AudioStreamPlayer2D
-
+@export var player_hurt_sound: AudioStreamPlayer2D
 
 # finer parameters for smoother movement=====================================#
 var wall_pushoff_available: bool = true
@@ -24,6 +24,10 @@ var wall_pushoff_available: bool = true
 @export var air_accel: float = 10.0
 @export var push_off: float = 20.0
 #============================================================================#
+func hurt()-> void:
+	velocity.x += -look_dir*2000 
+	player_hurt_sound.play()
+
 
 func check_look_dir() -> void:
 	var dir_check: int

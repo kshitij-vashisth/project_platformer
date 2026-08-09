@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://sctggix50qcn" path="res://Assets/Scripts/Player_States/state_wall_slide.gd" id="11_utd0e"]
 [ext_resource type="Script" uid="uid://4f1tcimchkwl" path="res://Assets/Scripts/Player_States/state_wall_jump.gd" id="12_8bhx4"]
 [ext_resource type="AudioStream" uid="uid://cprsqdysx0bo4" path="res://Assets/Sounds/SFX/jump.mp3" id="15_45f5x"]
+[ext_resource type="AudioStream" uid="uid://5pvd0qvxh5x5" path="res://Assets/Sounds/SFX/retro-hurt-2-236675.mp3" id="16_cikix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2flx"]
 atlas = ExtResource("2_awrqh")
@@ -264,11 +265,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1vrm"]
 size = Vector2(34, 50)
 
-[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "state_access")]
+[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "state_access")]
 collision_layer = 2
 script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
 jump_sound = NodePath("jump_sound")
+player_hurt_sound = NodePath("player_hurt_sound")
 coyote_time = 100.0
 knockback_velocity = 1200.0
 jump_height = 150.0
@@ -348,3 +350,7 @@ position_smoothing_speed = 7.0
 
 [node name="jump_sound" type="AudioStreamPlayer2D" parent="." unique_id=1342301048]
 stream = ExtResource("15_45f5x")
+
+[node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="." unique_id=1355306598]
+stream = ExtResource("16_cikix")
+volume_db = 15.15

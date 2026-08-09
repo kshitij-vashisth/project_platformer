@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var sprite:AnimatedSprite2D
 @export var ground_check: RayCast2D
 @export var squash_sound: AudioStreamPlayer2D
-@export var player_hurt: AudioStreamPlayer2D
 @export var can_move: bool = true
 @export var state_access: StateMachine 
 
@@ -56,8 +55,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			queue_free()
 		
 		if y_delta < 3:
-			player_hurt.play()
-			body.velocity.x += -body.look_dir*2000 
+			body.hurt()
 			
 		#print("Collision")
 		#print(y_delta)
