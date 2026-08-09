@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://tx258uh578fw" path="res://Assets/Art/measuring_background.png" id="12_0p5ug"]
 [ext_resource type="PackedScene" uid="uid://d1hki1ryp8g1j" path="res://Assets/Scenes/Enemies/mushroom.tscn" id="13_wnoc0"]
 [ext_resource type="AudioStream" uid="uid://0fw58gcruiwx" path="res://Assets/Sounds/BGM/2019-12-09_-_Retro_Forest_-_David_Fesliyan.mp3" id="14_d2prd"]
+[ext_resource type="Script" uid="uid://diikg5ps1q40d" path="res://Assets/Scripts/fall_area.gd" id="15_5tcgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvsrt"]
 texture = ExtResource("10_uybai")
@@ -211,6 +212,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nesho"]
+
 [node name="Node" type="Node" unique_id=1750968894]
 
 [node name="Debug_Layer" type="CanvasLayer" parent="." unique_id=1113041852]
@@ -368,3 +371,13 @@ stream = ExtResource("14_d2prd")
 autoplay = true
 attenuation = 6.772188e-05
 parameters/looping = true
+
+[node name="fall_area" type="Area2D" parent="." unique_id=1724403489]
+position = Vector2(268, 702)
+collision_mask = 3
+script = ExtResource("15_5tcgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area" unique_id=319349031]
+shape = SubResource("WorldBoundaryShape2D_nesho")
+
+[connection signal="body_entered" from="fall_area" to="fall_area" method="_on_body_entered"]
