@@ -1,6 +1,8 @@
 
 # Game Project Overview: Retro-Inspired 2D Action Platformer
 
+<kbd>New Update: Game is now called Kermitted! New updated footage available for viewing below</kbd>
+
 This project is a **retro-inspired 2D action platformer** built from scratch using **Godot Engine**. The game combines **fast-paced gameplay**, **tight controls**, and **modern mechanics** with a **gritty, nostalgic edge**.
 
 Currently, the game features **basic mechanics** and **limited levels**, but they work much smoother, emphasizing **precise movement** and **fluid traversal**. This remake aims to expand upon the original experience and provide a **dynamic, evolving platforming journey** with new mechanics, levels, and narrative content over time.
@@ -50,7 +52,7 @@ This project has gone back to early stages, with many updates and features plann
 
 ## Update 2 (9th August,2026)
 
-https://github.com/user-attachments/assets/4475dae4-d978-4fc6-8ace-1c5716c7a5d9
+https://github.com/user-attachments/assets/0e4df402-2048-4625-8c20-65a7b02acd7c
 
 ## Update 1
 
