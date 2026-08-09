@@ -1,16 +1,8 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
 config_version=5
 
 [application]
 
-config/name="2d_platformer"
+config/name="2d_platformer (4.4)"
 run/main_scene="uid://r20ijxfrhi7q"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
