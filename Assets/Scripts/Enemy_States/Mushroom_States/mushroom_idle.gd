@@ -3,7 +3,7 @@ extends State
 @export var mushroom: CharacterBody2D
 
 func enter():
-	print("ready")
+	print("mushroom idle")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

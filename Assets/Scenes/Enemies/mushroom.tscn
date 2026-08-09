@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7qrpxtl41mbn" path="res://Assets/Art/Enemies/Mushroom/Run (32x32).png" id="3_qe7w7"]
 [ext_resource type="Script" uid="uid://dxtm42fb5bk1d" path="res://Assets/Scripts/Enemy_States/Mushroom_States/mushroom_walk.gd" id="5_g0cec"]
 [ext_resource type="AudioStream" uid="uid://ccu8ilhco8ea7" path="res://Assets/Sounds/SFX/smb_stomp.mp3" id="5_pvnbn"]
+[ext_resource type="AudioStream" uid="uid://5pvd0qvxh5x5" path="res://Assets/Sounds/SFX/retro-hurt-2-236675.mp3" id="8_y35un"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4spu6"]
 atlas = ExtResource("1_jtb71")
@@ -237,12 +238,13 @@ size = Vector2(44, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnbn"]
 size = Vector2(52, 42)
 
-[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "state_access")]
+[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "player_hurt", "state_access")]
 collision_mask = 3
 script = ExtResource("1_ch3m3")
 sprite = NodePath("AnimatedSprite2D")
 ground_check = NodePath("groundCheck")
 squash_sound = NodePath("squash_sound")
+player_hurt = NodePath("player_hurt_sfx")
 state_access = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2064455558]
@@ -285,5 +287,8 @@ volume_db = 14.0
 [node name="groundCheck" type="RayCast2D" parent="." unique_id=114095946]
 position = Vector2(-30, 7)
 target_position = Vector2(0, 25)
+
+[node name="player_hurt_sfx" type="AudioStreamPlayer2D" parent="." unique_id=1771326807]
+stream = ExtResource("8_y35un")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

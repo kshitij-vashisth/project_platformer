@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var sprite:AnimatedSprite2D
 @export var ground_check: RayCast2D
 @export var squash_sound: AudioStreamPlayer2D
+@export var player_hurt: AudioStreamPlayer2D
 @export var can_move: bool = true
 @export var state_access: StateMachine 
 
@@ -12,7 +13,7 @@ var direction: int = -1
 
 func change_state(desired_state_name: String, state_machine):
 		var current_state_name = str(state_access.current_state)
-		print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
+		print("mushroom "+current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
 		state_machine.change_state(desired_state_name)
 
 func squash() -> void:
@@ -44,13 +45,19 @@ func platform_edge()->void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name=="MainCharacter":
 		var y_delta = position.y - body.position.y
+		print(y_delta)
 		if y_delta > 30:
 			dying = true
+			change_state("idle",state_access)
 			print("Destroy enemy")
 			body.velocity.y += -player_bounce_velocity
 			squash()
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
+		
+		if y_delta < 3:
+			player_hurt.play()
+			body.velocity.x += -body.look_dir*2000 
 			
 		#print("Collision")
 		#print(y_delta)
