@@ -48,6 +48,12 @@ Want to try it out? The previous version of the game is available as a **demo on
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
 ### State Machine Updates Video
 
+## Update 2 (9th August,2026)
+
+https://github.com/user-attachments/assets/4475dae4-d978-4fc6-8ace-1c5716c7a5d9
+
+## Update 1
+
 https://github.com/user-attachments/assets/d62c3719-7766-4dd5-ae4a-de23139a2d5b
 
 ### Old Version Gameplay video 
