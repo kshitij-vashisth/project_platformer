@@ -19,6 +19,7 @@ func double_jump() -> void:
 func enter() -> void:
 	print("double_jump")
 	print("player jump count: "+str(player.jump_count))
+	player.jump_sound.play()
 	double_jump()
 
 func physics_update(delta: float) -> void:

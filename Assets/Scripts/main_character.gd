@@ -9,6 +9,9 @@ var input_direction = Vector2.ZERO
 var last_direction: float
 @export var move_speed: float = 200.0
 @export var move_accel: float = 15.0
+@export var jump_sound: AudioStreamPlayer2D
+
+
 # finer parameters for smoother movement=====================================#
 var wall_pushoff_available: bool = true
 @export var hang_time: float = 0.15

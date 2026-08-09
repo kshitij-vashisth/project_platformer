@@ -6,6 +6,7 @@ func jump():
 	player.velocity.y = player.jump_velocity
 
 func enter() -> void:
+	player.jump_sound.play()
 	player.jump_count += 1
 	jump()
 	

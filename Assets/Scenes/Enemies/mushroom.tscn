@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://ebcbk38sadlc" path="res://Assets/Scripts/Enemy_States/Mushroom_States/mushroom_idle.gd" id="1_fd0t6"]
 [ext_resource type="Texture2D" uid="uid://c81g3yw3srqb7" path="res://Assets/Art/Enemies/Mushroom/Idle (32x32).png" id="1_jtb71"]
 [ext_resource type="Script" uid="uid://ne6xbq0iydbo" path="res://Assets/Scripts/Base State Code/state_machine.gd" id="3_ch3m3"]
+[ext_resource type="Texture2D" uid="uid://7qrpxtl41mbn" path="res://Assets/Art/Enemies/Mushroom/Run (32x32).png" id="3_qe7w7"]
+[ext_resource type="Script" uid="uid://dxtm42fb5bk1d" path="res://Assets/Scripts/Enemy_States/Mushroom_States/mushroom_walk.gd" id="5_g0cec"]
 [ext_resource type="AudioStream" uid="uid://ccu8ilhco8ea7" path="res://Assets/Sounds/SFX/smb_stomp.mp3" id="5_pvnbn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4spu6"]
@@ -62,6 +64,70 @@ region = Rect2(384, 0, 32, 32)
 atlas = ExtResource("1_jtb71")
 region = Rect2(416, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwbh4"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb7ax"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16vo4"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j7ob"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc70o"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgjpn"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvrde"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jugp4"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jul4d"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82jro"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kixrc"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrt8y"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni6up"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyb7h"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jbdc"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5bg4"]
+atlas = ExtResource("3_qe7w7")
+region = Rect2(480, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwbh4"]
 animations = [{
 "frames": [{
@@ -110,6 +176,59 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwbh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb7ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16vo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j7ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc70o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgjpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvrde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jugp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jul4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82jro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kixrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrt8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni6up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyb7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jbdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5bg4")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch3m3"]
@@ -118,19 +237,20 @@ size = Vector2(44, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnbn"]
 size = Vector2(52, 42)
 
-[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "squash_sound")]
+[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "state_access")]
 collision_mask = 3
 script = ExtResource("1_ch3m3")
 sprite = NodePath("AnimatedSprite2D")
+ground_check = NodePath("groundCheck")
 squash_sound = NodePath("squash_sound")
+state_access = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2064455558]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fwbh4")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.263541
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551831987]
 position = Vector2(0, 13)
@@ -146,6 +266,11 @@ script = ExtResource("1_fd0t6")
 mushroom = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
+[node name="Walk" type="Node" parent="StateMachine" unique_id=2121395821 node_paths=PackedStringArray("mushroom")]
+script = ExtResource("5_g0cec")
+mushroom = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1304854540]
 collision_mask = 2
 
@@ -156,5 +281,9 @@ shape = SubResource("RectangleShape2D_pvnbn")
 [node name="squash_sound" type="AudioStreamPlayer2D" parent="." unique_id=1322722625]
 stream = ExtResource("5_pvnbn")
 volume_db = 14.0
+
+[node name="groundCheck" type="RayCast2D" parent="." unique_id=114095946]
+position = Vector2(-30, 7)
+target_position = Vector2(0, 25)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

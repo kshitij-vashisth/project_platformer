@@ -2,7 +2,8 @@ extends State
 
 @export var player: CharacterBody2D
 
-func enter() -> void: 
+func enter() -> void:
+	player.jump_sound.play() 
 	player.velocity.y = player.jump_velocity
 	player.jump_count += 1
 	print("jumping from wall")

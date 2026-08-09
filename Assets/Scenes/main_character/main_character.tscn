@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cu2l60p4jewmu"]
+[gd_scene format=3 uid="uid://cu2l60p4jewmu"]
 
 [ext_resource type="Script" uid="uid://cyfbis8fwvbqd" path="res://Assets/Scripts/main_character.gd" id="1_4rsxi"]
 [ext_resource type="Script" uid="uid://ne6xbq0iydbo" path="res://Assets/Scripts/Base State Code/state_machine.gd" id="1_alh7r"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://denfa4j3n2sfa" path="res://Assets/Scripts/Player_States/state_in_air.gd" id="9_meaq4"]
 [ext_resource type="Script" uid="uid://sctggix50qcn" path="res://Assets/Scripts/Player_States/state_wall_slide.gd" id="11_utd0e"]
 [ext_resource type="Script" uid="uid://4f1tcimchkwl" path="res://Assets/Scripts/Player_States/state_wall_jump.gd" id="12_8bhx4"]
+[ext_resource type="AudioStream" uid="uid://cprsqdysx0bo4" path="res://Assets/Sounds/SFX/jump.mp3" id="15_45f5x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2flx"]
 atlas = ExtResource("2_awrqh")
@@ -160,7 +161,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cikix")
 }],
-"loop": true,
+"loop": 1,
 "name": &"double_jump",
 "speed": 30.0
 }, {
@@ -198,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mu4j4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 24.0
 }, {
@@ -206,7 +207,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cpqnk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -247,7 +248,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jiy73")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 24.0
 }, {
@@ -255,7 +256,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_462tu")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall_slide",
 "speed": 12.0
 }]
@@ -263,10 +264,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1vrm"]
 size = Vector2(34, 50)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprites", "state_access")]
+[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "state_access")]
 collision_layer = 2
 script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
+jump_sound = NodePath("jump_sound")
 coyote_time = 100.0
 knockback_velocity = 1200.0
 jump_height = 150.0
@@ -274,72 +276,75 @@ jump_time_to_peak = 0.5
 jump_time_to_descent = 0.25
 state_access = NodePath("StateMachine")
 
-[node name="Timer_Nodes" type="Node" parent="."]
+[node name="Timer_Nodes" type="Node" parent="." unique_id=1988724615]
 
-[node name="coyote_time" type="Timer" parent="Timer_Nodes"]
+[node name="coyote_time" type="Timer" parent="Timer_Nodes" unique_id=599024503]
 autostart = true
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1636044056]
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sw1ma")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=373265813]
 position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_o1vrm")
 
-[node name="Wall_checker_rays" type="Node" parent="."]
+[node name="Wall_checker_rays" type="Node" parent="." unique_id=760557220]
 
-[node name="wall_direction_checker_left" type="RayCast2D" parent="Wall_checker_rays"]
+[node name="wall_direction_checker_left" type="RayCast2D" parent="Wall_checker_rays" unique_id=559073668]
 unique_name_in_owner = true
 target_position = Vector2(-50, 0)
 
-[node name="wall_direction_checker_right" type="RayCast2D" parent="Wall_checker_rays"]
+[node name="wall_direction_checker_right" type="RayCast2D" parent="Wall_checker_rays" unique_id=1073447928]
 unique_name_in_owner = true
 target_position = Vector2(50, 0)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=14360574 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_alh7r")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://ne6xbq0iydbo"
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1905689548 node_paths=PackedStringArray("player")]
 script = ExtResource("2_mrqhj")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="In_Air" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="In_Air" type="Node" parent="StateMachine" unique_id=1310793362 node_paths=PackedStringArray("player")]
 script = ExtResource("9_meaq4")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Move" type="Node" parent="StateMachine" unique_id=1504704917 node_paths=PackedStringArray("player")]
 script = ExtResource("3_mrqhj")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1168081738 node_paths=PackedStringArray("player")]
 script = ExtResource("6_m2akd")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Double_Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Double_Jump" type="Node" parent="StateMachine" unique_id=1064093493 node_paths=PackedStringArray("player")]
 script = ExtResource("7_xt52y")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Wall_Slide" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Wall_Slide" type="Node" parent="StateMachine" unique_id=1132750358 node_paths=PackedStringArray("player")]
 script = ExtResource("11_utd0e")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Wall_Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Wall_Jump" type="Node" parent="StateMachine" unique_id=915655795 node_paths=PackedStringArray("player")]
 script = ExtResource("12_8bhx4")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1518738580]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="jump_sound" type="AudioStreamPlayer2D" parent="." unique_id=1342301048]
+stream = ExtResource("15_45f5x")
