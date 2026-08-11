@@ -11,7 +11,7 @@ var last_direction: float
 @export var move_accel: float = 15.0
 @export var jump_sound: AudioStreamPlayer2D
 @export var player_hurt_sound: AudioStreamPlayer2D
-
+@export var hurt_velocity_y: float = 200.0
 # finer parameters for smoother movement=====================================#
 var wall_pushoff_available: bool = true
 @export var hang_time: float = 0.15
@@ -25,9 +25,10 @@ var wall_pushoff_available: bool = true
 @export var push_off: float = 20.0
 #============================================================================#
 func hurt()-> void:
-	velocity.x += -look_dir*2000 
-	player_hurt_sound.play()
-
+	#velocity.y += -hurt_velocity_y
+	#velocity.x += -look_dir*2500 
+	player_sprites.play("hurt")
+	#player_hurt_sound.play()
 
 func check_look_dir() -> void:
 	var dir_check: int

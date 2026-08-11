@@ -17,8 +17,8 @@ func change_state(desired_state_name: String, state_machine):
 
 func squash() -> void:
 	squash_sound.play()
-	sprite.scale.y = 0.3
-	sprite.position.y += 20
+	sprite.scale.y = 0.2
+	sprite.position.y += 23
 #func _ready() -> void:
 	#$Area2D.body_entered.connect(_on_area_2d_body_entered)
 	#print("Area2D connected, monitoring: ", $Area2D.monitoring)
@@ -46,16 +46,22 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var y_delta = position.y - body.position.y
 		print(y_delta)
 		if y_delta > 30:
+			can_move = false
 			dying = true
 			change_state("idle",state_access)
 			print("Destroy enemy")
 			body.velocity.y += -player_bounce_velocity
+			body.jump_count = 1
+			body.change_state("in_air",body.state_access)
 			squash()
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
 		
 		if y_delta < 3:
-			body.hurt()
+			#body.hurt()
+			#Implement this-safer=========================>
+			body.change_state("hurt", body.state_access)
+			#=============================================>
 			
 		#print("Collision")
 		#print(y_delta)

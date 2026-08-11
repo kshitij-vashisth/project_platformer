@@ -258,7 +258,7 @@ shape = SubResource("RectangleShape2D_ch3m3")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1367950053 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ch3m3")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Walk")
 metadata/_custom_type_script = "uid://ne6xbq0iydbo"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1369052001 node_paths=PackedStringArray("mushroom")]

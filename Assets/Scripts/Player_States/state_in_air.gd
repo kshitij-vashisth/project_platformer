@@ -4,7 +4,7 @@ extends State
 
 func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
-	#player.player_sprites.play("jump")
+	player.player_sprites.play("jump")
 	#player.isLeft = player.direction_calculate(player.velocity.x)
 	#player.player_sprites.flip_h = player.isLeft
 	player.air_control(delta)

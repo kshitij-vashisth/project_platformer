@@ -16,6 +16,4 @@ func _process(delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	mushroom.add_gravity(delta)
-	if mushroom.is_on_floor() and not mushroom.dying:
-		mushroom.change_state("walk",state_machine)
 	mushroom.move_and_slide()

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ynsjbdfvc45d" path="res://Assets/Scripts/Player_States/state_idle.gd" id="2_mrqhj"]
 [ext_resource type="Texture2D" uid="uid://c6j32va12xnsy" path="res://Assets/Art/Character/Idle (32x32).png" id="3_3t6yw"]
 [ext_resource type="Script" uid="uid://q223xh0oi285" path="res://Assets/Scripts/Player_States/state_move.gd" id="3_mrqhj"]
+[ext_resource type="Texture2D" uid="uid://ccxddkphqqsiw" path="res://Assets/Art/Character/Hit (32x32).png" id="3_o4l4x"]
 [ext_resource type="Texture2D" uid="uid://dmi766sqnohgt" path="res://Assets/Art/Character/Walk (32x32).png" id="5_3t6yw"]
 [ext_resource type="Texture2D" uid="uid://dswieke18187s" path="res://Assets/Art/Character/Wall Jump (32x32).png" id="6_8bhx4"]
 [ext_resource type="Script" uid="uid://hgsotajvk1gm" path="res://Assets/Scripts/Player_States/state_jump.gd" id="6_m2akd"]
@@ -16,6 +17,7 @@
 [ext_resource type="Script" uid="uid://4f1tcimchkwl" path="res://Assets/Scripts/Player_States/state_wall_jump.gd" id="12_8bhx4"]
 [ext_resource type="AudioStream" uid="uid://cprsqdysx0bo4" path="res://Assets/Sounds/SFX/jump.mp3" id="15_45f5x"]
 [ext_resource type="AudioStream" uid="uid://5pvd0qvxh5x5" path="res://Assets/Sounds/SFX/retro-hurt-2-236675.mp3" id="16_cikix"]
+[ext_resource type="Script" uid="uid://b4oeg2aerpo23" path="res://Assets/Scripts/Player_States/state_hurt.gd" id="16_vr1dg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2flx"]
 atlas = ExtResource("2_awrqh")
@@ -40,6 +42,34 @@ region = Rect2(128, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cikix"]
 atlas = ExtResource("2_awrqh")
 region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx1hg"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p40i5"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uc7e"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kx01"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3w7s"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cc21"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b306"]
+atlas = ExtResource("3_o4l4x")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4l4x"]
 atlas = ExtResource("3_3t6yw")
@@ -168,6 +198,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mx1hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p40i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uc7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kx01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3w7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cc21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b306")
+}],
+"loop": 1,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o4l4x")
 }, {
 "duration": 1.0,
@@ -287,7 +343,7 @@ autostart = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sw1ma")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=373265813]
@@ -344,6 +400,11 @@ script = ExtResource("12_8bhx4")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1181559225 node_paths=PackedStringArray("player")]
+script = ExtResource("16_vr1dg")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1518738580]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
@@ -353,4 +414,4 @@ stream = ExtResource("15_45f5x")
 
 [node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="." unique_id=1355306598]
 stream = ExtResource("16_cikix")
-volume_db = 15.15
+volume_db = 24.0
