@@ -29,8 +29,3 @@ func physics_update(delta: float) -> void:
 	
 	if player.is_on_wall_only():
 		player.change_state("wall_slide",state_machine)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

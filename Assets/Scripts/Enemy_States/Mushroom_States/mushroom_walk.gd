@@ -9,16 +9,13 @@ func enter():
 func _ready() -> void:
 	print("mushroom walk")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func physics_update(delta: float) -> void:
 	#if mushroom.dying:
 		#mushroom.change_state("idle",state_machine)
 	if mushroom.can_move:
 		mushroom.move_enemy()
+	if mushroom.dying:
+		mushroom.change_state("idle", mushroom.state_access)
 	mushroom.add_gravity(delta)
 	mushroom.platform_edge()
 	mushroom.move_and_slide()

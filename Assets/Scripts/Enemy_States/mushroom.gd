@@ -48,7 +48,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if y_delta > 30:
 			can_move = false
 			dying = true
-			change_state("idle",state_access)
+			#change_state("idle",state_access)
 			print("Destroy enemy")
 			body.velocity.y += -player_bounce_velocity
 			body.jump_count = 1

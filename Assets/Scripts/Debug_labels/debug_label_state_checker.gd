@@ -4,6 +4,6 @@ extends RichTextLabel
 var text1: String
 
 # Called when the node enters the scene tree for the first time.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	text1 = str(Player.state_access.current_state)
 	current_state_label.text = "State: "+text1.substr(0,text1.find(":"))

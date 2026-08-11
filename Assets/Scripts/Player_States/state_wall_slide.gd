@@ -46,8 +46,10 @@ func physics_update(delta: float) -> void:
 	#if not player.is_on_wall():
 		#print("wall slide->idle")
 		#state_machine.change_state("idle")
+	if not player.is_on_wall_only() and not player.is_on_floor_only():
+		state_machine.change_state("in_air")
 	
-	if player.is_on_floor():
+	if player.is_on_floor_only():
 		print("wall slide->idle")
 		state_machine.change_state("idle")
 	
@@ -59,7 +61,6 @@ func physics_update(delta: float) -> void:
 			player.velocity.x = player.push_off
 			player.air_control(delta)
 			wall_gravity_act_after_push()
-			player.player_sprites.play("double_jump")
 			player.wall_pushoff_available = false
 			player.change_state("in_air", state_machine)
 	
@@ -71,7 +72,6 @@ func physics_update(delta: float) -> void:
 			player.velocity.x = -player.push_off
 			player.air_control(delta)
 			wall_gravity_act_after_push()
-			player.player_sprites.play("double_jump")
 			player.wall_pushoff_available = false
 			player.change_state("in_air", state_machine)
 	

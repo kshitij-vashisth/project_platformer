@@ -3,5 +3,5 @@ extends RichTextLabel
 #@export var jump_counter_label: RichTextLabel
 var jump_counter_label: RichTextLabel = self
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	jump_counter_label.text = "Jump Count: "+str(Player.jump_count)

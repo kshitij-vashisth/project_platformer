@@ -41,12 +41,12 @@ func flip_sprite() -> void:
 	player_sprites.flip_h = isLeft
 
 # finer movement functions===================================================#
-func coyote_checker(was_on_floor: bool) -> void:
+func coyote_checker(_was_on_floor: bool) -> void:
 	#if was_on_floor and !is_on_floor():
 		#coyote_timer.start()
 	pass
 		
-func jump_using_coyote_timer(state_machine) -> void:
+func jump_using_coyote_timer(_state_machine) -> void:
 	#if Input.is_action_just_pressed("up") and (is_on_floor() or coyote_timer.is_stopped()):
 		#change_state("jump", state_machine)
 	pass
@@ -157,7 +157,7 @@ func gravity_for_jump(delta) -> void:
 #func _ready() -> void:
 	#coyote_timer.wait_time = coyote_time 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#orients face for wall jumps and wall slides===#
 	face_orientation()
 	# for debugging look_dir
