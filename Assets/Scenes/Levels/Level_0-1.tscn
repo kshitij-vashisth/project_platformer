@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://d1hki1ryp8g1j" path="res://Assets/Scenes/Enemies/mushroom.tscn" id="13_wnoc0"]
 [ext_resource type="AudioStream" uid="uid://0fw58gcruiwx" path="res://Assets/Sounds/BGM/2019-12-09_-_Retro_Forest_-_David_Fesliyan.mp3" id="14_d2prd"]
 [ext_resource type="Script" uid="uid://diikg5ps1q40d" path="res://Assets/Scripts/fall_area.gd" id="15_5tcgr"]
+[ext_resource type="Texture2D" uid="uid://ouc2w2ingvga" path="res://Assets/Art/game_elements/heart.png" id="16_uwflc"]
+[ext_resource type="Script" uid="uid://8l1qwfkeph4n" path="res://Assets/Scripts/pause_screen.gd" id="17_8lgdd"]
+[ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="17_vcnwt"]
+[ext_resource type="Texture2D" uid="uid://cnldq7gd7gdw1" path="res://Assets/Art/UI/Spritesheet_UI_Flat_Animated.png" id="18_8lgdd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvsrt"]
 texture = ExtResource("10_uybai")
@@ -214,6 +218,70 @@ sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nesho"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_chlgl"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uybai"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkldq"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p5ug"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d5vv"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoee6"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1iog"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg2rj"]
+atlas = ExtResource("18_8lgdd")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cgwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chlgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uybai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkldq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p5ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d5vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoee6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1iog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg2rj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node" type="Node" unique_id=1750968894]
 
 [node name="Debug_Layer" type="CanvasLayer" parent="." unique_id=1113041852]
@@ -380,4 +448,134 @@ script = ExtResource("15_5tcgr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area" unique_id=319349031]
 shape = SubResource("WorldBoundaryShape2D_nesho")
 
+[node name="UI" type="CanvasLayer" parent="." unique_id=1164828528]
+
+[node name="Hearts" type="Panel" parent="UI" unique_id=2131684878]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -166.0
+offset_top = 12.0
+offset_right = -13.0
+offset_bottom = 59.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts" unique_id=670708562]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 153.0
+offset_bottom = 46.0
+
+[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1209874820]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("16_uwflc")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=310691836]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("16_uwflc")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1165618227]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("16_uwflc")
+expand_mode = 2
+
+[node name="Pause Screen" type="Node" parent="UI" unique_id=1811907973]
+script = ExtResource("17_8lgdd")
+
+[node name="PausePanel" type="Panel" parent="UI/Pause Screen" unique_id=830207653]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseText" type="Label" parent="UI/Pause Screen/PausePanel" unique_id=531075861]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -304.0
+offset_right = 161.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 50
+text = "Game Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause Screen/PausePanel" unique_id=1610001027]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -140.0
+offset_right = 252.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 71
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/Pause Screen/PausePanel/VBoxContainer" unique_id=156934730]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.4627451, 0.53333336, 0.09411765, 1)
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 41
+text = "Resume"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/ResumeButton" unique_id=2129196073]
+texture_filter = 1
+position = Vector2(240.5, 22)
+scale = Vector2(10.15625, 3.1874995)
+sprite_frames = SubResource("SpriteFrames_0cgwx")
+autoplay = "default"
+
+[node name="MainMenu" type="Button" parent="UI/Pause Screen/PausePanel/VBoxContainer" unique_id=78344340]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.4627451, 0.53333336, 0.09411765, 1)
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 41
+text = "Main Menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/MainMenu" unique_id=1110115305]
+texture_filter = 1
+position = Vector2(240.5, 22)
+scale = Vector2(10.15625, 3.1874995)
+sprite_frames = SubResource("SpriteFrames_0cgwx")
+autoplay = "default"
+frame_progress = 0.46317825
+
+[node name="Exit" type="Button" parent="UI/Pause Screen/PausePanel/VBoxContainer" unique_id=109039974]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.4627451, 0.53333336, 0.09411765, 1)
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 41
+text = "Exit
+"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/Exit" unique_id=2101344898]
+texture_filter = 1
+position = Vector2(240.5, 22)
+scale = Vector2(10.15625, 3.1874995)
+sprite_frames = SubResource("SpriteFrames_0cgwx")
+autoplay = "default"
+frame_progress = 0.46317825
+
 [connection signal="body_entered" from="fall_area" to="fall_area" method="_on_body_entered"]
+[connection signal="pressed" from="UI/Pause Screen/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause Screen" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/Pause Screen/PausePanel/VBoxContainer/MainMenu" to="UI/Pause Screen" method="_on_main_menu_pressed"]
