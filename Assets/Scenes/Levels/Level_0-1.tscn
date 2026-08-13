@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://m2wci0lnrx7n"]
 
+[ext_resource type="Script" uid="uid://cihrpec7h8b3u" path="res://Assets/Scripts/game_manager.gd" id="1_chlgl"]
 [ext_resource type="Script" uid="uid://bcsn0d4qsioe4" path="res://Assets/Scripts/Debug_labels/debug_label_state_checker.gd" id="1_nrism"]
 [ext_resource type="Script" uid="uid://bcly2bkdb6m7q" path="res://Assets/Scripts/Debug_labels/debug_label_on_floor_checker.gd" id="2_wnoc0"]
 [ext_resource type="Script" uid="uid://3a58vpwt0ywb" path="res://Assets/Scripts/Debug_labels/debug_label_jump_counter.gd" id="3_d2prd"]
@@ -99,9 +100,13 @@ texture = ExtResource("10_uybai")
 9:4/0 = 0
 10:4/0 = 0
 12:4/0 = 0
+12:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:4/0 = 0
+13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:4/0 = 0
+14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:4/0 = 0
+15:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:4/0 = 0
 17:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:4/0 = 0
@@ -123,9 +128,13 @@ texture = ExtResource("10_uybai")
 9:5/0 = 0
 10:5/0 = 0
 12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:5/0 = 0
+15:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:5/0 = 0
 17:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:5/0 = 0
@@ -143,8 +152,11 @@ texture = ExtResource("10_uybai")
 7:6/0 = 0
 8:6/0 = 0
 13:6/0 = 0
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:6/0 = 0
+14:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 17:6/0 = 0
 17:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:6/0 = 0
@@ -212,7 +224,7 @@ texture = ExtResource("10_uybai")
 20:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_nacht"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 
@@ -283,6 +295,26 @@ animations = [{
 }]
 
 [node name="Node" type="Node" unique_id=1750968894]
+
+[node name="GameManager" type="Node" parent="." unique_id=1198250212 node_paths=PackedStringArray("hearts")]
+unique_name_in_owner = true
+script = ExtResource("1_chlgl")
+hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
+
+[node name="SceneObjects" type="Node" parent="." unique_id=1860487853]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="SceneObjects" unique_id=124718108]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SceneObjects/ParallaxBackground" unique_id=1288431098]
+motion_scale = Vector2(0.3, 0.4)
+motion_mirroring = Vector2(2048, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="SceneObjects/ParallaxBackground/ParallaxLayer" unique_id=608658640]
+texture_repeat = 2
+texture = ExtResource("9_chlgl")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2048, 1024)
 
 [node name="Debug_Layer" type="CanvasLayer" parent="." unique_id=1113041852]
 
@@ -404,7 +436,8 @@ offset_bottom = 190.0
 text = "Velocity: "
 script = ExtResource("8_8lgdd")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=616804451]
+[node name="TempBG" type="TextureRect" parent="." unique_id=616804451]
+visible = false
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -417,7 +450,7 @@ stretch_mode = 1
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=702876185]
 texture_filter = 1
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD/////AAAMAAEAAAD//w0AAAAMAAEAAAAYAA0AAAAMAAEAAAAYAP//AAAMAAEAAAAAAP//AAANAAAAAAABAP//AAANAAAAAAACAP//AAANAAAAAAADAP//AAANAAAAAAAEAP//AAANAAAAAAAFAP//AAANAAAAAAAGAP//AAANAAAAAAAHAP//AAANAAAAAAAIAP//AAANAAAAAAAJAP//AAANAAAAAAAKAP//AAANAAAAAAALAP//AAANAAAAAAAMAP//AAANAAAAAAANAP//AAANAAAAAAAOAP//AAANAAAAAAAPAP//AAANAAAAAAAQAP//AAANAAAAAAARAP//AAANAAAAAAASAP//AAANAAAAAAATAP//AAANAAAAAAAUAP//AAANAAAAAAAVAP//AAANAAAAAAAWAP//AAANAAAAAAAXAP//AAANAAAAAAAYAAAAAAAPAAEAAAAYAAEAAAAPAAEAAAAYAAIAAAAPAAEAAAAYAAMAAAAPAAEAAAAYAAQAAAAPAAEAAAAYAAUAAAAPAAEAAAAYAAYAAAAPAAEAAAAYAAcAAAAPAAEAAAAYAAgAAAAPAAEAAAAYAAkAAAAPAAEAAAAYAAoAAAAPAAEAAAAYAAsAAAAPAAEAAAAYAAwAAAAPAAEAAAAXAA0AAAANAAAAAAAWAA0AAAANAAAAAAAVAA0AAAANAAAAAAD//wwAAAAPAAEAAAD//wsAAAAPAAEAAAD//woAAAAPAAEAAAD//wkAAAAPAAEAAAD//wgAAAAPAAEAAAD//wcAAAAPAAEAAAD//wYAAAAPAAEAAAD//wUAAAAPAAEAAAD//wQAAAAPAAEAAAD//wMAAAAPAAEAAAD//wIAAAAPAAEAAAD//wEAAAAPAAEAAAD//wAAAAAPAAEAAAARAAwAAAARAAYAAAASAAwAAAASAAYAAAATAAwAAAATAAYAAAARAAsAAAARAAUAAAATAAsAAAATAAUAAAASAAsAAAASAAUAAAAAAAoAAAAGAAAAAAALAAgAAAAPAAEAAAALAAcAAAAPAAEAAAALAAYAAAAPAAEAAAALAAUAAAAPAAAAAAAPAAgAAAAPAAEAAAAPAAcAAAAPAAEAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAAAAAAUAA0AAAAMAAEAAAALAAkAAAAPAAEAAAALAAoAAAAPAAEAAAALAAsAAAAPAAEAAAALAAwAAAAPAAEAAAAPAAkAAAAPAAEAAAAPAAoAAAAPAAEAAAAPAAsAAAAPAAEAAAAPAAwAAAAPAAEAAAAPAA0AAAAPAAIAAAALAA0AAAAPAAIAAAAGAAoAAAANAAgAAAAAAAsAAAAGAAIAAAABAAoAAAAIAAAAAAABAAsAAAAIAAIAAAAHAAoAAAANAAgAAAAIAAoAAAAOAAgAAAAFAAoAAAAMAAgAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAAMAAEAAAD//w0AAAAMAAEAAAAYAP//AAAMAAEAAAAAAP//AAANAAAAAAABAP//AAANAAAAAAACAP//AAANAAAAAAADAP//AAANAAAAAAAEAP//AAANAAAAAAAFAP//AAANAAAAAAAGAP//AAANAAAAAAAHAP//AAANAAAAAAAIAP//AAANAAAAAAAJAP//AAANAAAAAAAKAP//AAANAAAAAAALAP//AAANAAAAAAAMAP//AAANAAAAAAANAP//AAANAAAAAAAOAP//AAANAAAAAAAPAP//AAANAAAAAAAQAP//AAANAAAAAAARAP//AAANAAAAAAASAP//AAANAAAAAAATAP//AAANAAAAAAAUAP//AAANAAAAAAAVAP//AAANAAAAAAAWAP//AAANAAAAAAAXAP//AAANAAAAAAD//wwAAAAPAAEAAAD//wsAAAAPAAEAAAD//woAAAAPAAEAAAD//wkAAAAPAAEAAAD//wgAAAAPAAEAAAD//wcAAAAPAAEAAAD//wYAAAAPAAEAAAD//wUAAAAPAAEAAAD//wQAAAAPAAEAAAD//wMAAAAPAAEAAAD//wIAAAAPAAEAAAD//wEAAAAPAAEAAAD//wAAAAAPAAEAAAAAAAoAAAAGAAAAAAAPAAgAAAAPAAEAAAAPAAcAAAAPAAEAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAAAAAAPAAkAAAAPAAEAAAAPAAoAAAAPAAEAAAAPAAsAAAAPAAEAAAAPAAwAAAAPAAEAAAAPAA0AAAAPAAIAAAABAAoAAAAIAAAAAAAIAAwAAAAIAAAAAAAEAAwAAAAGAAAAAAAFAAwAAAAHAAAAAAAGAAwAAAAHAAAAAAAHAAwAAAAHAAAAAAAEAA0AAAAGAAIAAAAIAA0AAAAIAAIAAAAFAA0AAAAHAAIAAAAGAA0AAAAHAAIAAAAHAA0AAAAHAAIAAAAWAAwAAAAGAAAAAAAhAAwAAAAIAAAAAAAWAA0AAAAGAAIAAAAhAA0AAAAIAAIAAAAXAAwAAAAHAAAAAAAYAAwAAAAHAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAAbAAwAAAAHAAAAAAAcAAwAAAAHAAAAAAAdAAwAAAAHAAAAAAAeAAwAAAAHAAAAAAAfAAwAAAAHAAAAAAAgAAwAAAAHAAAAAAAXAA0AAAAHAAIAAAAYAA0AAAAHAAIAAAAZAA0AAAAHAAIAAAAaAA0AAAAHAAIAAAAbAA0AAAAHAAIAAAAcAA0AAAAHAAIAAAAdAA0AAAAHAAIAAAAeAA0AAAAHAAIAAAAfAA0AAAAHAAIAAAAgAA0AAAAHAAIAAAAMAAUAAAAPAAAAAAAMAA0AAAAPAAIAAAAMAAwAAAAPAAEAAAAMAAsAAAAPAAEAAAAMAAoAAAAPAAEAAAAMAAkAAAAPAAEAAAAMAAgAAAAPAAEAAAAMAAcAAAAPAAEAAAAMAAYAAAAPAAEAAAAAAAsAAAAGAAIAAAABAAsAAAAIAAIAAAASAAsAAAAMAAUAAAA=")
 tile_set = SubResource("TileSet_nacht")
 
 [node name="MainCharacter" parent="." unique_id=2028758806 instance=ExtResource("11_nkldq")]
@@ -430,8 +463,16 @@ texture = ExtResource("12_0p5ug")
 
 [node name="Enemies" type="Node" parent="." unique_id=1552556645]
 
+[node name="Mushroom2" parent="Enemies" unique_id=871202480 groups=["enemies"] instance=ExtResource("13_wnoc0")]
+position = Vector2(1601, 530)
+SPEED = 100.0
+
+[node name="Mushroom3" parent="Enemies" unique_id=385971004 groups=["enemies"] instance=ExtResource("13_wnoc0")]
+position = Vector2(1101, 524)
+SPEED = 100.0
+
 [node name="Mushroom" parent="Enemies" unique_id=1041805994 groups=["enemies"] instance=ExtResource("13_wnoc0")]
-position = Vector2(331, 440)
+position = Vector2(402, 537)
 SPEED = 100.0
 
 [node name="Level_BGM" type="AudioStreamPlayer2D" parent="." unique_id=605004159]
@@ -575,6 +616,8 @@ scale = Vector2(10.15625, 3.1874995)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 frame_progress = 0.46317825
+
+[node name="Wall_fallers" type="Node" parent="." unique_id=1312731303]
 
 [connection signal="body_entered" from="fall_area" to="fall_area" method="_on_body_entered"]
 [connection signal="pressed" from="UI/Pause Screen/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause Screen" method="_on_resume_button_pressed"]

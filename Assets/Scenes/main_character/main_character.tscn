@@ -354,10 +354,12 @@ shape = SubResource("RectangleShape2D_o1vrm")
 
 [node name="wall_direction_checker_left" type="RayCast2D" parent="Wall_checker_rays" unique_id=559073668]
 unique_name_in_owner = true
+position = Vector2(-18, 10)
 target_position = Vector2(-50, 0)
 
 [node name="wall_direction_checker_right" type="RayCast2D" parent="Wall_checker_rays" unique_id=1073447928]
 unique_name_in_owner = true
+position = Vector2(19, 10)
 target_position = Vector2(50, 0)
 
 [node name="StateMachine" type="Node" parent="." unique_id=14360574 node_paths=PackedStringArray("initial_state")]

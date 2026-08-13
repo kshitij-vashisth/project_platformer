@@ -70,11 +70,21 @@ func jump_using_coyote_timer(_state_machine) -> void:
 
 
 #Functions======================================================================================================#
+func wall_end_fall()->void:
+	if isLeft and not wall_check_left.is_colliding():
+		change_state("in_air", state_access)
+	
+	if !isLeft and not wall_check_right.is_colliding():
+		change_state("in_air", state_access)
+
+
+
 #function to change state
 func change_state(desired_state_name: String, state_machine):
-		var current_state_name = str(state_access.current_state)
-		print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
-		state_machine.change_state(desired_state_name)
+	print("changing state")
+	var current_state_name = str(state_access.current_state)
+	print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
+	state_machine.change_state(desired_state_name)
 
 func jump()-> void:
 	change_state("jump", state_access)

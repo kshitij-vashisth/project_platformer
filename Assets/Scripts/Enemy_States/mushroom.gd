@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var can_move: bool = true
 @export var state_access: StateMachine 
 
+@onready var game_manager: Node = %GameManager
+
 var dying: bool = false
 var direction: int = -1
 
@@ -44,7 +46,8 @@ func platform_edge()->void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name=="MainCharacter":
 		var y_delta = position.y - body.position.y
-		print(y_delta)
+		var x_delta = body.position.x - position.x
+		print("x_delta is:",x_delta)
 		if y_delta > 30:
 			can_move = false
 			dying = true
@@ -57,11 +60,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			await get_tree().create_timer(0.2).timeout
 			queue_free()
 		
-		if y_delta < 3:
+		if abs(x_delta) > 0 and not dying:
 			#body.hurt()
 			#Implement this-safer=========================>
+			body.velocity.x += sign(velocity.x)*2500 
 			body.change_state("hurt", body.state_access)
 			#=============================================>
-			
+			game_manager.decrease_health()			
 		#print("Collision")
 		#print(y_delta)

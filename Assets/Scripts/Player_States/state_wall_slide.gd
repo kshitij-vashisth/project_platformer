@@ -41,19 +41,24 @@ func physics_update(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("up"):
-		state_machine.change_state("wall_jump")
+		player.change_state("wall_jump", player.state_access)
 	
 	#if not player.is_on_wall():
 		#print("wall slide->idle")
 		#state_machine.change_state("idle")
-	if not player.is_on_wall_only() and not player.is_on_floor_only():
-		state_machine.change_state("in_air")
 	
+	#player.wall_end_fall()
+	
+	
+	#TODO: work on wall fall off===============================>
+	if not player.is_on_wall() and not player.is_on_floor():
+		player.change_state("in_air", player.state_access)
+	#==========================================================>
 	if player.is_on_floor_only():
 		print("wall slide->idle")
-		state_machine.change_state("idle")
+		player.change_state("idle", player.state_access)
 	
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("right") and player.is_on_wall_only():
 		if not player.wall_pushoff_available:
 			wall_pushoff_timer()
 			player.isLeft = false
@@ -62,9 +67,9 @@ func physics_update(delta: float) -> void:
 			player.air_control(delta)
 			wall_gravity_act_after_push()
 			player.wall_pushoff_available = false
-			player.change_state("in_air", state_machine)
+			player.change_state("in_air", player.state_access)
 	
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left") and player.is_on_wall_only():
 		if not player.wall_pushoff_available:
 			wall_pushoff_timer()
 			player.isLeft = true
@@ -73,6 +78,6 @@ func physics_update(delta: float) -> void:
 			player.air_control(delta)
 			wall_gravity_act_after_push()
 			player.wall_pushoff_available = false
-			player.change_state("in_air", state_machine)
+			player.change_state("in_air", player.state_access)
 	
 	player.move_and_slide()

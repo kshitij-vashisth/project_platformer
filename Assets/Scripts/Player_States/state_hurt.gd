@@ -10,7 +10,7 @@ const HURT_LOCK_TIME: float = 0.08
 func enter() -> void:
 	hurt_timer = 0.0
 	player.velocity.y += -player.hurt_velocity_y
-	player.velocity.x += -player.look_dir*2500 
+	#player.velocity.x += -player.look_dir*2500 
 	player.player_sprites.play("hurt")
 	hurt_sound.play()
 	#await get_tree().create_timer(0.1).timeout

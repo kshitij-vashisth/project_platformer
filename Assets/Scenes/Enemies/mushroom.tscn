@@ -235,10 +235,10 @@ animations = [{
 size = Vector2(44, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnbn"]
-size = Vector2(52, 42)
+size = Vector2(52, 36)
 
 [node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "state_access")]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_ch3m3")
 sprite = NodePath("AnimatedSprite2D")
 ground_check = NodePath("groundCheck")
@@ -275,7 +275,7 @@ metadata/_custom_type_script = "uid://71savu34cj01"
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1530004385]
-position = Vector2(0, 11)
+position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_pvnbn")
 
 [node name="squash_sound" type="AudioStreamPlayer2D" parent="." unique_id=1322722625]
