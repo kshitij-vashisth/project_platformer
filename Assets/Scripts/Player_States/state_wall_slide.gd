@@ -17,6 +17,7 @@ func wall_gravity_act_after_push() -> void:
 
 
 func enter() -> void:
+	player.canMove = true
 	player.wall_pushoff_available = false
 	print("sliding")
 

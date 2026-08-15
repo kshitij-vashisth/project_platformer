@@ -1,6 +1,8 @@
 extends State
 
 @export var player: CharacterBody2D
+func enter() -> void:
+	player.canMove = true
 
 func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
@@ -9,7 +11,7 @@ func physics_update(delta: float) -> void:
 	#player.player_sprites.flip_h = player.isLeft
 	player.air_control(delta)
 	
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("up") and player.doubleJumpEnabled:
 		player.playerLastLeft = !player.isLeft
 		player.change_state("double_jump",state_machine)
 	

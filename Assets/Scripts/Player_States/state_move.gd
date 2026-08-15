@@ -10,7 +10,8 @@ func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
 
 	var target_x = player.input_direction.x * player.move_speed
-	player.velocity.x = lerp(player.velocity.x, target_x, player.move_accel * delta)
+	if player.canMove:
+		player.velocity.x = lerp(player.velocity.x, target_x, player.move_accel * delta)
 	
 	if Input.is_action_just_pressed("up") and player.is_on_floor():
 		print("move->jump")

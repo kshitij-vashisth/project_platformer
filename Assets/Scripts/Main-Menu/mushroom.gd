@@ -46,7 +46,7 @@ func death(delta: float) -> void:
 		dead = true
 
 func _physics_process(delta: float) -> void:
-	logo.hide
+	logo.hide()
 	if dead:
 		logo.show()
 		return

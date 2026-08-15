@@ -24,8 +24,11 @@ func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
 
 # --- Double-Jump
-	if Input.is_action_just_pressed("up"):
-		player.change_state("double_jump", state_machine)
+	if Input.is_action_just_pressed("up") and player.doubleJumpEnabled:
+		player.change_state("double_jump",state_machine)
+	
+	if Input.is_action_just_pressed("up") and not player.doubleJumpEnabled:
+		pass
 
 	# --- Landed? ---
 	if player.is_on_floor():

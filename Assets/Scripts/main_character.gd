@@ -1,6 +1,8 @@
 extends CharacterBody2D
 var jump_count: int = 0
 var isLeft: bool
+@export var doubleJumpEnabled: bool = false
+var canMove: bool = true
 var playerLastLeft: bool
 var look_dir: int = 0
 @export var player_sprites :AnimatedSprite2D

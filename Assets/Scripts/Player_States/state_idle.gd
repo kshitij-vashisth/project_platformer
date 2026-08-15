@@ -5,6 +5,7 @@ var leftStore : bool
 @export var ACCEL: float = 10.0
 
 func enter() -> void:
+	player.canMove = true
 	leftStore = player.playerLastLeft
 	player.player_sprites.play("idle")
 	player.player_sprites.flip_h = leftStore

@@ -61,10 +61,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			queue_free()
 		
 		if abs(x_delta) > 0 and not dying:
-			#body.hurt()
-			#Implement this-safer=========================>
-			body.velocity.x += sign(velocity.x)*2500 
-			body.change_state("hurt", body.state_access)
+			if body.look_dir == sign(velocity.x):
+				body.velocity.x = -sign(velocity.x)*2500
+				body.change_state("hurt", body.state_access)
+				#body.hurt()
+			else:
+				#Implement this-safer=========================>
+				body.velocity.x += sign(velocity.x)*2500 
+				body.change_state("hurt", body.state_access)
 			#=============================================>
 			game_manager.decrease_health()			
 		#print("Collision")

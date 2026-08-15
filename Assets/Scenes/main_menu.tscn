@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://r20ijxfrhi7q"]
+[gd_scene format=4 uid="uid://r20ijxfrhi7q"]
 
 [ext_resource type="Script" uid="uid://6gmpc81wou8e" path="res://Assets/Scripts/Scenes/main_menu.gd" id="1_shbfh"]
 [ext_resource type="Texture2D" uid="uid://ftbqgksoijd" path="res://Assets/Art/background/PineForestParallax/MorningLayer6.png" id="3_a7ilj"]
@@ -13,13 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://ddtn6ljtbuwbi" path="res://Assets/Art/Enemies/Main_menu_mushroom/death.png" id="10_s067f"]
 [ext_resource type="Texture2D" uid="uid://cot7c5lvbfsxt" path="res://Assets/Art/Logo/2026-08-01-Kermitted--ezgif.com-gif-to-sprite-converter.png" id="12_s067f"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwgaw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7oun"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7ilj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jlf4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a7ilj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7oun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwgaw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qsvb"]
 atlas = ExtResource("4_tanm1")
@@ -80,20 +80,20 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s067f")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nnagu"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655o3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywchk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndi64"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_outy2"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndi64"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywchk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655o3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxcs8"]
 texture = ExtResource("8_hxcs8")
@@ -634,7 +634,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n786y")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 24.0
 }, {
@@ -687,7 +687,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_drvhd")
 }],
-"loop": false,
+"loop": 0,
 "name": &"run",
 "speed": 24.0
 }]
@@ -908,47 +908,47 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b8h1u")
 }],
-"loop": true,
+"loop": 1,
 "name": &"main",
 "speed": 24.0
 }]
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" unique_id=761570029]
 script = ExtResource("1_shbfh")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=977908780]
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=744948759]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(3200, 1800)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=318317213]
 modulate = Color(0.431373, 0.788235, 0.462745, 1)
 texture = ExtResource("3_a7ilj")
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1033623869]
 position = Vector2(0, -400)
 motion_scale = Vector2(0.4, 0.4)
 motion_mirroring = Vector2(3200, 1800)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1151926625]
 texture = ExtResource("4_ywchk")
 centered = false
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1899662283]
 position = Vector2(0, -400)
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(3200, 1800)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1496831507]
 position = Vector2(-30, 50)
 texture = ExtResource("5_outy2")
 centered = false
 
-[node name="Start" type="Button" parent="."]
+[node name="Start" type="Button" parent="." unique_id=2080584854]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -963,20 +963,20 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_6qsvb")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kwgaw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_u7oun")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0jlf4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a7ilj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0jlf4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u7oun")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kwgaw")
 text = "Start"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start" unique_id=1327379347]
 texture_filter = 1
 position = Vector2(125, 51)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_x52ko")
 autoplay = "default"
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="." unique_id=1465479282]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -988,19 +988,19 @@ offset_right = 225.0
 offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_disabled_color = Color(0.43134, 0.43134, 0.43134, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.43134, 0.43134, 0.43134, 1)
 theme_override_fonts/font = ExtResource("4_6qsvb")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kwgaw")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nnagu")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_u7oun")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0jlf4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a7ilj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0jlf4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u7oun")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nnagu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kwgaw")
 text = "Load"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Continue"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Continue" unique_id=392498704]
 texture_filter = 1
 position = Vector2(125, 51)
 scale = Vector2(3, 3)
@@ -1008,7 +1008,7 @@ sprite_frames = SubResource("SpriteFrames_x52ko")
 autoplay = "default"
 frame_progress = 0.0586799
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="." unique_id=1877612071]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1023,13 +1023,13 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_6qsvb")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_655o3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ywchk")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_outy2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ndi64")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_outy2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ywchk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_655o3")
 text = "Exit"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Exit"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Exit" unique_id=498772394]
 texture_filter = 1
 position = Vector2(125, 51)
 scale = Vector2(3, 3)
@@ -1037,28 +1037,28 @@ sprite_frames = SubResource("SpriteFrames_x52ko")
 autoplay = "default"
 frame_progress = 0.815591
 
-[node name="main_menu_music" type="AudioStreamPlayer2D" parent="."]
+[node name="main_menu_music" type="AudioStreamPlayer2D" parent="." unique_id=934156370]
 stream = ExtResource("6_fadmi")
 volume_db = -11.0
 autoplay = true
 
-[node name="Joypad_control" type="Node2D" parent="."]
+[node name="Joypad_control" type="Node2D" parent="." unique_id=1133803046]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=36863604]
 texture_filter = 1
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAASAA0AAQASAAQAAAARAA0AAQASAAQAAAAQAA0AAQASAAQAAAAPAA0AAQASAAQAAAAOAA0AAQASAAQAAAANAA0AAQASAAQAAAAMAA0AAQASAAQAAAALAA0AAQASAAQAAAAKAA0AAQASAAQAAAAJAA0AAQASAAQAAAATAA0AAQASAAQAAAAUAA0AAQATAAQAAAAHAA0AAQARAAQAAAAIAA0AAQASAAQAAAA=")
 tile_set = SubResource("TileSet_pd3f2")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("logo")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=963757931 node_paths=PackedStringArray("logo")]
 position = Vector2(423, 38)
 script = ExtResource("9_pd3f2")
 logo = NodePath("../AnimatedSprite2D")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1977303052]
 position = Vector2(661, 286)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=941589142]
 texture_filter = 1
 position = Vector2(549, 552)
 scale = Vector2(2, 2)
@@ -1066,12 +1066,12 @@ sprite_frames = SubResource("SpriteFrames_nfn12")
 animation = &"run"
 autoplay = "run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=335594828]
 position = Vector2(551, 562.5)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_jkcs5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=942007332]
 visible = false
 texture_filter = 1
 position = Vector2(1048, 287)
@@ -1080,5 +1080,6 @@ animation = &"main"
 autoplay = "main"
 
 [connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

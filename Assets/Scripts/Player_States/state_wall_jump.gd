@@ -36,8 +36,11 @@ func physics_update(delta: float) -> void:
 	if player.is_on_wall_only():
 		player.change_state("wall_slide",state_machine)
 	
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("up") and player.doubleJumpEnabled:
 		player.change_state("double_jump",state_machine)
+	
+	if Input.is_action_just_pressed("up") and not player.doubleJumpEnabled:
+		pass
 
 
 	player.move_and_slide()

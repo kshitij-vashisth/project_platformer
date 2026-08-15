@@ -8,6 +8,7 @@ const HURT_LOCK_TIME: float = 0.08
 
 
 func enter() -> void:
+	player.canMove = false
 	hurt_timer = 0.0
 	player.velocity.y += -player.hurt_velocity_y
 	#player.velocity.x += -player.look_dir*2500 
