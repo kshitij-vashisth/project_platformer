@@ -50,6 +50,18 @@ Want to try it out? The previous version of the game is available as a **demo on
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
 ### State Machine Updates Video
 
+## Update 4 (15th August, 2026)
+
+<kbd>Added unlockable abilities</kbd>
+
+### Locked double jump traversal
+
+https://github.com/user-attachments/assets/8db4f549-771a-48d9-94d5-2121d5eedf63
+
+### Unlocked double jump traversal
+
+https://github.com/user-attachments/assets/cee1c46d-27aa-45da-b03b-e1aeb0c7aabb
+
 ## Update 3 (13th August, 2026)
 
 https://github.com/user-attachments/assets/1207eede-4ea1-4580-be5f-4cc7b921d992
