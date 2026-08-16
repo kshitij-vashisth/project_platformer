@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@export var direction = 1
+@export var direction = -1
 @export var SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 @export var turn_timer = 0.0
 @export var TURN_INTERVAL = 1.9

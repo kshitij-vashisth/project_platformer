@@ -81,8 +81,6 @@ func wall_end_fall()->void:
 	if !isLeft and not wall_check_right.is_colliding():
 		change_state("in_air", state_access)
 
-
-
 #function to change state
 func change_state(desired_state_name: String, state_machine):
 	print("changing state")
@@ -97,7 +95,6 @@ func jump()-> void:
 func face_orientation() -> void:
 	if velocity.x != 0:	
 		look_dir = sign(velocity.x)
-		#print("This is sign: "+str(look_dir))
 #================================================#
 
 # air control function==========================================#
@@ -110,45 +107,6 @@ func air_control(delta: float) -> void:
 	elif velocity.x > 0:
 		playerLastLeft = false
 #===============================================================#
-
-# Functions for wall jump and knockback--------------------#
-#func direction_collision()-> int:
-	#var direction_wall: int
-	#if wall_check_left.is_colliding() and wall_check_right.is_colliding():
-		#if wall_check_left.get_collision_normal().x < 0:
-			## If RayCast on the left detects the wall, face right
-			##scale.x = 1
-			##player_sprites.flip_h = !isLeft
-			#direction_wall = -1
-		#elif wall_check_right.get_collision_normal().x > 0:
-			## If RayCast on the right detects the wall, face left
-			##scale.x = -1
-			##player_sprites.flip_h = isLeft
-			#direction_wall = 1
-	#return direction_wall
-		#
-		##if wall_check_left.is_colliding() or wall_check_right.is_colliding():
-			###scale.x = -1
-			##input_direction.x *= -1
-			#
-#func calculate_knockback_velocity(is_dir_Left: bool) -> float:
-	##var knockback_velocity: float = 800.0
-	#if is_dir_Left == true:
-		#return knockback_velocity
-	#else:
-		#return -knockback_velocity 
-#
-#func check_wall() -> int:
-	##var isLeft: bool
-	#var wall_check: int
-	#if wall_check_left.is_colliding():
-		##isLeft = true
-		#wall_check = -1
-	#elif wall_check_right.is_colliding():
-		##isLeft = false
-		#wall_check = 1
-	#return wall_check
-# End of functions for wall jump and knockback-------------#
 
 # Functions for handling gravity==============================#
 func gravity_get() -> float:
@@ -174,8 +132,6 @@ func gravity_for_jump(delta) -> void:
 func _physics_process(_delta: float) -> void:
 	#orients face for wall jumps and wall slides===#
 	face_orientation()
-	# for debugging look_dir
-	#check_look_dir()
 	#==============================================#
 	
 	
