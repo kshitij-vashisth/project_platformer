@@ -21,7 +21,7 @@ var inventory: Array = [gun_ammo, sword_strikes, tome_spells]
 #======================================================
 
 @export var hearts: Array[Node]
-
+@export var points_text: Label
 
 #WeaponDamage==========================================
 var bullet_damage: int = 1
@@ -34,8 +34,13 @@ var player_dash_duration: float = 2.5 # seconds
 var player_speed: float = 400.0
 var player_jump_height: float = - 1000.0
 #===============================================================================
+
 func reload_scene() -> void: 
 	get_tree().reload_current_scene()
+
+func mosquito_add_points() -> void:
+	points += 200
+	display_points()
 	
 func decrease_health() -> void:
 	lives -= 1
@@ -48,6 +53,8 @@ func decrease_health() -> void:
 	if lives == 0:
 		call_deferred("reload_scene")
 
+func display_points()-> void:
+	points_text.text = check_zero_add_zero()
 
 
 
@@ -68,7 +75,7 @@ func check_zero_add_zero() -> String:
 	var final_points: String = ""
 	for i in range(num_zeros):
 		final_points += str(0)
-	final_points += str(GameManager.points)
+	final_points += str(points)
 	return final_points  
 
 

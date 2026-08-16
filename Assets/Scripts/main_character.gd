@@ -9,6 +9,7 @@ var look_dir: int = 0
 @export var slide_speed: int = 4000
 var input_direction = Vector2.ZERO
 var last_direction: float
+@export var game_manager: Node
 @export var move_speed: float = 200.0
 @export var move_accel: float = 15.0
 @export var jump_sound: AudioStreamPlayer2D
@@ -26,6 +27,7 @@ var wall_pushoff_available: bool = true
 @export var air_accel: float = 10.0
 @export var push_off: float = 20.0
 #============================================================================#
+
 func hurt()-> void:
 	#velocity.y += -hurt_velocity_y
 	#velocity.x += -look_dir*2500 

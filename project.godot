@@ -23,6 +23,10 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Assets/Scripts/game_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_accept={

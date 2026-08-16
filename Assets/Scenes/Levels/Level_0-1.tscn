@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cihrpec7h8b3u" path="res://Assets/Scripts/game_manager.gd" id="1_chlgl"]
 [ext_resource type="Script" uid="uid://bcsn0d4qsioe4" path="res://Assets/Scripts/Debug_labels/debug_label_state_checker.gd" id="1_nrism"]
+[ext_resource type="PackedScene" uid="uid://i8jnd3ic6a72" path="res://Assets/Scenes/Collectible/Mosquito_points.tscn" id="1_uybai"]
 [ext_resource type="Script" uid="uid://bcly2bkdb6m7q" path="res://Assets/Scripts/Debug_labels/debug_label_on_floor_checker.gd" id="2_wnoc0"]
 [ext_resource type="Script" uid="uid://3a58vpwt0ywb" path="res://Assets/Scripts/Debug_labels/debug_label_jump_counter.gd" id="3_d2prd"]
 [ext_resource type="Script" uid="uid://ceaxnn106n4xf" path="res://Assets/Scripts/Debug_labels/debug_label_is_left.gd" id="4_5tcgr"]
@@ -326,12 +327,36 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gintr"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cgwx"]
+
 [node name="Node" type="Node" unique_id=1750968894]
 
-[node name="GameManager" type="Node" parent="." unique_id=1198250212 node_paths=PackedStringArray("hearts")]
+[node name="Enemies" type="Node" parent="." unique_id=1552556645]
+
+[node name="Mushroom2" parent="Enemies" unique_id=871202480 groups=["enemies"] instance=ExtResource("13_wnoc0")]
+position = Vector2(1601, 530)
+SPEED = 100.0
+
+[node name="Mushroom3" parent="Enemies" unique_id=385971004 groups=["enemies"] instance=ExtResource("13_wnoc0")]
+position = Vector2(1101, 524)
+SPEED = 100.0
+
+[node name="Mushroom" parent="Enemies" unique_id=1041805994 groups=["enemies"] instance=ExtResource("13_wnoc0")]
+position = Vector2(402, 537)
+SPEED = 100.0
+
+[node name="Collectibles" type="Node" parent="." unique_id=726893871]
+
+[node name="MosquitoPoints" parent="Collectibles" unique_id=701354568 instance=ExtResource("1_uybai")]
+position = Vector2(630, 382)
+SPEED = 200.0
+TURN_INTERVAL = 0.5
+
+[node name="GameManager" type="Node" parent="." unique_id=1198250212 node_paths=PackedStringArray("hearts", "points_text")]
 unique_name_in_owner = true
 script = ExtResource("1_chlgl")
 hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
+points_text = NodePath("../UI/PointsPanel/VBoxContainer/PointsText")
 
 [node name="SceneObjects" type="Node" parent="." unique_id=1860487853]
 
@@ -477,44 +502,20 @@ offset_bottom = 190.0
 text = "Velocity: "
 script = ExtResource("8_8lgdd")
 
-[node name="TempBG" type="TextureRect" parent="." unique_id=616804451]
-visible = false
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_chlgl")
-stretch_mode = 1
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=702876185]
 texture_filter = 1
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD/////AAAMAAEAAAD//w0AAAAMAAEAAAAYAP//AAAMAAEAAAAAAP//AAANAAAAAAABAP//AAANAAAAAAACAP//AAANAAAAAAADAP//AAANAAAAAAAEAP//AAANAAAAAAAFAP//AAANAAAAAAAGAP//AAANAAAAAAAHAP//AAANAAAAAAAIAP//AAANAAAAAAAJAP//AAANAAAAAAAKAP//AAANAAAAAAALAP//AAANAAAAAAAMAP//AAANAAAAAAANAP//AAANAAAAAAAOAP//AAANAAAAAAAPAP//AAANAAAAAAAQAP//AAANAAAAAAARAP//AAANAAAAAAASAP//AAANAAAAAAATAP//AAANAAAAAAAUAP//AAANAAAAAAAVAP//AAANAAAAAAAWAP//AAANAAAAAAAXAP//AAANAAAAAAD//wwAAAAPAAEAAAD//wsAAAAPAAEAAAD//woAAAAPAAEAAAD//wkAAAAPAAEAAAD//wgAAAAPAAEAAAD//wcAAAAPAAEAAAD//wYAAAAPAAEAAAD//wUAAAAPAAEAAAD//wQAAAAPAAEAAAD//wMAAAAPAAEAAAD//wIAAAAPAAEAAAD//wEAAAAPAAEAAAD//wAAAAAPAAEAAAAAAAoAAAAGAAAAAAAPAAgAAAAPAAEAAAAPAAcAAAAPAAEAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAAAAAAPAAkAAAAPAAEAAAAPAAoAAAAPAAEAAAAPAAsAAAAPAAEAAAAPAAwAAAAPAAEAAAAPAA0AAAAPAAIAAAABAAoAAAAIAAAAAAAIAAwAAAAIAAAAAAAEAAwAAAAGAAAAAAAFAAwAAAAHAAAAAAAGAAwAAAAHAAAAAAAHAAwAAAAHAAAAAAAEAA0AAAAGAAIAAAAIAA0AAAAIAAIAAAAFAA0AAAAHAAIAAAAGAA0AAAAHAAIAAAAHAA0AAAAHAAIAAAAWAAwAAAAGAAAAAAAhAAwAAAAIAAAAAAAWAA0AAAAGAAIAAAAhAA0AAAAIAAIAAAAXAAwAAAAHAAAAAAAYAAwAAAAHAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAAbAAwAAAAHAAAAAAAcAAwAAAAHAAAAAAAdAAwAAAAHAAAAAAAeAAwAAAAHAAAAAAAfAAwAAAAHAAAAAAAgAAwAAAAHAAAAAAAXAA0AAAAHAAIAAAAYAA0AAAAHAAIAAAAZAA0AAAAHAAIAAAAaAA0AAAAHAAIAAAAbAA0AAAAHAAIAAAAcAA0AAAAHAAIAAAAdAA0AAAAHAAIAAAAeAA0AAAAHAAIAAAAfAA0AAAAHAAIAAAAgAA0AAAAHAAIAAAAMAAUAAAAPAAAAAAAMAA0AAAAPAAIAAAAMAAwAAAAPAAEAAAAMAAsAAAAPAAEAAAAMAAoAAAAPAAEAAAAMAAkAAAAPAAEAAAAMAAgAAAAPAAEAAAAMAAcAAAAPAAEAAAAMAAYAAAAPAAEAAAAAAAsAAAAGAAIAAAABAAsAAAAIAAIAAAASAAsAAAAMAAUAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAAMAAEAAAD//w0AAAAMAAEAAAAYAP//AAAMAAEAAAAAAP//AAANAAAAAAABAP//AAANAAAAAAACAP//AAANAAAAAAADAP//AAANAAAAAAAEAP//AAANAAAAAAAFAP//AAANAAAAAAAGAP//AAANAAAAAAAHAP//AAANAAAAAAAIAP//AAANAAAAAAAJAP//AAANAAAAAAAKAP//AAANAAAAAAALAP//AAANAAAAAAAMAP//AAANAAAAAAANAP//AAANAAAAAAAOAP//AAANAAAAAAAPAP//AAANAAAAAAAQAP//AAANAAAAAAARAP//AAANAAAAAAASAP//AAANAAAAAAATAP//AAANAAAAAAAUAP//AAANAAAAAAAVAP//AAANAAAAAAAWAP//AAANAAAAAAAXAP//AAANAAAAAAD//wwAAAAPAAEAAAD//wsAAAAPAAEAAAD//woAAAAPAAEAAAD//wkAAAAPAAEAAAD//wgAAAAPAAEAAAD//wcAAAAPAAEAAAD//wYAAAAPAAEAAAD//wUAAAAPAAEAAAD//wQAAAAPAAEAAAD//wMAAAAPAAEAAAD//wIAAAAPAAEAAAD//wEAAAAPAAEAAAD//wAAAAAPAAEAAAAAAAoAAAAGAAAAAAAPAAgAAAAPAAEAAAAPAAcAAAAPAAEAAAAPAAYAAAAPAAEAAAAPAAUAAAAPAAAAAAAPAAkAAAAPAAEAAAAPAAoAAAAPAAEAAAAPAAsAAAAPAAEAAAAPAAwAAAAPAAEAAAAPAA0AAAAPAAIAAAABAAoAAAAIAAAAAAAIAAwAAAAIAAAAAAAEAAwAAAAGAAAAAAAFAAwAAAAHAAAAAAAGAAwAAAAHAAAAAAAHAAwAAAAHAAAAAAAEAA0AAAAGAAIAAAAIAA0AAAAIAAIAAAAFAA0AAAAHAAIAAAAGAA0AAAAHAAIAAAAHAA0AAAAHAAIAAAAWAAwAAAAGAAAAAAAhAAwAAAAIAAAAAAAWAA0AAAAGAAIAAAAhAA0AAAAIAAIAAAAXAAwAAAAHAAAAAAAYAAwAAAAHAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAAbAAwAAAAHAAAAAAAcAAwAAAAHAAAAAAAdAAwAAAAHAAAAAAAeAAwAAAAHAAAAAAAfAAwAAAAHAAAAAAAgAAwAAAAHAAAAAAAXAA0AAAAHAAIAAAAYAA0AAAAHAAIAAAAZAA0AAAAHAAIAAAAaAA0AAAAHAAIAAAAbAA0AAAAHAAIAAAAcAA0AAAAHAAIAAAAdAA0AAAAHAAIAAAAeAA0AAAAHAAIAAAAfAA0AAAAHAAIAAAAgAA0AAAAHAAIAAAAMAAUAAAAPAAAAAAAMAA0AAAAPAAIAAAAMAAwAAAAPAAEAAAAMAAsAAAAPAAEAAAAMAAoAAAAPAAEAAAAMAAkAAAAPAAEAAAAMAAgAAAAPAAEAAAAMAAcAAAAPAAEAAAAMAAYAAAAPAAEAAAAAAAsAAAAGAAIAAAABAAsAAAAIAAIAAAASAAsAAAAMAAUAAAANAA4AAAANAAAAAAAOAA4AAAANAAAAAAAPAA4AAAAOAAAAAAAMAA4AAAAMAAAAAAA=")
 tile_set = SubResource("TileSet_nacht")
 
-[node name="MainCharacter" parent="." unique_id=2028758806 instance=ExtResource("11_nkldq")]
+[node name="MainCharacter" parent="." unique_id=2028758806 node_paths=PackedStringArray("game_manager") instance=ExtResource("11_nkldq")]
 position = Vector2(78, 36)
+game_manager = NodePath("../GameManager")
 
 [node name="MeasuringBackground" type="Sprite2D" parent="." unique_id=199793740]
 visible = false
 position = Vector2(612, 369)
 texture = ExtResource("12_0p5ug")
-
-[node name="Enemies" type="Node" parent="." unique_id=1552556645]
-
-[node name="Mushroom2" parent="Enemies" unique_id=871202480 groups=["enemies"] instance=ExtResource("13_wnoc0")]
-position = Vector2(1601, 530)
-SPEED = 100.0
-
-[node name="Mushroom3" parent="Enemies" unique_id=385971004 groups=["enemies"] instance=ExtResource("13_wnoc0")]
-position = Vector2(1101, 524)
-SPEED = 100.0
-
-[node name="Mushroom" parent="Enemies" unique_id=1041805994 groups=["enemies"] instance=ExtResource("13_wnoc0")]
-position = Vector2(402, 537)
-SPEED = 100.0
 
 [node name="Level_BGM" type="AudioStreamPlayer2D" parent="." unique_id=605004159]
 stream = ExtResource("14_d2prd")
@@ -675,6 +676,37 @@ scale = Vector2(10.15625, 3.1874995)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 frame_progress = 0.46317825
+
+[node name="PointsPanel" type="Panel" parent="UI" unique_id=1346019531]
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 237.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0cgwx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PointsPanel" unique_id=2058140037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterName" type="Label" parent="UI/PointsPanel/VBoxContainer" unique_id=1817126668]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 30
+text = "KERMITT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsText" type="Label" parent="UI/PointsPanel/VBoxContainer" unique_id=314082195]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 30
+text = "0000000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Wall_fallers" type="Node" parent="." unique_id=1312731303]
 

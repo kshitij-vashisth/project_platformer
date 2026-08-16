@@ -44,7 +44,7 @@ func platform_edge()->void:
 		sprite.scale.x *= -1
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name=="MainCharacter":
+	if body.name == "MainCharacter":
 		var y_delta = position.y - body.position.y
 		var x_delta = body.position.x - position.x
 		print("x_delta is:",x_delta)
