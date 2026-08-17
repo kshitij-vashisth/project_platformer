@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b24wvnqngv2uo"]
+
+[ext_resource type="Script" uid="uid://cxv5kf5hddovr" path="res://Assets/Scripts/game_over.gd" id="1_ajegg"]
+[ext_resource type="Script" uid="uid://cihrpec7h8b3u" path="res://Assets/Scripts/game_manager.gd" id="1_hg8lq"]
+[ext_resource type="Script" uid="uid://baq88q4l7k3pc" path="res://Assets/Scripts/Scenes/ui.gd" id="2_4cwo7"]
+[ext_resource type="PackedScene" uid="uid://r20ijxfrhi7q" path="res://Assets/Scenes/TransitionScreens/main_menu.tscn" id="2_bqiro"]
+[ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="3_c5rv3"]
+[ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="4_ajegg"]
+[ext_resource type="AudioStream" uid="uid://bv43vfm7xrlye" path="res://Assets/Sounds/BGM/Yu Yu Hakusho Unreleased Track, Long Version - Struggle Of Sadness.mp3" id="7_d5k3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqiro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6emj"]
+atlas = ExtResource("3_c5rv3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5k3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6emj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameOver" type="Node2D" unique_id=539560979]
+script = ExtResource("1_ajegg")
+target_level = ExtResource("2_bqiro")
+
+[node name="GameManager" type="Node" parent="." unique_id=1404173497 node_paths=PackedStringArray("hearts", "points_text")]
+unique_name_in_owner = true
+script = ExtResource("1_hg8lq")
+hearts = [NodePath(""), NodePath(""), NodePath("")]
+points_text = NodePath("")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=318654137 node_paths=PackedStringArray("game_manager", "points_label", "mosquito_points_label")]
+script = ExtResource("2_4cwo7")
+game_manager = NodePath("../GameManager")
+points_label = NodePath("PointsPanel/PointsDisplay/PointsText")
+mosquito_points_label = NodePath("PointsPanel/MosquitoesDisplay/NumMosquitoes")
+
+[node name="PointsPanel" type="Panel" parent="UI" unique_id=256285650]
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 237.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bqiro")
+
+[node name="MosquitoesDisplay" type="HBoxContainer" parent="UI/PointsPanel" unique_id=2024109467]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 130.5
+offset_top = -2.0
+offset_right = 273.5
+offset_bottom = 56.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/PointsPanel/MosquitoesDisplay" unique_id=846769883]
+position = Vector2(13, 24)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_d5k3n")
+
+[node name="NumMosquitoes" type="Label" parent="UI/PointsPanel/MosquitoesDisplay" unique_id=177412917]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ajegg")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="PointsDisplay" type="VBoxContainer" parent="UI/PointsPanel" unique_id=994926730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterName" type="Label" parent="UI/PointsPanel/PointsDisplay" unique_id=1129038229]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ajegg")
+theme_override_font_sizes/font_size = 30
+text = "KERMITT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsText" type="Label" parent="UI/PointsPanel/PointsDisplay" unique_id=30193970]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ajegg")
+theme_override_font_sizes/font_size = 30
+text = "0000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="UI" unique_id=294206230]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -92.5
+offset_right = 20.0
+offset_bottom = -69.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_ajegg")
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1451471476]
+offset_right = 1164.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
+[node name="game_over_sound" type="AudioStreamPlayer2D" parent="." unique_id=1728008148]
+stream = ExtResource("7_d5k3n")
+volume_db = 9.905
+autoplay = true
+parameters/looping = true

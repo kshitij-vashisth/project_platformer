@@ -30,5 +30,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "MainCharacter":
 		print("mosquito touched")
-		game_manager.mosquito_add_points()
+		GameManager.mosquito_add_points()
 		queue_free()

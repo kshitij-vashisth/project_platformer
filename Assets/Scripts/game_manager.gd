@@ -2,7 +2,7 @@ extends Node
 
 var level_1_1_loaded: int = 0
 var num_mosquitoes: int = 0
-#var hearts: int = 3
+var num_hearts: int = 3
 var points: int = 0
 var lives: int = 3
 var cherries: int = 0
@@ -35,23 +35,34 @@ var player_speed: float = 400.0
 var player_jump_height: float = - 1000.0
 #===============================================================================
 
-func reload_scene() -> void: 
-	get_tree().reload_current_scene()
+func level_transition() -> void: 
+	get_tree().change_scene_to_file("res://Assets/Scenes/TransitionScreens/level_transition_screen.tscn")
+
+func game_over()-> void:
+	get_tree().change_scene_to_file("res://Assets/Scenes/TransitionScreens/Game_Over.tscn")
 
 func mosquito_add_points() -> void:
 	points += 200
 	num_mosquitoes += 1
-	
+
+func decrease_lives() -> void:
+	if lives > 1:
+		lives -= 1
+		call_deferred("level_transition")
+	elif lives <= 1:
+		lives = 0
+		call_deferred("game_over")
+
 func decrease_health() -> void:
-	lives -= 1
-	print("lives=",lives)
+	num_hearts -= 1
 	for h in 3:
-		if h < lives:
+		if h < num_hearts:
 			hearts[h].show()
 		else:
 			hearts[h].hide()
-	if lives == 0:
-		call_deferred("reload_scene")
+	if num_hearts == 0:
+		decrease_lives()
+		
 
 
 
@@ -63,8 +74,8 @@ var level_list: Array = [
 ]
 var level_index: int = 0
 var level_changer_list: Array = [
-	"Level_0_1","Level_0_2","Level_0_3",
-	"Level_1_1", "Level_1_2", "Level_1_3",
+	"Level_0-1","Level_0-2","Level_0-3",
+	"Level_1-1", "Level_1-2", "Level_1-3",
 ]
 #======================================================
 func check_zero_add_zero() -> String:
@@ -85,7 +96,7 @@ func check_zero_add_zero() -> String:
 	#get_tree().current_scene.add_child(gun)
 	##get_tree().root.add_child(gun)
 ##======================================================
-#func reset_game_soft() -> void:
+func reset_game_soft() -> void:
 	#has_gun = false
 	#has_sword = false
 	#has_tome = false
@@ -95,14 +106,15 @@ func check_zero_add_zero() -> String:
 	#current_weapon_index = 0
 	#cherries = 0
 	#points = 0
-	#hearts = 3
+	#num_hearts = 3
 	#lives = 3
+	pass
 #
 #
 #func reset_game() -> void:
 	#cherries = 0
 	#points = 0
-	#hearts = 3
+	#num_hearts = 3
 	#lives = 3
 	#gun_ammo = 0
 	#sword_strikes = 0
@@ -119,7 +131,7 @@ func check_zero_add_zero() -> String:
 #
 	#save_data.points = points
 	#save_data.lives = lives
-	#save_data.hearts = hearts
+	#save_data.hearts = num_hearts
 	#save_data.cherries = cherries
 	#
 	#save_data.tutorial_completed = tutorial_completed
@@ -168,7 +180,7 @@ func check_zero_add_zero() -> String:
 #
 	#points = save_data.points
 	#lives = save_data.lives
-	#hearts = save_data.hearts
+	#num_hearts = save_data.hearts
 	#cherries = save_data.cherries
 	#
 	#tutorial_completed = save_data.tutorial_completed

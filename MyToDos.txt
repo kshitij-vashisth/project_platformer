@@ -1,17 +1,19 @@
 #Completed================================================================================================>
 * added moving collectible mosquito
-* 
-#=========================================================================================================>
-
-#ImmediateToDos===========================================================================================>
 * add moving sound to mosquito
-* add tongue to catch mosquito
 * add status screen
 * add game over screen
 * make inspirational music like cobra kai for intro
+#=========================================================================================================>
+
+#ImmediateToDos===========================================================================================>
+* add animation and eating sound for mosquito
+* add tongue to catch mosquito
+* make same mosquito scene usable for points, enemy, and powerups
 * add cutscene for intro with zooming out effect of logo
 #=========================================================================================================>
 #MediumToDos==============================================================================================>
+* add guns and special fx(over the top) 
 * add small cutscenes for story
 * add levels
 * add ability unlocks with boss

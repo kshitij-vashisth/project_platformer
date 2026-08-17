@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bv43vfm7xrlye"
+path="res://.godot/imported/Yu Yu Hakusho Unreleased Track, Long Version - Struggle Of Sadness.mp3-c7d1c6a2dc7f527fb76aee1141321b7f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Yu Yu Hakusho Unreleased Track, Long Version - Struggle Of Sadness.mp3"
+dest_files=["res://.godot/imported/Yu Yu Hakusho Unreleased Track, Long Version - Struggle Of Sadness.mp3-c7d1c6a2dc7f527fb76aee1141321b7f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

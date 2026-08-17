@@ -40,7 +40,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if y_delta > 30:
 			can_move = false
 			dying = true
-			game_manager.points += mushroom_points
+			GameManager.points += mushroom_points
 			body.velocity.y += -player_bounce_velocity
 			body.jump_count = 1
 			body.change_state("in_air",body.state_access)
@@ -55,4 +55,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.velocity.x = knock_dir * 2500
 			body.change_state("hurt", body.state_access)
 			game_manager.decrease_health()
+			#GameManager.num_hearts = game_manager.num_hearts
 		

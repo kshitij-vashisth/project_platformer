@@ -5,7 +5,8 @@ func _reload_scene1() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "MainCharacter":
-		call_deferred("_reload_scene1")
+		#print("decreasing lives")
+		GameManager.decrease_lives()
 	
 	if body.is_in_group("enemies"):
 		body.queue_free()

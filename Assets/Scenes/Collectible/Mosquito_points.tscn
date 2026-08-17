@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cigukye68oi0r" path="res://Assets/Scripts/Collectible/mosquito_points.gd" id="1_k3uyf"]
 [ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="1_sndc3"]
+[ext_resource type="AudioStream" uid="uid://by8lc3wtehg0w" path="res://Assets/Sounds/SFX/flying-mosquito-105770.mp3" id="3_x1g8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3uyf"]
 atlas = ExtResource("1_sndc3")
@@ -69,5 +70,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2073335901]
 position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_0cgwx")
+
+[node name="buzz_sound" type="AudioStreamPlayer2D" parent="." unique_id=851815993]
+stream = ExtResource("3_x1g8i")
+volume_db = 15.27
+autoplay = true
+max_distance = 4096.0
+parameters/looping = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

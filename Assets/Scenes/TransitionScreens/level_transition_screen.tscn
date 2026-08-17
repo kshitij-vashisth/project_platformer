@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c82bvue8qk2bb"]
 
+[ext_resource type="Script" uid="uid://evudcrkbcvkv" path="res://Assets/Scripts/Scenes/level_transition_screen.gd" id="1_5aa3u"]
 [ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="1_bky3u"]
 [ext_resource type="Script" uid="uid://cihrpec7h8b3u" path="res://Assets/Scripts/game_manager.gd" id="1_frckw"]
 [ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="1_ydxv8"]
@@ -23,7 +24,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="LevelTransitionScreen" type="Node2D" unique_id=1801994271]
+[node name="LevelTransitionScreen" type="Node2D" unique_id=1801994271 node_paths=PackedStringArray("level_label", "game_manager", "lives_label")]
+script = ExtResource("1_5aa3u")
+level_label = NodePath("UI/LevelLabel")
+game_manager = NodePath("GameManager")
+lives_label = NodePath("UI/LivesDisplay/LivesLabel")
 
 [node name="GameManager" type="Node" parent="." unique_id=607024069 node_paths=PackedStringArray("hearts", "points_text")]
 unique_name_in_owner = true

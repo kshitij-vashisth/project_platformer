@@ -1079,7 +1079,7 @@ sprite_frames = SubResource("SpriteFrames_014b1")
 animation = &"main"
 autoplay = "main"
 
-[connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

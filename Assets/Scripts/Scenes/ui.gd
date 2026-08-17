@@ -9,5 +9,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	points_label.text = game_manager.check_zero_add_zero()
-	mosquito_points_label.text = str(game_manager.num_mosquitoes)
+	points_label.text = GameManager.check_zero_add_zero()
+	mosquito_points_label.text = str(GameManager.num_mosquitoes)
