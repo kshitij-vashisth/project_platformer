@@ -4,6 +4,7 @@
 * add status screen
 * add game over screen
 * make inspirational music like cobra kai for intro
+* added parallax background to level 0-1
 #=========================================================================================================>
 
 #ImmediateToDos===========================================================================================>

@@ -72,6 +72,7 @@ position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_0cgwx")
 
 [node name="buzz_sound" type="AudioStreamPlayer2D" parent="." unique_id=851815993]
+position = Vector2(1, 0)
 stream = ExtResource("3_x1g8i")
 volume_db = 15.27
 autoplay = true
