@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://735ja4w4s6do"
+path="res://.godot/imported/8-Bit Rush Loop_be8e.mp3-75eeadc26155b90d9a4730f87046256f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/8-Bit Rush Loop_be8e.mp3"
+dest_files=["res://.godot/imported/8-Bit Rush Loop_be8e.mp3-75eeadc26155b90d9a4730f87046256f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dom6kwmxq1bb"
+path="res://.godot/imported/8-Bit Overdrive_e193.mp3-364266bfb466614d9c5edf9d0ab4f7d5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/8-Bit Overdrive_e193.mp3"
+dest_files=["res://.godot/imported/8-Bit Overdrive_e193.mp3-364266bfb466614d9c5edf9d0ab4f7d5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

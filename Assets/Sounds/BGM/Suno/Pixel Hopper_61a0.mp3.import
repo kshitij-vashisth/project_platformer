@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpqpn3pmfvwmg"
+path="res://.godot/imported/Pixel Hopper_61a0.mp3-e4555dd180e45ef97e8f9844e3f17195.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/Pixel Hopper_61a0.mp3"
+dest_files=["res://.godot/imported/Pixel Hopper_61a0.mp3-e4555dd180e45ef97e8f9844e3f17195.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

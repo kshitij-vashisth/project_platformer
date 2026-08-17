@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var squash_sound: AudioStreamPlayer2D
 @export var can_move: bool = true
 @export var state_access: StateMachine 
-
+@export var mushroom_points: int = 150
 @onready var game_manager: Node = %GameManager
 
 var dying: bool = false
@@ -40,6 +40,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if y_delta > 30:
 			can_move = false
 			dying = true
+			game_manager.points += mushroom_points
 			body.velocity.y += -player_bounce_velocity
 			body.jump_count = 1
 			body.change_state("in_air",body.state_access)

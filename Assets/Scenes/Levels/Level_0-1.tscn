@@ -20,7 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://ouc2w2ingvga" path="res://Assets/Art/game_elements/heart.png" id="16_uwflc"]
 [ext_resource type="Script" uid="uid://8l1qwfkeph4n" path="res://Assets/Scripts/pause_screen.gd" id="17_8lgdd"]
 [ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="17_vcnwt"]
+[ext_resource type="Script" uid="uid://baq88q4l7k3pc" path="res://Assets/Scripts/Scenes/ui.gd" id="18_0p5ug"]
 [ext_resource type="Texture2D" uid="uid://cnldq7gd7gdw1" path="res://Assets/Art/UI/Spritesheet_UI_Flat_Animated.png" id="18_8lgdd"]
+[ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="20_nkldq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvsrt"]
 texture = ExtResource("10_uybai")
@@ -233,6 +235,23 @@ sources/0 = SubResource("TileSetAtlasSource_rvsrt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_chlgl"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cgwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6emj"]
+atlas = ExtResource("20_nkldq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nesho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6emj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uybai"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pg2rj"]
@@ -327,8 +346,6 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gintr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cgwx"]
-
 [node name="Node" type="Node" unique_id=1750968894]
 
 [node name="Enemies" type="Node" parent="." unique_id=1552556645]
@@ -356,7 +373,7 @@ TURN_INTERVAL = 0.5
 unique_name_in_owner = true
 script = ExtResource("1_chlgl")
 hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
-points_text = NodePath("../UI/PointsPanel/VBoxContainer/PointsText")
+points_text = NodePath("../UI/PointsPanel/PointsDisplay/PointsText")
 
 [node name="SceneObjects" type="Node" parent="." unique_id=1860487853]
 
@@ -531,7 +548,11 @@ script = ExtResource("15_5tcgr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area" unique_id=319349031]
 shape = SubResource("WorldBoundaryShape2D_nesho")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1164828528]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1164828528 node_paths=PackedStringArray("game_manager", "points_label", "mosquito_points_label")]
+script = ExtResource("18_0p5ug")
+game_manager = NodePath("../GameManager")
+points_label = NodePath("PointsPanel/PointsDisplay/PointsText")
+mosquito_points_label = NodePath("PointsPanel/MosquitoDisplay/NumMosquitoes")
 
 [node name="Hearts" type="Panel" parent="UI" unique_id=2131684878]
 anchors_preset = 1
@@ -569,6 +590,59 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("16_uwflc")
 expand_mode = 2
+
+[node name="PointsPanel" type="Panel" parent="UI" unique_id=1346019531]
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 237.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0cgwx")
+
+[node name="PointsDisplay" type="VBoxContainer" parent="UI/PointsPanel" unique_id=2058140037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterName" type="Label" parent="UI/PointsPanel/PointsDisplay" unique_id=1817126668]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 30
+text = "KERMITT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsText" type="Label" parent="UI/PointsPanel/PointsDisplay" unique_id=314082195]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 30
+text = "0000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MosquitoDisplay" type="HBoxContainer" parent="UI/PointsPanel" unique_id=944668353]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 116.0
+offset_right = 254.5
+offset_bottom = 64.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/PointsPanel/MosquitoDisplay" unique_id=1559104852]
+position = Vector2(13, 24)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_nesho")
+
+[node name="NumMosquitoes" type="Label" parent="UI/PointsPanel/MosquitoDisplay" unique_id=307769105]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_vcnwt")
+theme_override_font_sizes/font_size = 30
+text = "0"
 
 [node name="Pause Screen" type="Node" parent="UI" unique_id=1811907973]
 script = ExtResource("17_8lgdd")
@@ -612,7 +686,7 @@ offset_right = 252.0
 offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 71
+theme_override_constants/separation = 102
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="UI/Pause Screen/PausePanel/VBoxContainer" unique_id=156934730]
@@ -630,8 +704,8 @@ text = "Resume"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/ResumeButton" unique_id=2129196073]
 texture_filter = 1
-position = Vector2(240.5, 22)
-scale = Vector2(10.15625, 3.1874995)
+position = Vector2(243, 22)
+scale = Vector2(7.750001, 3.1874995)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 
@@ -651,7 +725,7 @@ text = "Main Menu"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/MainMenu" unique_id=1110115305]
 texture_filter = 1
 position = Vector2(240.5, 22)
-scale = Vector2(10.15625, 3.1874995)
+scale = Vector2(7.75, 3.187)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 
@@ -672,41 +746,10 @@ text = "Exit
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Pause Screen/PausePanel/VBoxContainer/Exit" unique_id=2101344898]
 texture_filter = 1
 position = Vector2(240.5, 22)
-scale = Vector2(10.15625, 3.1874995)
+scale = Vector2(7.75, 3.187)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 frame_progress = 0.46317825
-
-[node name="PointsPanel" type="Panel" parent="UI" unique_id=1346019531]
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 237.0
-offset_bottom = 67.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_0cgwx")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PointsPanel" unique_id=2058140037]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CharacterName" type="Label" parent="UI/PointsPanel/VBoxContainer" unique_id=1817126668]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("17_vcnwt")
-theme_override_font_sizes/font_size = 30
-text = "KERMITT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PointsText" type="Label" parent="UI/PointsPanel/VBoxContainer" unique_id=314082195]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("17_vcnwt")
-theme_override_font_sizes/font_size = 30
-text = "0000000"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Wall_fallers" type="Node" parent="." unique_id=1312731303]
 

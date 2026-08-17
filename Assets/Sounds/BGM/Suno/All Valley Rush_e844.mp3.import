@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cc0bycfvjd2hs"
+path="res://.godot/imported/All Valley Rush_e844.mp3-52a06f24beb624e2adc6742c6af86043.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/All Valley Rush_e844.mp3"
+dest_files=["res://.godot/imported/All Valley Rush_e844.mp3-52a06f24beb624e2adc6742c6af86043.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

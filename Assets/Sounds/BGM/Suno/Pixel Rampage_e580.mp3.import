@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d27bgdn0wqiue"
+path="res://.godot/imported/Pixel Rampage_e580.mp3-9fd46e7b4c10ac05083e534d2c70ab7c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/Pixel Rampage_e580.mp3"
+dest_files=["res://.godot/imported/Pixel Rampage_e580.mp3-9fd46e7b4c10ac05083e534d2c70ab7c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

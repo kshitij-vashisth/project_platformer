@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d32olbibrg85h"
+path="res://.godot/imported/8 Bit Sprint_d1b7.mp3-c303f8b1b15ab3f125295d1b2accfc22.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/8 Bit Sprint_d1b7.mp3"
+dest_files=["res://.godot/imported/8 Bit Sprint_d1b7.mp3-c303f8b1b15ab3f125295d1b2accfc22.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,7 @@
 extends Node
 
 var level_1_1_loaded: int = 0
-
+var num_mosquitoes: int = 0
 #var hearts: int = 3
 var points: int = 0
 var lives: int = 3
@@ -40,7 +40,7 @@ func reload_scene() -> void:
 
 func mosquito_add_points() -> void:
 	points += 200
-	display_points()
+	num_mosquitoes += 1
 	
 func decrease_health() -> void:
 	lives -= 1
@@ -52,9 +52,6 @@ func decrease_health() -> void:
 			hearts[h].hide()
 	if lives == 0:
 		call_deferred("reload_scene")
-
-func display_points()-> void:
-	points_text.text = check_zero_add_zero()
 
 
 

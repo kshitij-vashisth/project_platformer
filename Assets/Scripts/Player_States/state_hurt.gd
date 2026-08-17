@@ -21,6 +21,7 @@ func physics_update(delta: float) -> void:
 	hurt_timer += delta
 	if hurt_timer < HURT_LOCK_TIME:
 		return
+		
 	if not player.is_on_floor_only() and not player.is_on_wall_only():
 		player.jump_count = 1
 		player.change_state("in_air",state_machine)

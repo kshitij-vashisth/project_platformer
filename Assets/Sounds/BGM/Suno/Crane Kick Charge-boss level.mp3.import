@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcjxsy4cjswjb"
+path="res://.godot/imported/Crane Kick Charge-boss level.mp3-4e68894da6684cb70f76eafbfb3d3dd5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/BGM/Suno/Crane Kick Charge-boss level.mp3"
+dest_files=["res://.godot/imported/Crane Kick Charge-boss level.mp3-4e68894da6684cb70f76eafbfb3d3dd5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
