@@ -42,6 +42,9 @@ func physics_update(delta: float) -> void:
 	if player.is_on_wall_only():
 		print("double_jump->wall_slide")
 		state_machine.change_state("wall_slide")
-		
+	
+	if Input.is_action_just_pressed("tongue_zip"):
+		player.change_state("tongue_zip", state_machine)
+	
 	# --- Apply movement ---
 	player.move_and_slide()

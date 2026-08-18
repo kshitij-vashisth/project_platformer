@@ -10,7 +10,7 @@ var turn_timer = 0.0
 var TURN_INTERVAL = 1.9  # seconds between turns
 
 var life_timer = 0.0
-var LIFETIME = 6.7  # seconds before death (e.g. 3 turns worth)
+var LIFETIME = 6.9  # seconds before death (e.g. 3 turns worth)
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 

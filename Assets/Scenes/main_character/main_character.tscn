@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cprsqdysx0bo4" path="res://Assets/Sounds/SFX/jump.mp3" id="15_45f5x"]
 [ext_resource type="AudioStream" uid="uid://5pvd0qvxh5x5" path="res://Assets/Sounds/SFX/retro-hurt-2-236675.mp3" id="16_cikix"]
 [ext_resource type="Script" uid="uid://b4oeg2aerpo23" path="res://Assets/Scripts/Player_States/state_hurt.gd" id="16_vr1dg"]
+[ext_resource type="Script" uid="uid://12mityj03grq" path="res://Assets/Scripts/Player_States/state_tongue_zip.gd" id="17_r0m80"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2flx"]
 atlas = ExtResource("2_awrqh")
@@ -407,6 +408,11 @@ script = ExtResource("16_vr1dg")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
+[node name="Tongue_Zip" type="Node" parent="StateMachine" unique_id=2097718203 node_paths=PackedStringArray("player")]
+script = ExtResource("17_r0m80")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1518738580]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
@@ -417,3 +423,18 @@ stream = ExtResource("15_45f5x")
 [node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="." unique_id=1355306598]
 stream = ExtResource("16_cikix")
 volume_db = 24.0
+
+[node name="Tongue_Zip_nodes" type="Node" parent="." unique_id=428794142]
+
+[node name="TongueRayCast" type="RayCast2D" parent="Tongue_Zip_nodes" unique_id=9613253]
+unique_name_in_owner = true
+target_position = Vector2(147, 0)
+
+[node name="TongueLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1857373264]
+unique_name_in_owner = true
+visible = false
+width = 3.0
+
+[node name="AimLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1830617373]
+unique_name_in_owner = true
+width = 2.0

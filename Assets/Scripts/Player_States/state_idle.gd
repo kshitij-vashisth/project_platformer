@@ -18,6 +18,9 @@ func physics_update(delta: float) -> void:
 	#gravity
 	player.apply_gravity(delta)
 	
+	if Input.is_action_just_pressed("tongue_zip"):
+		player.change_state("tongue_zip", state_machine)
+	
 	# If there's input, switch to Move state
 	if player.input_direction != Vector2.ZERO:
 		#print("idle->move")

@@ -50,6 +50,9 @@ func physics_update(delta: float) -> void:
 	
 	#player.wall_end_fall()
 	
+	if Input.is_action_just_pressed("tongue_zip"):
+		player.change_state("tongue_zip", state_machine)
+	
 	
 	#TODO: work on wall fall off===============================>
 	if not player.is_on_wall() and not player.is_on_floor():

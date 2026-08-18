@@ -29,5 +29,8 @@ func physics_update(delta: float) -> void:
 		#player.look_dir = player.direction_collision()
 		print("move->wall_slide")
 		state_machine.change_state("wall_slide")
-
+	
+	if Input.is_action_just_pressed("tongue_zip"):
+		player.change_state("tongue_zip", state_machine)
+		
 	player.move_and_slide()

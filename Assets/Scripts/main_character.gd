@@ -15,6 +15,12 @@ var last_direction: float
 @export var jump_sound: AudioStreamPlayer2D
 @export var player_hurt_sound: AudioStreamPlayer2D
 @export var hurt_velocity_y: float = 200.0
+
+@onready var tongue_ray_cast: RayCast2D = %TongueRayCast
+@onready var tongue_line: Line2D = %TongueLine
+@onready var aim_line: Line2D = %AimLine
+
+
 # finer parameters for smoother movement=====================================#
 var wall_pushoff_available: bool = true
 @export var hang_time: float = 0.15
@@ -142,3 +148,12 @@ func _physics_process(_delta: float) -> void:
 	#input_direction.y = Input.get_axis("up", "down")
 	var was_on_floor: bool = is_on_floor()
 	coyote_checker(was_on_floor)
+
+func _process(delta):
+	var mouse_position := get_global_mouse_position()
+	var direction := global_position.direction_to(mouse_position)
+
+	aim_line.points = PackedVector2Array([
+		aim_line.to_local(global_position),
+		aim_line.to_local(global_position + direction * 1000.0)
+	])
