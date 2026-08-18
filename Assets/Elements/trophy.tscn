@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbyxy1bhi57i5"]
+
+[ext_resource type="Script" uid="uid://bjkhqimsq7a6m" path="res://Assets/Scripts/Elements/trophy.gd" id="1_qhxv1"]
+[ext_resource type="Texture2D" uid="uid://g72mnf03b7nu" path="res://Assets/Art/game_elements/End (Idle).png" id="2_dmh6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cgwx"]
+size = Vector2(50, 46)
+
+[node name="Trophy" type="Node2D" unique_id=801884430]
+script = ExtResource("1_qhxv1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1393613302]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=509266263]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_0cgwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1381542771]
+texture_filter = 1
+texture = ExtResource("2_dmh6n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,11 +5,18 @@ extends CharacterBody2D
 
 @export var turn_timer = 0.0
 @export var TURN_INTERVAL = 1.9
-
+@export var caught: bool = false
 @onready var game_manager: Node = %GameManager
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@export var state_access: StateMachine 
+@export var move_sound: AudioStreamPlayer2D
+@export var eaten_sound: AudioStreamPlayer2D
 
+func change_state(desired_state_name: String, state_machine):
+		var current_state_name = str(state_access.current_state)
+		state_machine.change_state(desired_state_name)
 func move_enemy() -> void:
+	#move_sound.play()
 	velocity.x = SPEED * direction
 
 func turn_around(delta: float) -> void:
@@ -19,16 +26,8 @@ func turn_around(delta: float) -> void:
 		direction = -direction
 		animated_sprite_2d.scale.x *= -1
 
-
-func _physics_process(delta: float) -> void:
-	move_enemy()
-	turn_around(delta)
-
-	move_and_slide()
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "MainCharacter":
-		print("mosquito touched")
 		GameManager.mosquito_add_points()
-		queue_free()
+		caught = true
+		change_state("eaten",state_access)

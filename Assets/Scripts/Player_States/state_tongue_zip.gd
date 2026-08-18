@@ -11,6 +11,7 @@ var tongue_target: Vector2
 var target
 
 func shoot_tongue(delta: float) -> void:
+	sfx_tongue_launch.play()
 	var start: Vector2 = player.global_position
 
 	var current_tip: Vector2 = player.tongue_line.to_global(
@@ -56,7 +57,6 @@ func update_tongue() -> void:
 	])
 
 func enter() -> void:
-	sfx_tongue_launch.play()
 	target = null
 	tongue_shooting = false
 

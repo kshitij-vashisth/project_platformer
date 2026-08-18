@@ -6,10 +6,14 @@
 * make inspirational music like cobra kai for intro
 * added parallax background to level 0-1
 * add tongue to catch mosquito
+* added eating sound for mosquito
+* added warp in and warp out animation and sound
+* added trophy for exit and level transition
 #=========================================================================================================>
 
 #ImmediateToDos===========================================================================================>
-* add animation and eating sound for mosquito
+* complete first level design and start second level
+* add animation for mosquito
 * make same mosquito scene usable for points, enemy, and powerups
 * add cutscene for intro with zooming out effect of logo
 #=========================================================================================================>

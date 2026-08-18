@@ -14,6 +14,7 @@ var direction: int = -1
 
 func change_state(desired_state_name: String, state_machine):
 		var current_state_name = str(state_access.current_state)
+		state_machine.change_state(desired_state_name)
 
 func squash() -> void:
 	squash_sound.play()

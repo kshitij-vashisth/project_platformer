@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://cigukye68oi0r" path="res://Assets/Scripts/Collectible/mosquito_points.gd" id="1_k3uyf"]
 [ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="1_sndc3"]
 [ext_resource type="AudioStream" uid="uid://by8lc3wtehg0w" path="res://Assets/Sounds/SFX/flying-mosquito-105770.mp3" id="3_x1g8i"]
+[ext_resource type="AudioStream" uid="uid://dp7wh5tf8cp1o" path="res://Assets/Sounds/SFX/munch-sound-effect.mp3" id="4_88h53"]
+[ext_resource type="Script" uid="uid://ne6xbq0iydbo" path="res://Assets/Scripts/Base State Code/state_machine.gd" id="5_qam5n"]
+[ext_resource type="Script" uid="uid://b1mgry7x3w6bv" path="res://Assets/Scripts/Enemy_States/mosquito_states/mosquito_move.gd" id="6_moqxr"]
+[ext_resource type="Script" uid="uid://bvca4le3xfg6x" path="res://Assets/Scripts/Enemy_States/mosquito_states/mosquito_eaten.gd" id="7_14ltn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3uyf"]
 atlas = ExtResource("1_sndc3")
@@ -47,9 +51,12 @@ height = 15.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cgwx"]
 size = Vector2(19, 31)
 
-[node name="MosquitoPoints" type="CharacterBody2D" unique_id=701354568]
+[node name="MosquitoPoints" type="CharacterBody2D" unique_id=701354568 node_paths=PackedStringArray("state_access", "move_sound", "eaten_sound")]
 collision_layer = 8
 script = ExtResource("1_k3uyf")
+state_access = NodePath("StateMachine")
+move_sound = NodePath("buzz_sound")
+eaten_sound = NodePath("eaten_sound")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=571276561]
 unique_name_in_owner = true
@@ -78,5 +85,24 @@ volume_db = 15.27
 autoplay = true
 max_distance = 4096.0
 parameters/looping = true
+
+[node name="eaten_sound" type="AudioStreamPlayer2D" parent="." unique_id=509043160]
+stream = ExtResource("4_88h53")
+volume_db = 4.54
+
+[node name="StateMachine" type="Node" parent="." unique_id=335599665 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_qam5n")
+initial_state = NodePath("move")
+metadata/_custom_type_script = "uid://ne6xbq0iydbo"
+
+[node name="move" type="Node" parent="StateMachine" unique_id=875597225 node_paths=PackedStringArray("mosquito")]
+script = ExtResource("6_moqxr")
+mosquito = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
+
+[node name="eaten" type="Node" parent="StateMachine" unique_id=419153235 node_paths=PackedStringArray("mosquito")]
+script = ExtResource("7_14ltn")
+mosquito = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
