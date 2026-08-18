@@ -5,11 +5,11 @@
 * add game over screen
 * make inspirational music like cobra kai for intro
 * added parallax background to level 0-1
+* add tongue to catch mosquito
 #=========================================================================================================>
 
 #ImmediateToDos===========================================================================================>
 * add animation and eating sound for mosquito
-* add tongue to catch mosquito
 * make same mosquito scene usable for points, enemy, and powerups
 * add cutscene for intro with zooming out effect of logo
 #=========================================================================================================>

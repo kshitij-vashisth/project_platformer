@@ -1,7 +1,7 @@
 extends State
 
 @export var player: CharacterBody2D
-@onready var hurt_sound: AudioStreamPlayer2D = $"../../player_hurt_sound"
+@export var hurt_sound: AudioStreamPlayer2D
 
 var hurt_timer: float = 0.0
 const HURT_LOCK_TIME: float = 0.08

@@ -1,5 +1,6 @@
 extends State
 
+@export var sfx_tongue_launch: AudioStreamPlayer2D
 @export var tongue_acceleration: float = 2500.0
 @export var player: CharacterBody2D
 @export var tongue_extension_speed: float = 2500.0
@@ -55,6 +56,7 @@ func update_tongue() -> void:
 	])
 
 func enter() -> void:
+	sfx_tongue_launch.play()
 	target = null
 	tongue_shooting = false
 

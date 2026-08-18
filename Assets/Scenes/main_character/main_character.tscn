@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://5pvd0qvxh5x5" path="res://Assets/Sounds/SFX/retro-hurt-2-236675.mp3" id="16_cikix"]
 [ext_resource type="Script" uid="uid://b4oeg2aerpo23" path="res://Assets/Scripts/Player_States/state_hurt.gd" id="16_vr1dg"]
 [ext_resource type="Script" uid="uid://12mityj03grq" path="res://Assets/Scripts/Player_States/state_tongue_zip.gd" id="17_r0m80"]
+[ext_resource type="AudioStream" uid="uid://bbr2nq6wgwliy" path="res://Assets/Sounds/SFX/tongue_launch.mp3" id="20_gqd6n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2flx"]
 atlas = ExtResource("2_awrqh")
@@ -326,8 +327,8 @@ size = Vector2(34, 50)
 collision_layer = 2
 script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
-jump_sound = NodePath("jump_sound")
-player_hurt_sound = NodePath("player_hurt_sound")
+jump_sound = NodePath("SFX/jump_sound")
+player_hurt_sound = NodePath("SFX/player_hurt_sound")
 zip_range = 300.0
 coyote_time = 100.0
 knockback_velocity = 1200.0
@@ -404,26 +405,21 @@ script = ExtResource("12_8bhx4")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=1181559225 node_paths=PackedStringArray("player")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1181559225 node_paths=PackedStringArray("player", "hurt_sound")]
 script = ExtResource("16_vr1dg")
 player = NodePath("../..")
+hurt_sound = NodePath("../../SFX/player_hurt_sound")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Tongue_Zip" type="Node" parent="StateMachine" unique_id=2097718203 node_paths=PackedStringArray("player")]
+[node name="Tongue_Zip" type="Node" parent="StateMachine" unique_id=2097718203 node_paths=PackedStringArray("sfx_tongue_launch", "player")]
 script = ExtResource("17_r0m80")
+sfx_tongue_launch = NodePath("../../SFX/sfx_tongue_launch")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1518738580]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
-
-[node name="jump_sound" type="AudioStreamPlayer2D" parent="." unique_id=1342301048]
-stream = ExtResource("15_45f5x")
-
-[node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="." unique_id=1355306598]
-stream = ExtResource("16_cikix")
-volume_db = 24.0
 
 [node name="Tongue_Zip_nodes" type="Node" parent="." unique_id=428794142]
 
@@ -435,10 +431,23 @@ collision_mask = 9
 [node name="TongueLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1857373264]
 unique_name_in_owner = true
 visible = false
-width = 3.0
-default_color = Color(0.89443415, 0.7188021, 0.6543687, 1)
+width = 6.0
+default_color = Color(0.9486647, 0.4067816, 0.58829933, 1)
 
 [node name="AimLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1830617373]
 unique_name_in_owner = true
 visible = false
 width = 2.0
+
+[node name="SFX" type="Node" parent="." unique_id=214389420]
+
+[node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="SFX" unique_id=1355306598]
+stream = ExtResource("16_cikix")
+volume_db = 24.0
+
+[node name="jump_sound" type="AudioStreamPlayer2D" parent="SFX" unique_id=1342301048]
+stream = ExtResource("15_45f5x")
+
+[node name="sfx_tongue_launch" type="AudioStreamPlayer2D" parent="SFX" unique_id=1905068094]
+stream = ExtResource("20_gqd6n")
+volume_db = 7.016
