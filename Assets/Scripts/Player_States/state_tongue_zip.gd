@@ -88,9 +88,13 @@ func enter() -> void:
 	])
 	
 func finish_zip() -> void:
+	var release_velocity: Vector2 = player.velocity * player.tongue_release_multiplier
+
 	player.tongue_line.visible = false
+	player.velocity = release_velocity
 	player.tongue_line.clear_points()
-	player.velocity = Vector2.ZERO
+
+	
 
 	player.change_state("in_air", player.state_access)
 

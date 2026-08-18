@@ -16,6 +16,7 @@ var last_direction: float
 @export var player_hurt_sound: AudioStreamPlayer2D
 @export var hurt_velocity_y: float = 200.0
 @export var zip_range: float = 1000.0
+@export var tongue_release_multiplier: float = 1.0
 
 
 @onready var tongue_ray_cast: RayCast2D = %TongueRayCast

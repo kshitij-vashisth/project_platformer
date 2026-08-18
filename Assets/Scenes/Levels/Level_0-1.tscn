@@ -551,6 +551,7 @@ tile_set = SubResource("TileSet_nacht")
 [node name="MainCharacter" parent="." unique_id=2028758806 node_paths=PackedStringArray("game_manager") instance=ExtResource("11_nkldq")]
 position = Vector2(78, 36)
 game_manager = NodePath("../GameManager")
+zip_range = 300.0
 
 [node name="MeasuringBackground" type="Sprite2D" parent="." unique_id=199793740]
 visible = false
