@@ -50,6 +50,12 @@ Want to try it out? The previous version of the game is available as a **demo on
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
 ### State Machine Updates Video
 
+## Update 5 (18th August, 2026)
+
+<kbd>Added tongue zipping</kbd>
+
+https://github.com/user-attachments/assets/483ff6ed-f907-48a4-aa95-53c2dababc3c
+
 ## Update 4 (15th August, 2026)
 
 <kbd>Added unlockable abilities</kbd>
