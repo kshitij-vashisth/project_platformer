@@ -36,6 +36,10 @@ var wall_pushoff_available: bool = true
 @export var air_accel: float = 10.0
 @export var push_off: float = 20.0
 #============================================================================#
+func clear_tongue() -> void:
+	tongue_line.visible = false
+	tongue_line.clear_points()
+
 
 func hurt()-> void:
 	#velocity.y += -hurt_velocity_y
@@ -93,6 +97,7 @@ func wall_end_fall()->void:
 #function to change state
 func change_state(desired_state_name: String, state_machine):
 	print("changing state")
+	clear_tongue()
 	var current_state_name = str(state_access.current_state)
 	print(current_state_name.substr(0,current_state_name.find(":")).to_lower()+"->"+desired_state_name)
 	state_machine.change_state(desired_state_name)
