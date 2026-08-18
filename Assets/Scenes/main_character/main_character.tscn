@@ -328,6 +328,7 @@ script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
 jump_sound = NodePath("jump_sound")
 player_hurt_sound = NodePath("player_hurt_sound")
+zip_range = 200.0
 coyote_time = 100.0
 knockback_velocity = 1200.0
 jump_height = 150.0
@@ -429,12 +430,15 @@ volume_db = 24.0
 [node name="TongueRayCast" type="RayCast2D" parent="Tongue_Zip_nodes" unique_id=9613253]
 unique_name_in_owner = true
 target_position = Vector2(147, 0)
+collision_mask = 9
 
 [node name="TongueLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1857373264]
 unique_name_in_owner = true
 visible = false
 width = 3.0
+default_color = Color(0.89443415, 0.7188021, 0.6543687, 1)
 
 [node name="AimLine" type="Line2D" parent="Tongue_Zip_nodes" unique_id=1830617373]
 unique_name_in_owner = true
+visible = false
 width = 2.0

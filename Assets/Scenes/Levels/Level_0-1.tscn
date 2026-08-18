@@ -366,7 +366,7 @@ SPEED = 100.0
 
 [node name="Collectibles" type="Node" parent="." unique_id=726893871]
 
-[node name="MosquitoPoints" parent="Collectibles" unique_id=701354568 instance=ExtResource("1_uybai")]
+[node name="MosquitoPoints" parent="Collectibles" unique_id=701354568 groups=["food"] instance=ExtResource("1_uybai")]
 position = Vector2(840, 382)
 SPEED = 200.0
 TURN_INTERVAL = 0.5
