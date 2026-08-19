@@ -1,0 +1,476 @@
+[gd_scene format=3 uid="uid://b3pq3xgryxxdn"]
+
+[ext_resource type="Script" uid="uid://seeq5o5wvw8e" path="res://Assets/Scripts/cutscenes/intro.gd" id="1_3juki"]
+[ext_resource type="Texture2D" uid="uid://b6buvw55i1ed" path="res://Assets/Art/Character/Run (32x32).png" id="2_8rfni"]
+[ext_resource type="Texture2D" uid="uid://c5yc21dcysmtl" path="res://Assets/Art/Logo/intro-logo.png" id="2_dc8fj"]
+[ext_resource type="Script" uid="uid://bfnbnqx72hx8y" path="res://Assets/Scripts/cutscenes/intro/panel.gd" id="2_eusu8"]
+[ext_resource type="AudioStream" uid="uid://bpdlubof1bro" path="res://Assets/Sounds/SFX/magic-wand-6214.mp3" id="3_eawka"]
+[ext_resource type="Texture2D" uid="uid://lr3f5qspcy05" path="res://Assets/Art/cutscene/intro/blank_use-split/1.png" id="3_eusu8"]
+[ext_resource type="AudioStream" uid="uid://ch1n6s3jp78vn" path="res://Assets/Sounds/BGM/Suno/intro music/Into the Next Area_4205.mp3" id="3_iogfm"]
+[ext_resource type="Texture2D" uid="uid://cogia8ti4s688" path="res://Assets/Art/Character/Double Jump (32x32).png" id="3_swijd"]
+[ext_resource type="AudioStream" uid="uid://ls067n0tncpi" path="res://Assets/Sounds/BGM/Suno/Creepy Arcade Signal_1706.mp3" id="4_2w0fp"]
+[ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="4_ogrv3"]
+[ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="4_x3y7m"]
+[ext_resource type="VideoStream" uid="uid://dds6w8x8bf5ba" path="res://Assets/Videos/static_tv.ogv" id="5_80wyo"]
+[ext_resource type="Texture2D" uid="uid://638u1n741j14" path="res://Assets/Art/cutscene/intro/blank_use-split/2.png" id="5_hmbjw"]
+[ext_resource type="Texture2D" uid="uid://d1q3ga074h5hk" path="res://Assets/Art/cutscene/intro/blank_use-split/3.png" id="6_4b4vp"]
+[ext_resource type="Texture2D" uid="uid://bnstrx73yhack" path="res://Assets/Art/cutscene/intro/blank_use-split/4.png" id="7_o8bhd"]
+[ext_resource type="Texture2D" uid="uid://jkvvt128uak4" path="res://Assets/Art/cutscene/intro/blank_use-split/5.png" id="8_ewsin"]
+[ext_resource type="Texture2D" uid="uid://vloyuwak8cvo" path="res://Assets/Art/cutscene/intro/blank_use-split/7.png" id="9_ewsin"]
+[ext_resource type="Texture2D" uid="uid://dsjn73q0kkyd0" path="res://Assets/Art/cutscene/intro/blank_use-split/8.png" id="10_tqa01"]
+[ext_resource type="Texture2D" uid="uid://6scohtir22sp" path="res://Assets/Art/cutscene/intro/blank_use-split/9.png" id="11_i76xd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofoad"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t205t"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvbgg"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dtrj"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy0p3"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jc5d"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgsmm"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s7ch"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m70v"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cij1d"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nokmj"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj3qx"]
+atlas = ExtResource("2_8rfni")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cgwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofoad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t205t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvbgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dtrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy0p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jc5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgsmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s7ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m70v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cij1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nokmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj3qx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g3ad"]
+atlas = ExtResource("3_swijd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl7sn"]
+atlas = ExtResource("3_swijd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl5i3"]
+atlas = ExtResource("3_swijd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s57xo"]
+atlas = ExtResource("3_swijd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y02n7"]
+atlas = ExtResource("3_swijd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klsdw"]
+atlas = ExtResource("3_swijd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nesho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g3ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl7sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl5i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s57xo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y02n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klsdw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqfm8"]
+atlas = ExtResource("4_ogrv3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7qaa"]
+atlas = ExtResource("4_ogrv3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbybm"]
+atlas = ExtResource("4_ogrv3")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aahif"]
+atlas = ExtResource("4_ogrv3")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8rx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqfm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7qaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbybm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aahif")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc8fj"]
+
+[node name="Intro" type="Node2D" unique_id=544303910]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1680649100]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -152.0
+offset_right = 1492.0
+offset_bottom = 835.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1098615492]
+position = Vector2(571.0001, 305)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("2_dc8fj")
+
+[node name="sprites" type="Node" parent="Logo" unique_id=1517064421]
+
+[node name="walk" type="AnimatedSprite2D" parent="Logo/sprites" unique_id=631898540]
+visible = false
+texture_filter = 1
+position = Vector2(545, 523)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0cgwx")
+autoplay = "default"
+
+[node name="double_jump" type="AnimatedSprite2D" parent="Logo/sprites" unique_id=84727346]
+visible = false
+texture_filter = 1
+position = Vector2(95, 118)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_nesho")
+autoplay = "default"
+
+[node name="mosquito" type="AnimatedSprite2D" parent="Logo/sprites" unique_id=344691546]
+visible = false
+texture_filter = 1
+position = Vector2(1020, 108)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_n8rx5")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=787102924 node_paths=PackedStringArray("logo", "black_box", "walk", "double_jump", "mosquito", "part1", "part2", "magic", "static_tv")]
+script = ExtResource("1_3juki")
+logo = NodePath("../Logo")
+black_box = NodePath("../Cutscene_UI/Black_Box")
+walk = NodePath("../Logo/sprites/walk")
+double_jump = NodePath("../Logo/sprites/double_jump")
+mosquito = NodePath("../Logo/sprites/mosquito")
+part1 = NodePath("Music/part1")
+part2 = NodePath("Music/part2")
+magic = NodePath("Music/magic_effect")
+static_tv = NodePath("../Cutscene_UI/static_tv")
+
+[node name="Music" type="Node" parent="AnimationPlayer" unique_id=1182164341]
+
+[node name="part1" type="AudioStreamPlayer2D" parent="AnimationPlayer/Music" unique_id=1969466461]
+stream = ExtResource("3_iogfm")
+volume_db = 7.583
+
+[node name="magic_effect" type="AudioStreamPlayer2D" parent="AnimationPlayer/Music" unique_id=521006948]
+stream = ExtResource("3_eawka")
+
+[node name="part2" type="AudioStreamPlayer2D" parent="AnimationPlayer/Music" unique_id=1331799044]
+stream = ExtResource("4_2w0fp")
+volume_db = 10.292
+
+[node name="Cutscene_UI" type="CanvasLayer" parent="." unique_id=1117395447]
+
+[node name="Black_Box" type="ColorRect" parent="Cutscene_UI" unique_id=617944076]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="static_tv" type="VideoStreamPlayer" parent="Cutscene_UI" unique_id=302414687]
+top_level = true
+offset_left = -263.0
+offset_top = -142.0
+offset_right = 1657.0
+offset_bottom = 938.0
+stream = ExtResource("5_80wyo")
+volume_db = -80.0
+loop = true
+
+[node name="Panel" type="Panel" parent="Cutscene_UI" unique_id=757481323 node_paths=PackedStringArray("part1")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -324.0
+offset_right = 575.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dc8fj")
+script = ExtResource("2_eusu8")
+part1 = NodePath("../../AnimationPlayer/Music/part1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene_UI/Panel" unique_id=1176035157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="sprite1" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1322852361]
+texture_filter = 1
+position = Vector2(161, 167)
+texture = ExtResource("3_eusu8")
+
+[node name="Label1" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite1" unique_id=2058575703]
+offset_left = -142.88472
+offset_top = -132.27118
+offset_right = 160.11528
+offset_bottom = -97.27118
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "KERMITT! 
+YOU MAGNIFICENT BASTARD!"
+
+[node name="sprite2" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=2003000349]
+texture_filter = 2
+position = Vector2(488, 168)
+texture = ExtResource("5_hmbjw")
+
+[node name="Label2" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite2" unique_id=1658342158]
+offset_left = -132.82053
+offset_top = -135.89743
+offset_right = 170.17947
+offset_bottom = -104.89743
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "How are you so damn good,
+KERMITT???"
+
+[node name="sprite3" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=810580876]
+texture_filter = 1
+position = Vector2(819, 169)
+texture = ExtResource("6_4b4vp")
+
+[node name="Label3" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite3" unique_id=325289073]
+offset_left = -136.92305
+offset_top = -121.02563
+offset_right = 166.07698
+offset_bottom = -86.02563
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "I wish I could be a frog too.."
+
+[node name="sprite4" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=701986022]
+texture_filter = 1
+position = Vector2(986, 160)
+texture = ExtResource("7_o8bhd")
+
+[node name="Label4" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite4" unique_id=1260013597]
+offset_left = -124.76196
+offset_top = -113.33334
+offset_right = 178.23804
+offset_bottom = -78.33334
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "Tomorrow..."
+
+[node name="Label5" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite4" unique_id=1263547337]
+offset_left = -14.285713
+offset_top = 107.1429
+offset_right = 288.7143
+offset_bottom = 142.1429
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "I'll Play AGAIN!!!!!!"
+
+[node name="sprite5" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=2137765266]
+texture_filter = 1
+position = Vector2(164, 488)
+texture = ExtResource("8_ewsin")
+
+[node name="sprite6" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1007837420]
+texture_filter = 1
+position = Vector2(529, 480)
+texture = ExtResource("9_ewsin")
+
+[node name="Label6" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite6" unique_id=1776975778]
+offset_left = -142.4524
+offset_top = -132.61911
+offset_right = 1004.5476
+offset_bottom = -105.61911
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 11
+text = "*tries to 
+speak but fails*"
+
+[node name="sprite7" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1534086965]
+texture_filter = 1
+position = Vector2(891, 478)
+texture = ExtResource("10_tqa01")
+
+[node name="Label7" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite7" unique_id=1806637157]
+offset_left = -114.871765
+offset_top = -134.35898
+offset_right = 1032.1282
+offset_bottom = -99.35898
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+text = "TRR.. TRR.. 
+TRRRRRR......?"
+
+[node name="sprite8" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=914511194]
+texture_filter = 1
+position = Vector2(589.99994, 325.00003)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("11_i76xd")
+
+[node name="Label8" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite8" unique_id=2011526239]
+offset_left = -118.46152
+offset_top = -92.30771
+offset_right = 184.53848
+offset_bottom = -57.30771
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 15
+text = "KERMITTTTTTT!!!!!!!!"
+
+[node name="LastPanel" type="Panel" parent="Cutscene_UI/Panel" unique_id=558780446]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = -257.0
+offset_right = -129.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label9" type="Label" parent="Cutscene_UI/Panel/LastPanel" unique_id=68423618]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -17.5
+offset_right = 264.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_x3y7m")
+theme_override_font_sizes/font_size = 30
+text = "And thus begins the ADVENTURE.....!!!!"

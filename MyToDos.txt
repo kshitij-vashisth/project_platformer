@@ -9,11 +9,12 @@
 * added eating sound for mosquito
 * added warp in and warp out animation and sound
 * added trophy for exit and level transition
+* add cutscene for intro
 #=========================================================================================================>
 
 #ImmediateToDos===========================================================================================>
 * complete first level design and start second level
-* add animation for mosquito
+* add animation for mosquito eating
 * make same mosquito scene usable for points, enemy, and powerups
 * add cutscene for intro with zooming out effect of logo
 #=========================================================================================================>
