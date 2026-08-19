@@ -82,7 +82,6 @@ shape = SubResource("RectangleShape2D_0cgwx")
 position = Vector2(1, 0)
 stream = ExtResource("3_x1g8i")
 volume_db = 15.27
-autoplay = true
 max_distance = 4096.0
 parameters/looping = true
 

@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var turn_timer = 0.0
 @export var TURN_INTERVAL = 1.9
 @export var caught: bool = false
-@onready var game_manager: Node = %GameManager
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @export var state_access: StateMachine 
 @export var move_sound: AudioStreamPlayer2D

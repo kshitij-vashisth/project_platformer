@@ -4,12 +4,12 @@ extends State
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	mosquito.move_sound.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func physics_update(delta: float) -> void:
-	mosquito.move_sound.play()
+	
 	mosquito.move_enemy()
 	mosquito.turn_around(delta)
 
