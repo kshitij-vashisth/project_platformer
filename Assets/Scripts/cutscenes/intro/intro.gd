@@ -51,6 +51,10 @@ func _ready() -> void:
 	mosquito.hide()
 	await get_tree().create_timer(0.7).timeout
 	logo.hide()
+	#var anima = Anima.begin(self, 'fade_out')
+	#anima.with({ node = logo, animation = 'zoomOut', duration = 1.4})
+	#anima.play()
+	#await get_tree().create_timer(0.7).timeout
 	await get_tree().create_timer(0.7).timeout
 	get_tree().change_scene_to_file("res://Assets/Scenes/TransitionScreens/level_transition_screen.tscn")
 	

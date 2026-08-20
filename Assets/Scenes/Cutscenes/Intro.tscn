@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3pq3xgryxxdn"]
 
-[ext_resource type="Script" uid="uid://seeq5o5wvw8e" path="res://Assets/Scripts/cutscenes/intro.gd" id="1_3juki"]
+[ext_resource type="Script" uid="uid://seeq5o5wvw8e" path="res://Assets/Scripts/cutscenes/intro/intro.gd" id="1_3juki"]
 [ext_resource type="Texture2D" uid="uid://b6buvw55i1ed" path="res://Assets/Art/Character/Run (32x32).png" id="2_8rfni"]
 [ext_resource type="Texture2D" uid="uid://c5yc21dcysmtl" path="res://Assets/Art/Logo/intro-logo.png" id="2_dc8fj"]
 [ext_resource type="Script" uid="uid://bfnbnqx72hx8y" path="res://Assets/Scripts/cutscenes/intro/panel.gd" id="2_eusu8"]
@@ -319,6 +319,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 35
 alignment = 1
+
+[node name="MainLabel" type="Label" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1948011973]
+layout_mode = 2
 
 [node name="sprite1" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1322852361]
 texture_filter = 1
