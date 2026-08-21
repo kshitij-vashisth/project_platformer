@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Kermitted"
-run/main_scene="uid://r20ijxfrhi7q"
+run/main_scene="uid://mohqakaakyy2"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

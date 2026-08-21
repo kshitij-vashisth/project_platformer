@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://mohqakaakyy2"]
+
+[ext_resource type="AudioStream" uid="uid://d32olbibrg85h" path="res://Assets/Sounds/BGM/Suno/8 Bit Sprint_d1b7.mp3" id="1_0dsmp"]
+[ext_resource type="Script" uid="uid://bw6c7gkd27hfb" path="res://Assets/Scripts/Main-Menu/optional_main_menu.gd" id="1_c67lh"]
+[ext_resource type="Texture2D" uid="uid://8fobhpixvx6n" path="res://Assets/Art/Logo/simple-kermitted.png" id="2_jeef8"]
+[ext_resource type="Texture2D" uid="uid://ciqdkf0cvn3fp" path="res://Assets/Art/Logo/Japanese-frog-logo.png" id="3_c67lh"]
+[ext_resource type="Texture2D" uid="uid://bb64vqowxk062" path="res://Assets/Art/cutscene/intro/new-Main-menu/star.png" id="5_8h1v4"]
+[ext_resource type="Texture2D" uid="uid://grpk0xrc25oy" path="res://Assets/Art/Logo/punch.png" id="5_xt24x"]
+[ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="7_pd5m4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pd5m4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tvbj8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68fuy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmt3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b4kr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt24x"]
+atlas = ExtResource("5_8h1v4")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h1v4"]
+atlas = ExtResource("5_8h1v4")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cgwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt24x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h1v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt24x")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjdtc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gcih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwcdm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e11gt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wr050"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqco4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gp147"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3p0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13svx"]
+
+[node name="OptionalIntro" type="Node2D" unique_id=18608364 node_paths=PackedStringArray("punch", "main_logo", "japan_logo", "star", "intro_node", "text_panel", "next_button", "music", "start_button", "load_button", "exit_button")]
+script = ExtResource("1_c67lh")
+punch = NodePath("intro/punch")
+main_logo = NodePath("intro/main_logo")
+japan_logo = NodePath("intro/japan_logo")
+star = NodePath("intro/star")
+intro_node = NodePath("intro")
+text_panel = NodePath("Intro_elements/Panel")
+next_button = NodePath("Intro_elements/Panel/Continue")
+music = NodePath("music")
+start_button = NodePath("Buttons/HBoxContainer/Start")
+load_button = NodePath("Buttons/HBoxContainer/Load")
+exit_button = NodePath("Buttons/HBoxContainer/Exit")
+
+[node name="Intro_elements" type="Node" parent="." unique_id=1884995751]
+
+[node name="ColorRect" type="ColorRect" parent="Intro_elements" unique_id=34177524]
+offset_left = -171.0
+offset_top = -147.0
+offset_right = 1239.0
+offset_bottom = 776.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Intro_elements" unique_id=976803815]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pd5m4")
+
+[node name="Continue" type="Button" parent="Intro_elements/Panel" unique_id=820389390]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 249.0
+offset_top = 187.0
+offset_right = 501.0
+offset_bottom = 291.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0.38039216, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.8509804, 1, 1)
+theme_override_fonts/font = ExtResource("7_pd5m4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tvbj8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_68fuy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kmt3d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b4kr")
+text = "Continue"
+
+[node name="Label" type="Label" parent="Intro_elements/Panel" unique_id=286083441]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -471.25
+offset_top = -294.0
+offset_right = 471.25
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_pd5m4")
+theme_override_font_sizes/font_size = 32
+text = "THIS GAME TELLS THE STORY OF DAVE — AN ORDINARY BOY LIVING IN A WORLD WHERE LOGIC IS OPTIONAL. DAVE HAS ONE OBSESSION: KERMITT. TO HIM, KERMITT IS A HERO, A LEGEND, AND THE GREATEST BEING EVER CREATED. HIS FRIENDS HATE KERMITT AND THINK DAVE'S OBSESSION IS GETTING UNHEALTHY. DAVE ONCE EVEN SUGGESTED “TRR, TRR” AS A PICKUP LINE. HIS FRIENDS STILL HAVEN'T RECOVERED.
+
+BUT DAVE DOESN'T CARE. KERMITT IS THE GREATEST. AND TONIGHT, DAVE IS ABOUT TO DISCOVER THAT IN HIS WORLD, A FICTIONAL FROG MIGHT BE THE LEAST WEIRD THING AROUND.
+
+PLEASE DON'T BE LIKE DAVE."
+autowrap_mode = 3
+
+[node name="intro" type="Node" parent="." unique_id=1068039384]
+
+[node name="main_logo" type="Sprite2D" parent="intro" unique_id=501190194]
+visible = false
+position = Vector2(575, 87)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jeef8")
+
+[node name="japan_logo" type="Sprite2D" parent="intro" unique_id=903949715]
+visible = false
+texture_filter = 1
+position = Vector2(577, 569)
+scale = Vector2(2, 2)
+texture = ExtResource("3_c67lh")
+
+[node name="star" type="AnimatedSprite2D" parent="intro" unique_id=964670932]
+visible = false
+texture_filter = 1
+position = Vector2(550, 325)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_0cgwx")
+frame_progress = 1.0
+
+[node name="punch" type="Sprite2D" parent="intro" unique_id=1729114493]
+visible = false
+position = Vector2(550.00006, 320.00003)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_xt24x")
+
+[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=1093399887]
+stream = ExtResource("1_0dsmp")
+volume_db = 8.125
+autoplay = true
+parameters/looping = true
+
+[node name="Buttons" type="Node" parent="." unique_id=729378834]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons" unique_id=127282693]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -20.0
+offset_right = 106.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 250
+alignment = 1
+
+[node name="Start" type="Button" parent="Buttons/HBoxContainer" unique_id=2120578944]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0.38039216, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.8509804, 1, 1)
+theme_override_fonts/font = ExtResource("7_pd5m4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fjdtc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8gcih")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nwcdm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e11gt")
+text = "START"
+
+[node name="Load" type="Button" parent="Buttons/HBoxContainer" unique_id=171132614]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0.38039216, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.8509804, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.43134, 0.43134, 0.43134, 1)
+theme_override_fonts/font = ExtResource("7_pd5m4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fjdtc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8gcih")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nwcdm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wr050")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e11gt")
+text = "LOAD"
+
+[node name="Exit" type="Button" parent="Buttons/HBoxContainer" unique_id=906558921]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0.38039216, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.8509804, 1, 1)
+theme_override_fonts/font = ExtResource("7_pd5m4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nqco4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gp147")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w3p0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13svx")
+text = "EXIT
+"
+
+[connection signal="pressed" from="Intro_elements/Panel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/Start" to="." method="_on_start_pressed"]
