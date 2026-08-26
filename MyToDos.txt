@@ -10,6 +10,8 @@
 * added warp in and warp out animation and sound
 * added trophy for exit and level transition
 * add cutscene for intro
+* added gun, working bullets, knockback, enemy health and damage modularisation, dust on bullet hitting wall
+* added ammo power
 #=========================================================================================================>
 
 #ImmediateToDos===========================================================================================>
