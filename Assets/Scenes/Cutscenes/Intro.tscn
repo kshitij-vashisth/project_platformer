@@ -325,7 +325,8 @@ layout_mode = 2
 
 [node name="sprite1" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1322852361]
 texture_filter = 1
-position = Vector2(161, 167)
+position = Vector2(605.00006, 324)
+scale = Vector2(1.9, 1.9)
 texture = ExtResource("3_eusu8")
 
 [node name="Label1" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite1" unique_id=2058575703]
@@ -341,7 +342,8 @@ YOU MAGNIFICENT BASTARD!"
 
 [node name="sprite2" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=2003000349]
 texture_filter = 2
-position = Vector2(488, 168)
+position = Vector2(605, 324)
+scale = Vector2(1.9, 1.9)
 texture = ExtResource("5_hmbjw")
 
 [node name="Label2" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite2" unique_id=1658342158]
@@ -357,7 +359,8 @@ KERMITT???"
 
 [node name="sprite3" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=810580876]
 texture_filter = 1
-position = Vector2(819, 169)
+position = Vector2(605, 324)
+scale = Vector2(1.9, 1.9)
 texture = ExtResource("6_4b4vp")
 
 [node name="Label3" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite3" unique_id=325289073]
@@ -372,7 +375,8 @@ text = "I wish I could be a frog too.."
 
 [node name="sprite4" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=701986022]
 texture_filter = 1
-position = Vector2(986, 160)
+position = Vector2(605, 324)
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("7_o8bhd")
 
 [node name="Label4" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite4" unique_id=1260013597]
@@ -397,28 +401,31 @@ text = "I'll Play AGAIN!!!!!!"
 
 [node name="sprite5" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=2137765266]
 texture_filter = 1
-position = Vector2(164, 488)
+position = Vector2(605, 324)
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("8_ewsin")
 
 [node name="sprite6" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1007837420]
 texture_filter = 1
-position = Vector2(529, 480)
+position = Vector2(605, 324)
+scale = Vector2(2, 2)
 texture = ExtResource("9_ewsin")
 
 [node name="Label6" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite6" unique_id=1776975778]
-offset_left = -142.4524
+offset_left = -144.4524
 offset_top = -132.61911
-offset_right = 1004.5476
-offset_bottom = -105.61911
+offset_right = 1002.5476
+offset_bottom = -101.61911
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_x3y7m")
-theme_override_font_sizes/font_size = 11
-text = "*tries to 
-speak but fails*"
+theme_override_font_sizes/font_size = 13
+text = "*tries to speak 
+but fails*"
 
 [node name="sprite7" type="Sprite2D" parent="Cutscene_UI/Panel/VBoxContainer" unique_id=1534086965]
 texture_filter = 1
-position = Vector2(891, 478)
+position = Vector2(605, 324)
+scale = Vector2(2, 2)
 texture = ExtResource("10_tqa01")
 
 [node name="Label7" type="Label" parent="Cutscene_UI/Panel/VBoxContainer/sprite7" unique_id=1806637157]

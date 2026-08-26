@@ -1,5 +1,5 @@
 extends Node
-
+@export var player: CharacterBody2D
 var level_1_1_loaded: int = 0
 var num_mosquitoes: int = 0
 var num_hearts: int = 3
@@ -61,7 +61,7 @@ func decrease_health() -> void:
 		else:
 			hearts[h].hide()
 	if num_hearts == 0:
-		decrease_lives()
+		player.change_state("dead", player.state_access)
 		
 
 

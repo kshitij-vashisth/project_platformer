@@ -372,9 +372,10 @@ position = Vector2(840, 382)
 SPEED = 200.0
 TURN_INTERVAL = 0.5
 
-[node name="GameManager" type="Node" parent="." unique_id=1198250212 node_paths=PackedStringArray("hearts", "points_text")]
+[node name="GameManager" type="Node" parent="." unique_id=1198250212 node_paths=PackedStringArray("player", "hearts", "points_text")]
 unique_name_in_owner = true
 script = ExtResource("1_chlgl")
+player = NodePath("../MainCharacter")
 hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
 points_text = NodePath("../UI/PointsPanel/PointsDisplay/PointsText")
 

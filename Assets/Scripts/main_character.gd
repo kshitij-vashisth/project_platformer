@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var jump_count: int = 0
 var isLeft: bool
+#var isDead: bool = false
 @export var doubleJumpEnabled: bool = false
 var canMove: bool = true
 var playerLastLeft: bool
@@ -17,7 +18,7 @@ var last_direction: float
 @export var hurt_velocity_y: float = 200.0
 @export var zip_range: float = 1000.0
 @export var tongue_release_multiplier: float = 1.0
-
+@export var sfx_defeat: AudioStreamPlayer2D
 
 @onready var tongue_ray_cast: RayCast2D = %TongueRayCast
 @onready var tongue_line: Line2D = %TongueLine
@@ -36,10 +37,15 @@ var wall_pushoff_available: bool = true
 @export var air_accel: float = 10.0
 @export var push_off: float = 20.0
 #============================================================================#
+
+
 func clear_tongue() -> void:
 	tongue_line.visible = false
 	tongue_line.clear_points()
 
+func player_dying() -> void:
+	player_sprites.play("destroyed")
+	hide()
 
 func hurt()-> void:
 	#velocity.y += -hurt_velocity_y
@@ -144,10 +150,14 @@ func gravity_for_jump(delta) -> void:
 	#coyote_timer.wait_time = coyote_time 
 
 func _physics_process(_delta: float) -> void:
+	var lastLives: int = GameManager.lives
 	#orients face for wall jumps and wall slides===#
 	face_orientation()
 	#==============================================#
 	
+	#if GameManager.lives < lastLives:
+		#isDead = true
+		#dead()
 	
 	
 	if is_on_floor():
