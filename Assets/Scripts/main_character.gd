@@ -3,7 +3,7 @@ extends CharacterBody2D
 var bullet = preload("res://Assets/Elements/bullet.tscn")
 @onready var muzzle: Marker2D = %Muzzle
 var muzzle_position
-
+@export var shoot_knockback: int = 5
 var jump_count: int = 0
 var isLeft: bool
 #var isDead: bool = false
@@ -166,6 +166,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
+		if look_dir > 0:
+			position.x -= shoot_knockback
+		else:
+			position.x += shoot_knockback
 		player_muzzle_position()
 		sfx_normal_bullet.play()
 		var bullet_instance = bullet.instantiate() as Node2D

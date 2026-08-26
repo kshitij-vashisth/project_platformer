@@ -25,7 +25,7 @@ func squash() -> void:
 
 func enemy_dead() -> void:
 	GameManager.points += points
-	queue_free()
+	change_state("death", state_access)
 
 func add_gravity(delta: float) -> void:
 	velocity += get_gravity() * delta

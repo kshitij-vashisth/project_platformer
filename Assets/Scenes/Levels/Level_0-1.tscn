@@ -17,13 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://cu2l60p4jewmu" path="res://Assets/Scenes/main_character/main_character.tscn" id="11_nkldq"]
 [ext_resource type="Texture2D" uid="uid://tx258uh578fw" path="res://Assets/Art/measuring_background.png" id="12_0p5ug"]
 [ext_resource type="PackedScene" uid="uid://d1hki1ryp8g1j" path="res://Assets/Scenes/Enemies/mushroom.tscn" id="13_wnoc0"]
-[ext_resource type="AudioStream" uid="uid://0fw58gcruiwx" path="res://Assets/Sounds/BGM/2019-12-09_-_Retro_Forest_-_David_Fesliyan.mp3" id="14_d2prd"]
 [ext_resource type="Script" uid="uid://diikg5ps1q40d" path="res://Assets/Scripts/fall_area.gd" id="15_5tcgr"]
 [ext_resource type="Texture2D" uid="uid://ouc2w2ingvga" path="res://Assets/Art/game_elements/heart.png" id="16_uwflc"]
 [ext_resource type="Script" uid="uid://8l1qwfkeph4n" path="res://Assets/Scripts/pause_screen.gd" id="17_8lgdd"]
 [ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="17_vcnwt"]
 [ext_resource type="Script" uid="uid://baq88q4l7k3pc" path="res://Assets/Scripts/Scenes/ui.gd" id="18_0p5ug"]
 [ext_resource type="Texture2D" uid="uid://cnldq7gd7gdw1" path="res://Assets/Art/UI/Spritesheet_UI_Flat_Animated.png" id="18_8lgdd"]
+[ext_resource type="AudioStream" uid="uid://bnv834ttvllvw" path="res://Assets/Sounds/BGM/Suno/Turbo Burrow_5822.mp3" id="18_l1iog"]
 [ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="20_nkldq"]
 [ext_resource type="PackedScene" uid="uid://bbyxy1bhi57i5" path="res://Assets/Elements/trophy.tscn" id="26_l1iog"]
 
@@ -560,7 +560,8 @@ position = Vector2(612, 369)
 texture = ExtResource("12_0p5ug")
 
 [node name="Level_BGM" type="AudioStreamPlayer2D" parent="." unique_id=605004159]
-stream = ExtResource("14_d2prd")
+stream = ExtResource("18_l1iog")
+volume_db = 5.166
 autoplay = true
 attenuation = 6.772188e-05
 parameters/looping = true
