@@ -8,7 +8,7 @@ var lives: int = 3
 var cherries: int = 0
 #inventory===========================================
 var tutorial_completed: bool = false
-var first_load: bool = false
+var first_load: bool = true
 var has_gun: bool = false
 var has_sword: bool = false
 var has_tome: bool = false

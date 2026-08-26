@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxv5kf5hddovr" path="res://Assets/Scripts/game_over.gd" id="1_ajegg"]
 [ext_resource type="Script" uid="uid://cihrpec7h8b3u" path="res://Assets/Scripts/game_manager.gd" id="1_hg8lq"]
 [ext_resource type="Script" uid="uid://baq88q4l7k3pc" path="res://Assets/Scripts/Scenes/ui.gd" id="2_4cwo7"]
-[ext_resource type="PackedScene" uid="uid://r20ijxfrhi7q" path="res://Assets/Scenes/TransitionScreens/main_menu.tscn" id="2_bqiro"]
+[ext_resource type="PackedScene" uid="uid://mohqakaakyy2" path="res://Assets/Scenes/optional_main_menu.tscn" id="2_ajegg"]
 [ext_resource type="Texture2D" uid="uid://bue1p5p3ypx8r" path="res://Assets/Art/Collectible/mosquito.png" id="3_c5rv3"]
 [ext_resource type="FontFile" uid="uid://61cxjtygi5ck" path="res://Assets/font/Minecraft.ttf" id="4_ajegg"]
 [ext_resource type="AudioStream" uid="uid://bv43vfm7xrlye" path="res://Assets/Sounds/BGM/Yu Yu Hakusho Unreleased Track, Long Version - Struggle Of Sadness.mp3" id="7_d5k3n"]
@@ -27,13 +27,12 @@ animations = [{
 
 [node name="GameOver" type="Node2D" unique_id=539560979]
 script = ExtResource("1_ajegg")
-target_level = ExtResource("2_bqiro")
+target_level = ExtResource("2_ajegg")
 
-[node name="GameManager" type="Node" parent="." unique_id=1404173497 node_paths=PackedStringArray("hearts", "points_text")]
+[node name="GameManager" type="Node" parent="." unique_id=1404173497 node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
 script = ExtResource("1_hg8lq")
-hearts = [NodePath(""), NodePath(""), NodePath("")]
-points_text = NodePath("")
+hearts = [null, null, null]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=318654137 node_paths=PackedStringArray("game_manager", "points_label", "mosquito_points_label")]
 script = ExtResource("2_4cwo7")

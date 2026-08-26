@@ -21,7 +21,7 @@ var last_direction: float
 @export var jump_sound: AudioStreamPlayer2D
 @export var player_hurt_sound: AudioStreamPlayer2D
 @export var hurt_velocity_y: float = 200.0
-@export var zip_range: float = 1000.0
+@export var zip_range: float = 200.0
 @export var tongue_release_multiplier: float = 1.0
 @export var sfx_defeat: AudioStreamPlayer2D
 
@@ -152,12 +152,16 @@ func gravity_for_jump(delta) -> void:
 	velocity.y += gravity_get() * delta
 # End of functions for handling gravity=======================#
 func player_muzzle_position() -> void:
-	if look_dir > 0:
+	if look_dir > 0 and not is_on_wall():
 		muzzle.position.x = muzzle_position.x
-	elif look_dir < 0:
+	elif look_dir < 0 and not is_on_wall():
 		muzzle.position.x = -muzzle_position.x
 
-
+func shooting_knockback()->void:
+	if look_dir > 0:
+			position.x -= shoot_knockback
+	else:
+		position.x += shoot_knockback
 
 # End of functions==============================================================================================#
 func _ready() -> void:
@@ -166,17 +170,16 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
-		if look_dir > 0:
-			position.x -= shoot_knockback
-		else:
-			position.x += shoot_knockback
+		
 		player_muzzle_position()
 		sfx_normal_bullet.play()
 		var bullet_instance = bullet.instantiate() as Node2D
 		if is_on_wall():
 			bullet_instance.direction = -look_dir
+			#pass
 		else:
 			bullet_instance.direction = look_dir
+			shooting_knockback()
 		bullet_instance.global_position = muzzle.global_position
 		get_parent().add_child(bullet_instance)
 	

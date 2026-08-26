@@ -14,6 +14,7 @@ extends Node2D
 @export var exit_button: Button
 @export var chunk: float = 10.0
 
+
 var turnOffMusic: bool = false
 func turn_off_volume(delta: float, chunk: float)-> void:
 	if music.volume_db > -60.0:
@@ -44,32 +45,32 @@ func _ready() -> void:
 		#load_button.disabled = true  
 	load_button.disabled = true  
 	
-	
+	if GameManager.first_load:
 	#intro scene
-	await get_tree().create_timer(0.5).timeout
-	star.show()
-	star.play("default")
-	await get_tree().create_timer(0.5).timeout
-	star.hide()
-	punch_animation(gap_time, size_multiplier)
-	await get_tree().create_timer(2.5).timeout
-	logo_animation(gap_time/6)
-	await get_tree().create_timer(2.0).timeout
-	var anima = Anima.begin(self, 'fade_out')
-	anima.with({ node = main_logo, animation = 'fadeOut', duration = 0.3})
-	anima.with({ node = japan_logo, animation = 'fadeOut', duration = 0.3})
-	anima.with({ node = punch, animation = 'fadeOut', duration = 0.3})
-	anima.play()
+		await get_tree().create_timer(0.5).timeout
+		star.show()
+		star.play("default")
+		await get_tree().create_timer(0.5).timeout
+		star.hide()
+		punch_animation(gap_time, size_multiplier)
+		await get_tree().create_timer(2.5).timeout
+		logo_animation(gap_time/6)
+		await get_tree().create_timer(2.0).timeout
+		var anima = Anima.begin(self, 'fade_out')
+		anima.with({ node = main_logo, animation = 'fadeOut', duration = 0.3})
+		anima.with({ node = japan_logo, animation = 'fadeOut', duration = 0.3})
+		anima.with({ node = punch, animation = 'fadeOut', duration = 0.3})
+		anima.play()
 	
-	#introduce buttons
-	await get_tree().create_timer(gap_time*1.5).timeout
+		#introduce buttons
+		await get_tree().create_timer(gap_time*1.5).timeout
 	start_button.show()
 	load_button.show()
 	exit_button.show()
 
 
-
-func _on_start_pressed() -> void:
+func intro_text_show():
+	GameManager.first_load = false
 	start_button.hide()
 	load_button.hide()
 	exit_button.hide()
@@ -87,6 +88,13 @@ func _on_start_pressed() -> void:
 	.play()
 	next_button.show()
 
+
+func _on_start_pressed() -> void:
+	if GameManager.first_load:
+		intro_text_show()
+	else:
+		get_tree().change_scene_to_file("res://Assets/Scenes/TransitionScreens/level_transition_screen.tscn")
+		
 func goto_main_story() -> void:
 	text_panel.queue_free()
 	get_tree().change_scene_to_file("res://Assets/Scenes/Cutscenes/Intro.tscn")

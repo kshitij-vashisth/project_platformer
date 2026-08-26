@@ -453,7 +453,6 @@ current_state_label = NodePath(".")
 double_jump_switcher = NodePath("../../Double_Jump_Switcher")
 
 [node name="Attributes Panel" type="Panel" parent="Debug_Layer" unique_id=774266971]
-visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -553,6 +552,7 @@ tile_set = SubResource("TileSet_nacht")
 [node name="MainCharacter" parent="." unique_id=2028758806 node_paths=PackedStringArray("game_manager") instance=ExtResource("11_nkldq")]
 position = Vector2(36, 110)
 game_manager = NodePath("../GameManager")
+zip_range = 200.0
 
 [node name="MeasuringBackground" type="Sprite2D" parent="." unique_id=199793740]
 visible = false

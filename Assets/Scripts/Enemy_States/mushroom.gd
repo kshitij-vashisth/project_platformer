@@ -49,12 +49,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			dying = true
 			body.velocity.y += -player_bounce_velocity
 			body.jump_count = 1
-			#GameManager.points += points
+			GameManager.points += points
 			body.change_state("in_air",body.state_access)
 			squash()
 			await get_tree().create_timer(0.2).timeout
-			#queue_free()
-			enemy_dead()
+			queue_free()
+			#enemy_dead()
 		
 		if abs(x_delta) > 0 and not dying:
 			var knock_dir = sign(x_delta)  # +1 if player is to the right of mushroom, -1 if left
