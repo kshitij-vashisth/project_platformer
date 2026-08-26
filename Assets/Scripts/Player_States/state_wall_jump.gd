@@ -27,7 +27,8 @@ func physics_update(delta: float) -> void:
 	player.apply_gravity(delta)
 	player.air_control(delta)
 	
-	
+	if Input.is_action_just_pressed("shoot"):
+		player.shoot_function(0)
 	
 	
 	if player.is_on_floor():

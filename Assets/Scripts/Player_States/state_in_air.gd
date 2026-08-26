@@ -20,6 +20,9 @@ func physics_update(delta: float) -> void:
 		player.playerLastLeft = player.isLeft
 		player.change_state("wall_slide", state_machine)
 	
+	if Input.is_action_just_pressed("shoot"):
+		player.shoot_function(0)
+	
 	# switch to idle
 	if player.is_on_floor():
 		player.playerLastLeft = player.isLeft

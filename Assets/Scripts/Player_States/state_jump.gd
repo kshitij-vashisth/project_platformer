@@ -14,6 +14,8 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("tongue_zip"):
 		player.change_state("tongue_zip", state_machine)
 	
+	if Input.is_action_just_pressed("shoot"):
+		player.shoot_function(0)
 	
 	if Input.is_action_just_released("up") and player.velocity.y < 0:
 		player.velocity.y = player.jump_velocity/20

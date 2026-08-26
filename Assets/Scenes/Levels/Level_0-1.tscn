@@ -453,6 +453,7 @@ current_state_label = NodePath(".")
 double_jump_switcher = NodePath("../../Double_Jump_Switcher")
 
 [node name="Attributes Panel" type="Panel" parent="Debug_Layer" unique_id=774266971]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

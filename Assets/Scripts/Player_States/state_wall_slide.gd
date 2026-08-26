@@ -39,7 +39,8 @@ func physics_update(delta: float) -> void:
 	
 	## --- Horizontal air control ---
 	#player.air_control(delta)
-	
+	if Input.is_action_just_pressed("shoot"):
+		player.on_wall_shoot_function()
 	
 	if Input.is_action_just_pressed("up"):
 		player.change_state("wall_jump", player.state_access)

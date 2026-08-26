@@ -42,6 +42,9 @@ func physics_update(delta: float) -> void:
 	if (not player.is_on_floor()) and (not player.is_on_wall()):
 		player.change_state("in_air", state_machine)
 	
-
+	if Input.is_action_just_pressed("shoot"):
+		player.shoot_function(player.shoot_knockback)
+	
+	
 	# --- Apply movement ---
 	player.move_and_slide()

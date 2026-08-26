@@ -67,6 +67,7 @@ func check_look_dir() -> void:
 	if look_dir != dir_check:
 		print(look_dir)
 		dir_check = look_dir
+		
 func flip_sprite() -> void:
 	isLeft = direction_calculate(velocity.x)
 	player_sprites.flip_h = isLeft
@@ -152,12 +153,42 @@ func gravity_for_jump(delta) -> void:
 	velocity.y += gravity_get() * delta
 # End of functions for handling gravity=======================#
 func player_muzzle_position() -> void:
-	if look_dir > 0 and not is_on_wall():
+	if look_dir > 0:
 		muzzle.position.x = muzzle_position.x
-	elif look_dir < 0 and not is_on_wall():
+	elif look_dir < 0:
 		muzzle.position.x = -muzzle_position.x
 
-func shooting_knockback()->void:
+func player_muzzle_position_on_wall() -> void:
+	if look_dir > 0:
+		muzzle.position.x = -muzzle_position.x
+	elif look_dir < 0:
+		muzzle.position.x = muzzle_position.x
+
+func shoot_function(recoil_value: int) -> void:
+	player_muzzle_position()
+	sfx_normal_bullet.play()
+	
+	var bullet_instance = bullet.instantiate() as Node2D
+	#if is_on_wall():
+		#bullet_instance.direction = -look_dir
+		#pass
+	#else:
+	bullet_instance.direction = look_dir
+	shooting_knockback(recoil_value)
+	bullet_instance.global_position = muzzle.global_position
+	get_parent().add_child(bullet_instance)
+	
+func on_wall_shoot_function() -> void:
+	player_muzzle_position_on_wall()
+	sfx_normal_bullet.play()
+	
+	var bullet_instance = bullet.instantiate() as Node2D
+	bullet_instance.direction = -look_dir
+	
+	bullet_instance.global_position = muzzle.global_position
+	get_parent().add_child(bullet_instance)
+
+func shooting_knockback(shoot_knockback: int)->void:
 	if look_dir > 0:
 			position.x -= shoot_knockback
 	else:
@@ -169,19 +200,8 @@ func _ready() -> void:
 	muzzle_position = muzzle.position
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		
-		player_muzzle_position()
-		sfx_normal_bullet.play()
-		var bullet_instance = bullet.instantiate() as Node2D
-		if is_on_wall():
-			bullet_instance.direction = -look_dir
-			#pass
-		else:
-			bullet_instance.direction = look_dir
-			shooting_knockback()
-		bullet_instance.global_position = muzzle.global_position
-		get_parent().add_child(bullet_instance)
+	#if Input.is_action_just_pressed("shoot"):
+		#shoot_function()
 	
 	
 	var lastLives: int = GameManager.lives
