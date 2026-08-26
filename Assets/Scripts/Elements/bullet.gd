@@ -18,8 +18,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.health -= power
 		if body.health <= 0:
-			GameManager.points += body.points
-			body.queue_free()
+			body.enemy_dead()
 		queue_free()
 	
 	if body.is_in_group("tilemap"):
