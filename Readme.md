@@ -50,6 +50,12 @@ Want to try it out? The previous version of the game is available as a **demo on
 This project has gone back to early stages, with many updates and features planned for the near future. Stay tuned for more updates, and check out the video showcasing the game’s mechanics and current progress!
 ### State Machine Updates Video
 
+## Update 6 (27th August, 2026)
+
+<kbd>Added shooting to different states with knockback and a new intro</kbd>
+
+https://github.com/user-attachments/assets/6713c060-ce47-46f5-a2d1-7702700ca5d1
+
 ## Update 5 (18th August, 2026)
 
 <kbd>Added tongue zipping</kbd>
