@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var state_access: StateMachine 
 @export var points: int = 150
 @onready var game_manager: Node = %GameManager
+@export var health: int = 1
+
 
 var dying: bool = false
 var direction: int = -1
