@@ -3,7 +3,7 @@ var leftStore : bool
 
 @export var player: CharacterBody2D
 @export var ACCEL: float = 10.0
-
+@onready var direction = player.look_dir
 func enter() -> void:
 	player.canMove = true
 	leftStore = player.playerLastLeft
@@ -20,7 +20,7 @@ func physics_update(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("tongue_zip"):
 		player.change_state("tongue_zip", state_machine)
-	
+		
 	# If there's input, switch to Move state
 	if player.input_direction != Vector2.ZERO:
 		#print("idle->move")

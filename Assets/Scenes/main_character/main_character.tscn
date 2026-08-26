@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://b4hwbtlhab3fp" path="res://Assets/Sounds/SFX/warp-in.wav" id="20_wtvnm"]
 [ext_resource type="Script" uid="uid://brbmefbi70jct" path="res://Assets/Scripts/Player_States/state_dead.gd" id="23_mu4j4"]
 [ext_resource type="AudioStream" uid="uid://dbfl8wmnh7wv3" path="res://Assets/Sounds/SFX/defeated.mp3" id="28_cpqnk"]
+[ext_resource type="AudioStream" uid="uid://ci33yg8f4segf" path="res://Assets/Sounds/SFX/bullet_sounds/normal_bullet.mp3" id="29_sw1ma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aokoc"]
 atlas = ExtResource("2_ni71n")
@@ -542,7 +543,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1vrm"]
 size = Vector2(34, 50)
 
-[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "sfx_defeat", "state_access")]
+[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "sfx_defeat", "sfx_normal_bullet", "state_access")]
 collision_layer = 2
 script = ExtResource("1_4rsxi")
 player_sprites = NodePath("Sprite2D")
@@ -550,6 +551,7 @@ jump_sound = NodePath("SFX/jump_sound")
 player_hurt_sound = NodePath("SFX/player_hurt_sound")
 zip_range = 300.0
 sfx_defeat = NodePath("SFX/defeat")
+sfx_normal_bullet = NodePath("SFX/normal_bullet_shoot")
 coyote_time = 100.0
 knockback_velocity = 1200.0
 jump_height = 150.0
@@ -566,10 +568,9 @@ autostart = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sw1ma")
-animation = &"destroyed"
+animation = &"walk"
 autoplay = "warp_in"
-frame = 13
-frame_progress = 1.0
+frame_progress = 0.6049543
 
 [node name="MainCollider" type="CollisionShape2D" parent="." unique_id=373265813]
 position = Vector2(1, 7)
@@ -699,3 +700,11 @@ volume_db = 7.016
 [node name="defeat" type="AudioStreamPlayer2D" parent="SFX" unique_id=993963295]
 stream = ExtResource("28_cpqnk")
 volume_db = 12.5
+
+[node name="normal_bullet_shoot" type="AudioStreamPlayer2D" parent="SFX" unique_id=2011742684]
+stream = ExtResource("29_sw1ma")
+volume_db = 7.232
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=644844870]
+unique_name_in_owner = true
+position = Vector2(36, 12)

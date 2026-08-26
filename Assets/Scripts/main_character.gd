@@ -1,11 +1,16 @@
 extends CharacterBody2D
+
+var bullet = preload("res://Assets/Elements/bullet.tscn")
+@onready var muzzle: Marker2D = %Muzzle
+var muzzle_position
+
 var jump_count: int = 0
 var isLeft: bool
 #var isDead: bool = false
 @export var doubleJumpEnabled: bool = false
 var canMove: bool = true
 var playerLastLeft: bool
-var look_dir: int = 0
+var look_dir: int = 1
 @export var player_sprites :AnimatedSprite2D
 @export var slide_speed: int = 4000
 var input_direction = Vector2.ZERO
@@ -23,6 +28,9 @@ var last_direction: float
 @onready var tongue_ray_cast: RayCast2D = %TongueRayCast
 @onready var tongue_line: Line2D = %TongueLine
 @onready var aim_line: Line2D = %AimLine
+
+
+@export var sfx_normal_bullet: AudioStreamPlayer2D
 
 
 # finer parameters for smoother movement=====================================#
@@ -143,13 +151,32 @@ func direction_calculate(x_velocity: float) -> bool:
 func gravity_for_jump(delta) -> void:
 	velocity.y += gravity_get() * delta
 # End of functions for handling gravity=======================#
+func player_muzzle_position() -> void:
+	if look_dir > 0:
+		muzzle.position.x = muzzle_position.x
+	elif look_dir < 0:
+		muzzle.position.x = -muzzle_position.x
+
 
 
 # End of functions==============================================================================================#
-#func _ready() -> void:
+func _ready() -> void:
 	#coyote_timer.wait_time = coyote_time 
+	muzzle_position = muzzle.position
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		player_muzzle_position()
+		sfx_normal_bullet.play()
+		var bullet_instance = bullet.instantiate() as Node2D
+		if is_on_wall():
+			bullet_instance.direction = -look_dir
+		else:
+			bullet_instance.direction = look_dir
+		bullet_instance.global_position = muzzle.global_position
+		get_parent().add_child(bullet_instance)
+	
+	
 	var lastLives: int = GameManager.lives
 	#orients face for wall jumps and wall slides===#
 	face_orientation()
