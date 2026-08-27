@@ -44,7 +44,6 @@ size = Vector2(13, 6)
 
 [node name="Bullet" type="AnimatedSprite2D" unique_id=254983548]
 texture_filter = 1
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0cgwx")
 autoplay = "default"
 frame_progress = 0.86576414
