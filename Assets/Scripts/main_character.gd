@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@export var firing_light_value: float = 20.0
 var bullet = preload("res://Assets/Elements/bullet.tscn")
 var shell = preload("res://Assets/Elements/Shell.tscn")
 @onready var muzzle: Marker2D = %Muzzle
@@ -30,7 +30,7 @@ var last_direction: float
 @onready var tongue_line: Line2D = %TongueLine
 @onready var aim_line: Line2D = %AimLine
 
-
+@export var shoot_light: PointLight2D
 @export var sfx_normal_bullet: AudioStreamPlayer2D
 
 
@@ -164,9 +164,17 @@ func player_muzzle_position_on_wall() -> void:
 		muzzle.position.x = -muzzle_position.x
 	elif look_dir < 0:
 		muzzle.position.x = muzzle_position.x
+	
 
 func shoot_function(recoil_value: int) -> void:
 	player_muzzle_position()
+	
+	shoot_light.global_position = muzzle.global_position
+	shoot_light.energy = firing_light_value
+
+	var tween = create_tween()
+	tween.tween_property(shoot_light, "energy", 0.0, 0.08)
+	
 	sfx_normal_bullet.play()
 	var shell_instance = shell.instantiate() as Node2D
 	var bullet_instance = bullet.instantiate() as Node2D
@@ -184,6 +192,13 @@ func shoot_function(recoil_value: int) -> void:
 	
 func on_wall_shoot_function() -> void:
 	player_muzzle_position_on_wall()
+	
+	shoot_light.global_position = muzzle.global_position
+	shoot_light.energy = firing_light_value
+
+	var tween = create_tween()
+	tween.tween_property(shoot_light, "energy", 0.0, 0.08)
+	
 	sfx_normal_bullet.play()
 	
 	var bullet_instance = bullet.instantiate() as Node2D
@@ -200,6 +215,7 @@ func shooting_knockback(shoot_knockback: int)->void:
 
 # End of functions==============================================================================================#
 func _ready() -> void:
+	shoot_light.energy = 0.0
 	#coyote_timer.wait_time = coyote_time 
 	muzzle_position = muzzle.position
 

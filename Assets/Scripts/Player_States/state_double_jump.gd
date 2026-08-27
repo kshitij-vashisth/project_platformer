@@ -43,6 +43,9 @@ func physics_update(delta: float) -> void:
 		print("double_jump->wall_slide")
 		state_machine.change_state("wall_slide")
 	
+	if Input.is_action_just_pressed("shoot"):
+		player.shoot_function(0)
+	
 	if Input.is_action_just_pressed("tongue_zip"):
 		player.change_state("tongue_zip", state_machine)
 	

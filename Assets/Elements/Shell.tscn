@@ -8,6 +8,7 @@ size = Vector2(11, 2)
 
 [node name="Shell" type="CharacterBody2D" unique_id=1886156676]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 collision_layer = 128
 script = ExtResource("2_o1hhd")
 

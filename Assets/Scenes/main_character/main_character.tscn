@@ -543,15 +543,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1vrm"]
 size = Vector2(34, 50)
 
-[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "sfx_defeat", "sfx_normal_bullet", "state_access")]
+[sub_resource type="Gradient" id="Gradient_sw1ma"]
+colors = PackedColorArray(1, 0.98039216, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1iog"]
+gradient = SubResource("Gradient_sw1ma")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "sfx_defeat", "shoot_light", "sfx_normal_bullet", "state_access")]
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_4rsxi")
+firing_light_value = 2.0
 player_sprites = NodePath("Sprite2D")
 jump_sound = NodePath("SFX/jump_sound")
 player_hurt_sound = NodePath("SFX/player_hurt_sound")
 zip_range = 300.0
 sfx_defeat = NodePath("SFX/defeat")
+shoot_light = NodePath("ShootLight")
 sfx_normal_bullet = NodePath("SFX/normal_bullet_shoot")
 coyote_time = 100.0
 knockback_velocity = 1200.0
@@ -708,3 +721,7 @@ volume_db = 7.232
 [node name="Muzzle" type="Marker2D" parent="." unique_id=644844870]
 unique_name_in_owner = true
 position = Vector2(36, 10)
+
+[node name="ShootLight" type="PointLight2D" parent="." unique_id=877536140]
+position = Vector2(36, 10)
+texture = SubResource("GradientTexture2D_l1iog")
