@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://br7p2hndijc8l"]
+
+[ext_resource type="Texture2D" uid="uid://cvnkbofyk2l61" path="res://Assets/Art/game_elements/pistol_bullet_shell.png" id="1_brwlm"]
+[ext_resource type="Script" uid="uid://w7etwefuwwmr" path="res://Assets/Scripts/Elements/bullet_shell.gd" id="2_o1hhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cgwx"]
+size = Vector2(11, 2)
+
+[node name="Shell" type="CharacterBody2D" unique_id=1886156676]
+texture_filter = 1
+collision_layer = 128
+script = ExtResource("2_o1hhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1065053744]
+texture = ExtResource("1_brwlm")
+
+[node name="Timer" type="Timer" parent="." unique_id=976177907]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2136284402]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0cgwx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

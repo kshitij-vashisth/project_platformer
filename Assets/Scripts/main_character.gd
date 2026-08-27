@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var bullet = preload("res://Assets/Elements/bullet.tscn")
+var shell = preload("res://Assets/Elements/Shell.tscn")
 @onready var muzzle: Marker2D = %Muzzle
 var muzzle_position
 @export var shoot_knockback: int = 5
@@ -167,15 +168,18 @@ func player_muzzle_position_on_wall() -> void:
 func shoot_function(recoil_value: int) -> void:
 	player_muzzle_position()
 	sfx_normal_bullet.play()
-	
+	var shell_instance = shell.instantiate() as Node2D
 	var bullet_instance = bullet.instantiate() as Node2D
 	#if is_on_wall():
 		#bullet_instance.direction = -look_dir
 		#pass
 	#else:
 	bullet_instance.direction = look_dir
+	shell_instance.direction = - bullet_instance.direction
 	shooting_knockback(recoil_value)
+	shell_instance.global_position = muzzle.global_position
 	bullet_instance.global_position = muzzle.global_position
+	get_parent().add_child(shell_instance)
 	get_parent().add_child(bullet_instance)
 	
 func on_wall_shoot_function() -> void:
