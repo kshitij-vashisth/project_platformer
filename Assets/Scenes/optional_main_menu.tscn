@@ -242,3 +242,4 @@ text = "EXIT
 
 [connection signal="pressed" from="Intro_elements/Panel/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Buttons/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

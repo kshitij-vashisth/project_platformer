@@ -111,3 +111,7 @@ func _on_continue_pressed() -> void:
 func _physics_process(delta: float) -> void:
 	if turnOffMusic:
 		turn_off_volume(delta, chunk)
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
