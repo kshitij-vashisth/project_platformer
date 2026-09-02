@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@export var pointsEnabled: bool = true
 @export var SPEED: float = 300.0
 @export var player_bounce_velocity: float = 400.0
 @export var sprite:AnimatedSprite2D
@@ -44,15 +45,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "MainCharacter":
 		var y_delta = position.y - body.position.y
 		var x_delta = body.position.x - position.x
-		if y_delta > 30:
+		if y_delta > 30 and pointsEnabled:
 			can_move = false
 			dying = true
 			body.velocity.y += -player_bounce_velocity
 			body.jump_count = 1
 			GameManager.points += points
+			pointsEnabled = false
 			body.change_state("in_air",body.state_access)
 			squash()
-			await get_tree().create_timer(0.2).timeout
+			if not pointsEnabled:
+				await get_tree().create_timer(0.2).timeout
 			queue_free()
 			#enemy_dead()
 		

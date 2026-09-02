@@ -6,9 +6,13 @@ var leftStore : bool
 @onready var direction = player.look_dir
 func enter() -> void:
 	player.canMove = true
-	leftStore = player.playerLastLeft
+	#if player.look_dir < 0:
+		#player.player_sprites.flip_h = true
+	#else:
+		#player.player_sprites.flip_h = false	
+	#leftStore = player.playerLastLeft
 	player.player_sprites.play("idle")
-	player.player_sprites.flip_h = leftStore
+	#player.player_sprites.flip_h = leftStore
 
 func change_to_wall_slide():
 	if player.is_on_wall_only():
@@ -16,6 +20,10 @@ func change_to_wall_slide():
 
 func physics_update(delta: float) -> void:
 	#gravity
+	if player.look_dir < 0:
+		player.player_sprites.flip_h = true
+	else:
+		player.player_sprites.flip_h = false
 	player.apply_gravity(delta)
 	
 	if Input.is_action_just_pressed("tongue_zip"):

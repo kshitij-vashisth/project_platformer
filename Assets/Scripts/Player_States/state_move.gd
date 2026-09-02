@@ -3,8 +3,12 @@ extends State
 @export var player: CharacterBody2D
 
 func physics_update(delta: float) -> void:
-	player.isLeft = player.direction_calculate(player.velocity.x)
-	player.player_sprites.flip_h = player.isLeft
+	if player.look_dir < 0:
+		player.player_sprites.flip_h = true
+	else:
+		player.player_sprites.flip_h = false
+	#player.isLeft = player.direction_calculate(player.velocity.x)
+	#player.player_sprites.flip_h = player.isLeft
 	player.player_sprites.play("walk")
 	#gravity
 	player.apply_gravity(delta)

@@ -19,7 +19,8 @@ func _on_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.health -= power
-		if body.health <= 0:
+		if body.health <= 0 and body.pointsEnabled:
+			body.pointsEnabled = false
 			body.enemy_dead()
 		queue_free()
 	

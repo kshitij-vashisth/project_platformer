@@ -453,7 +453,6 @@ current_state_label = NodePath(".")
 double_jump_switcher = NodePath("../../Double_Jump_Switcher")
 
 [node name="Attributes Panel" type="Panel" parent="Debug_Layer" unique_id=774266971]
-visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -462,6 +461,7 @@ offset_bottom = 192.0
 grow_horizontal = 0
 
 [node name="on_floor" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=2145379866 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -476,6 +476,7 @@ script = ExtResource("2_wnoc0")
 Player = NodePath("../../../MainCharacter")
 
 [node name="jump_counter" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=618271030 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -493,6 +494,7 @@ script = ExtResource("3_d2prd")
 Player = NodePath("../../../MainCharacter")
 
 [node name="isLeft" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=1021393648 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -506,6 +508,7 @@ script = ExtResource("4_5tcgr")
 Player = NodePath("../../../MainCharacter")
 
 [node name="on_wall" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=1069953673 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 0
 offset_left = 9.0
 offset_top = 72.0
@@ -516,6 +519,7 @@ script = ExtResource("5_uwflc")
 Player = NodePath("../../../MainCharacter")
 
 [node name="look_dir" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=1251676344 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 0
 offset_left = 11.0
 offset_top = 132.0
@@ -526,6 +530,7 @@ script = ExtResource("6_n1vnx")
 Player = NodePath("../../../MainCharacter")
 
 [node name="velocity_checker" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=966889893 node_paths=PackedStringArray("Player")]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 158.0
@@ -536,6 +541,7 @@ script = ExtResource("7_vcnwt")
 Player = NodePath("../../../MainCharacter")
 
 [node name="coyote_timer" type="RichTextLabel" parent="Debug_Layer/Attributes Panel" unique_id=1354682390]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 158.0

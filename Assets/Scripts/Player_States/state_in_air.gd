@@ -5,6 +5,10 @@ func enter() -> void:
 	player.canMove = true
 
 func physics_update(delta: float) -> void:
+	#if player.look_dir < 0:
+		#player.player_sprites.flip_h = true
+	#else:
+		#player.player_sprites.flip_h = false
 	player.apply_gravity(delta)
 	player.player_sprites.play("jump")
 	#player.isLeft = player.direction_calculate(player.velocity.x)
