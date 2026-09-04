@@ -1,4 +1,6 @@
 extends CharacterBody2D
+var stored_sign_x_velocity: int = 0
+var toBounce: bool = false
 @export var firing_light_value: float = 20.0
 var bullet = preload("res://Assets/Elements/bullet.tscn")
 var shell = preload("res://Assets/Elements/Shell.tscn")
@@ -62,22 +64,49 @@ func hurt()-> void:
 	player_sprites.play("hurt")
 	#player_hurt_sound.play()
 
-func check_look_dir() -> void:
-	var dir_check: int
-	dir_check = 0
-	if look_dir != dir_check:
-		print(look_dir)
-		dir_check = look_dir
-		
+#func check_look_dir() -> void:
+	#var dir_check: int
+	#dir_check = 0
+	#if look_dir != dir_check:
+		#print(look_dir)
+		#dir_check = look_dir
+
+func velocity_sign_handler()-> int:
+	if not velocity.x == 0:
+		stored_sign_x_velocity = sign(velocity.x)
+	return stored_sign_x_velocity
+
+
+func is_left_calculate()-> bool:
+	var yesLeft: bool = false
+	if input_direction.x < 0:
+		yesLeft = true
+		look_dir = sign(input_direction.x)
+	elif input_direction.x > 0:
+		yesLeft = false
+		look_dir = sign(input_direction.x)
+	elif stored_sign_x_velocity < 0:
+		yesLeft = true
+		look_dir = stored_sign_x_velocity
+	elif stored_sign_x_velocity > 0:
+		yesLeft = false 
+		look_dir = stored_sign_x_velocity
+	else:
+		yesLeft = false
+		look_dir = 1
+	return yesLeft
+
+
 func flip_sprite() -> void:
-	isLeft = direction_calculate(velocity.x)
+	
+	isLeft = is_left_calculate()
 	player_sprites.flip_h = isLeft
 
 # finer movement functions===================================================#
-func coyote_checker(_was_on_floor: bool) -> void:
-	#if was_on_floor and !is_on_floor():
-		#coyote_timer.start()
-	pass
+#func coyote_checker(_was_on_floor: bool) -> void:
+	##if was_on_floor and !is_on_floor():
+		##coyote_timer.start()
+	#pass
 		
 func jump_using_coyote_timer(_state_machine) -> void:
 	#if Input.is_action_just_pressed("up") and (is_on_floor() or coyote_timer.is_stopped()):
@@ -125,6 +154,8 @@ func jump()-> void:
 func face_orientation() -> void:
 	if velocity.x != 0:	
 		look_dir = sign(velocity.x)
+	else:
+		look_dir = stored_sign_x_velocity
 #================================================#
 
 # air control function==========================================#
@@ -213,6 +244,9 @@ func shooting_knockback(shoot_knockback: int)->void:
 	else:
 		position.x += shoot_knockback
 
+func _special_reload() -> void:
+		get_tree().reload_current_scene()
+
 # End of functions==============================================================================================#
 func _ready() -> void:
 	shoot_light.energy = 0.0
@@ -220,13 +254,17 @@ func _ready() -> void:
 	muzzle_position = muzzle.position
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("reload_scene") and OS.is_debug_build():
+		call_deferred("_special_reload")
+	if toBounce:
+		change_state("bounce", state_access)
 	#if Input.is_action_just_pressed("shoot"):
 		#shoot_function()
-	
-	
+	is_left_calculate()
+	velocity_sign_handler()
 	var lastLives: int = GameManager.lives
 	#orients face for wall jumps and wall slides===#
-	face_orientation()
+	#face_orientation()
 	#==============================================#
 	
 	#if GameManager.lives < lastLives:
@@ -239,13 +277,13 @@ func _physics_process(_delta: float) -> void:
 	input_direction.x = Input.get_axis("left", "right")
 	#input_direction.y = Input.get_axis("up", "down")
 	var was_on_floor: bool = is_on_floor()
-	coyote_checker(was_on_floor)
+	#coyote_checker(was_on_floor)
 
 func _process(delta):
 	var mouse_position := get_global_mouse_position()
-	var direction := global_position.direction_to(mouse_position)
+	var tongue_direction := global_position.direction_to(mouse_position)
 
 	aim_line.points = PackedVector2Array([
 		aim_line.to_local(global_position),
-		aim_line.to_local(global_position + direction * 1000.0)
+		aim_line.to_local(global_position + tongue_direction * 1000.0)
 	])

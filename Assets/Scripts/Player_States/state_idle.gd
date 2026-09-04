@@ -19,11 +19,12 @@ func change_to_wall_slide():
 		player.change_state("wall_slide", state_machine)
 
 func physics_update(delta: float) -> void:
-	#gravity
 	if player.look_dir < 0:
 		player.player_sprites.flip_h = true
 	else:
 		player.player_sprites.flip_h = false
+	
+	#gravity
 	player.apply_gravity(delta)
 	
 	if Input.is_action_just_pressed("tongue_zip"):

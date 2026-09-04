@@ -16,7 +16,7 @@ func physics_update(delta: float) -> void:
 	player.air_control(delta)
 	
 	if Input.is_action_just_pressed("up") and player.doubleJumpEnabled:
-		player.playerLastLeft = !player.isLeft
+		#player.playerLastLeft = !player.isLeft
 		player.change_state("double_jump",state_machine)
 	
 	# switch to wall slide
@@ -29,7 +29,7 @@ func physics_update(delta: float) -> void:
 	
 	# switch to idle
 	if player.is_on_floor():
-		player.playerLastLeft = player.isLeft
+		#player.playerLastLeft = player.isLeft
 		player.change_state("idle", state_machine)
 
 	player.move_and_slide()

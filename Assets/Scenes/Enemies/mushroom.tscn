@@ -287,6 +287,10 @@ size = Vector2(44, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnbn"]
 size = Vector2(52, 36)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0cgwx"]
+a = Vector2(17, -5)
+b = Vector2(-20, -5)
+
 [node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "state_access")]
 collision_mask = 2
 script = ExtResource("1_ch3m3")
@@ -299,10 +303,8 @@ state_access = NodePath("StateMachine")
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fwbh4")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551831987]
 position = Vector2(0, 13)
@@ -349,4 +351,13 @@ target_position = Vector2(0, 25)
 stream = ExtResource("10_deem5")
 volume_db = 7.576
 
+[node name="bounce_detector" type="Area2D" parent="." unique_id=1350997880]
+position = Vector2(0, -2)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce_detector" unique_id=909788757]
+position = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_0cgwx")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="bounce_detector" to="." method="_on_bounce_detector_body_entered"]
