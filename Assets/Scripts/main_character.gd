@@ -21,19 +21,25 @@ var last_direction: float
 @export var game_manager: Node
 @export var move_speed: float = 200.0
 @export var move_accel: float = 15.0
-@export var jump_sound: AudioStreamPlayer2D
-@export var player_hurt_sound: AudioStreamPlayer2D
+
 @export var hurt_velocity_y: float = 200.0
 @export var zip_range: float = 200.0
 @export var tongue_release_multiplier: float = 1.0
-@export var sfx_defeat: AudioStreamPlayer2D
 
 @onready var tongue_ray_cast: RayCast2D = %TongueRayCast
 @onready var tongue_line: Line2D = %TongueLine
 @onready var aim_line: Line2D = %AimLine
 
 @export var shoot_light: PointLight2D
-@export var sfx_normal_bullet: AudioStreamPlayer2D
+
+#sfx/bgm=======================================================>
+@export var jump_sound: AudioStreamPlayer
+@export var player_hurt_sound: AudioStreamPlayer
+@export var sfx_defeat: AudioStreamPlayer
+@export var sfx_normal_bullet: AudioStreamPlayer
+#==============================================================>
+
+
 
 
 # finer parameters for smoother movement=====================================#
@@ -195,7 +201,19 @@ func player_muzzle_position_on_wall() -> void:
 		muzzle.position.x = -muzzle_position.x
 	elif look_dir < 0:
 		muzzle.position.x = muzzle_position.x
-	
+
+
+func bullet_and_shell_instance(recoil_value: int)-> void:
+	sfx_normal_bullet.play()
+	var shell_instance = shell.instantiate() as Node2D
+	var bullet_instance = bullet.instantiate() as Node2D
+	bullet_instance.direction = look_dir
+	shell_instance.direction = - bullet_instance.direction
+	shooting_knockback(recoil_value)
+	shell_instance.global_position = muzzle.global_position
+	bullet_instance.global_position = muzzle.global_position
+	get_parent().add_child(shell_instance)
+	get_parent().add_child(bullet_instance)
 
 func shoot_function(recoil_value: int) -> void:
 	player_muzzle_position()
@@ -209,10 +227,6 @@ func shoot_function(recoil_value: int) -> void:
 	sfx_normal_bullet.play()
 	var shell_instance = shell.instantiate() as Node2D
 	var bullet_instance = bullet.instantiate() as Node2D
-	#if is_on_wall():
-		#bullet_instance.direction = -look_dir
-		#pass
-	#else:
 	bullet_instance.direction = look_dir
 	shell_instance.direction = - bullet_instance.direction
 	shooting_knockback(recoil_value)
@@ -231,12 +245,14 @@ func on_wall_shoot_function() -> void:
 	tween.tween_property(shoot_light, "energy", 0.0, 0.08)
 	
 	sfx_normal_bullet.play()
-	
+	var shell_instance = shell.instantiate() as Node2D
 	var bullet_instance = bullet.instantiate() as Node2D
 	bullet_instance.direction = -look_dir
-	
+	shell_instance.direction = - bullet_instance.direction
 	bullet_instance.global_position = muzzle.global_position
+	shell_instance.global_position = muzzle.global_position
 	get_parent().add_child(bullet_instance)
+	get_parent().add_child(shell_instance)
 
 func shooting_knockback(shoot_knockback: int)->void:
 	if look_dir > 0:

@@ -1,6 +1,6 @@
 extends State
 
-@export var sfx_tongue_launch: AudioStreamPlayer2D
+@export var sfx_tongue_launch: AudioStreamPlayer
 @export var tongue_acceleration: float = 2500.0
 @export var player: CharacterBody2D
 @export var tongue_extension_speed: float = 2500.0

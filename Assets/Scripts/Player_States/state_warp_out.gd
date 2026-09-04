@@ -1,7 +1,7 @@
 extends State
 @export var player: CharacterBody2D
 @export var player_collider: CollisionShape2D
-@export var warp_sound: AudioStreamPlayer2D
+@export var warp_sound: AudioStreamPlayer
 func enter() -> void:
 	player_collider.disabled
 	warp_sound.play()

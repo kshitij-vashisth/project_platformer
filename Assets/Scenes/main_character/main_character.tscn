@@ -555,17 +555,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "jump_sound", "player_hurt_sound", "sfx_defeat", "shoot_light", "sfx_normal_bullet", "state_access")]
+[node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "shoot_light", "jump_sound", "player_hurt_sound", "sfx_defeat", "sfx_normal_bullet", "state_access")]
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_4rsxi")
 firing_light_value = 2.0
 player_sprites = NodePath("Sprite2D")
+zip_range = 300.0
+shoot_light = NodePath("ShootLight")
 jump_sound = NodePath("SFX/jump_sound")
 player_hurt_sound = NodePath("SFX/player_hurt_sound")
-zip_range = 300.0
 sfx_defeat = NodePath("SFX/defeat")
-shoot_light = NodePath("ShootLight")
 sfx_normal_bullet = NodePath("SFX/normal_bullet_shoot")
 coyote_time = 100.0
 knockback_velocity = 1200.0
@@ -701,26 +701,26 @@ width = 2.0
 
 [node name="SFX" type="Node" parent="." unique_id=214389420]
 
-[node name="warp_sound" type="AudioStreamPlayer2D" parent="SFX" unique_id=42454943]
+[node name="warp_sound" type="AudioStreamPlayer" parent="SFX" unique_id=1422733523]
 stream = ExtResource("20_wtvnm")
 volume_db = 12.794
 
-[node name="player_hurt_sound" type="AudioStreamPlayer2D" parent="SFX" unique_id=1355306598]
+[node name="player_hurt_sound" type="AudioStreamPlayer" parent="SFX" unique_id=467435178]
 stream = ExtResource("16_cikix")
 volume_db = 24.0
 
-[node name="jump_sound" type="AudioStreamPlayer2D" parent="SFX" unique_id=1342301048]
+[node name="jump_sound" type="AudioStreamPlayer" parent="SFX" unique_id=391034784]
 stream = ExtResource("15_45f5x")
 
-[node name="sfx_tongue_launch" type="AudioStreamPlayer2D" parent="SFX" unique_id=1905068094]
+[node name="sfx_tongue_launch" type="AudioStreamPlayer" parent="SFX" unique_id=1189454903]
 stream = ExtResource("20_gqd6n")
 volume_db = 7.016
 
-[node name="defeat" type="AudioStreamPlayer2D" parent="SFX" unique_id=993963295]
+[node name="defeat" type="AudioStreamPlayer" parent="SFX" unique_id=923549101]
 stream = ExtResource("28_cpqnk")
 volume_db = 12.5
 
-[node name="normal_bullet_shoot" type="AudioStreamPlayer2D" parent="SFX" unique_id=2011742684]
+[node name="normal_bullet_shoot" type="AudioStreamPlayer" parent="SFX" unique_id=262042108]
 stream = ExtResource("29_sw1ma")
 volume_db = 7.232
 
