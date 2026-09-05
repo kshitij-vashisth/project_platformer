@@ -20,7 +20,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.health -= power
 		if body.health <= 0 and body.pointsEnabled:
+			#body.collider.disabled
 			body.pointsEnabled = false
+			body.sprite.play("death")
+			body.bullet_death_sound.play()
 			body.enemy_dead()
 		queue_free()
 	

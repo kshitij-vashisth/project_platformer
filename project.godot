@@ -28,6 +28,7 @@ ANIMA="*uid://dwuq4d3ejn1mf"
 
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://ehexx7rsa6m2"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [editor_plugins]
 

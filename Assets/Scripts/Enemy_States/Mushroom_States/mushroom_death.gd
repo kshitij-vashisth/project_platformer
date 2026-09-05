@@ -1,14 +1,13 @@
 extends State
-@export var mushroom: CharacterBody2D
+@export var enemy: CharacterBody2D
 @export var sprite: AnimatedSprite2D
-@export var death_sound: AudioStreamPlayer2D
+#@export var death_sound: AudioStreamPlayer2D
+
 func enter() -> void:
-	death_sound.play()
-	sprite.play("death")
-	await get_tree().create_timer(0.45).timeout
-	mushroom.queue_free()
+	GameManager.points += enemy.points
+	await sprite.animation_finished
+	enemy.queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func physics_update(delta: float) -> void:
+	enemy.collider1.disabled = true
+	enemy.collider2.disabled = true

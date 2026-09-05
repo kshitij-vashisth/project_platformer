@@ -1,6 +1,9 @@
 extends CharacterBody2D
+@export var collider1: CollisionShape2D
+@export var collider2: CollisionShape2D
 @export var pointsEnabled: bool = true
 @export var SPEED: float = 300.0
+@export var bullet_death_sound: AudioStreamPlayer
 #@export var player_bounce_velocity: float = 400.0
 @export var sprite:AnimatedSprite2D
 @export var ground_check: RayCast2D
@@ -25,7 +28,6 @@ func squash() -> void:
 	sprite.position.y += 23
 
 func enemy_dead() -> void:
-	GameManager.points += points
 	change_state("death", state_access)
 
 func add_gravity(delta: float) -> void:
@@ -56,8 +58,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			squash()
 			if not pointsEnabled:
 				await get_tree().create_timer(0.2).timeout
-			queue_free()
 			enemy_dead()
+			queue_free()
 		
 		if abs(x_delta) > 0 and not dying:
 			var knock_dir = sign(x_delta)  # +1 if player is to the right of mushroom, -1 if left
@@ -67,20 +69,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.change_state("hurt", body.state_access)
 			game_manager.decrease_health()
 			#GameManager.num_hearts = game_manager.num_hearts
-		
-
-
-func _on_bounce_detector_body_entered(body: Node2D) -> void:
-	#if pointsEnabled and not isInvincible:
-			#can_move = false
-			#dying = true
-			##body.velocity.y += -player_bounce_velocity
-			##body.jump_count = 1
-			#GameManager.points += points
-			#pointsEnabled = false
-			##body.toBounce = true
-			#squash()
-			#if not pointsEnabled:
-				#await get_tree().create_timer(0.2).timeout
-			#queue_free()
-			pass

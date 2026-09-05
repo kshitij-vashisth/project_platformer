@@ -287,13 +287,12 @@ size = Vector2(44, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnbn"]
 size = Vector2(52, 36)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0cgwx"]
-a = Vector2(17, -5)
-b = Vector2(-20, -5)
-
-[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("sprite", "ground_check", "squash_sound", "state_access")]
+[node name="Mushroom" type="CharacterBody2D" unique_id=871202480 node_paths=PackedStringArray("collider1", "collider2", "bullet_death_sound", "sprite", "ground_check", "squash_sound", "state_access")]
 collision_mask = 2
 script = ExtResource("1_ch3m3")
+collider1 = NodePath("Collider")
+collider2 = NodePath("Area2D/CollisionShape2D")
+bullet_death_sound = NodePath("bullet_death")
 sprite = NodePath("AnimatedSprite2D")
 ground_check = NodePath("groundCheck")
 squash_sound = NodePath("squash_sound")
@@ -306,7 +305,7 @@ sprite_frames = SubResource("SpriteFrames_fwbh4")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1551831987]
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1551831987]
 position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_ch3m3")
 
@@ -325,11 +324,10 @@ script = ExtResource("5_g0cec")
 mushroom = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
-[node name="Death" type="Node" parent="StateMachine" unique_id=2102465022 node_paths=PackedStringArray("mushroom", "sprite", "death_sound")]
+[node name="Death" type="Node" parent="StateMachine" unique_id=2102465022 node_paths=PackedStringArray("enemy", "sprite")]
 script = ExtResource("8_lrsgp")
-mushroom = NodePath("../..")
+enemy = NodePath("../..")
 sprite = NodePath("../../AnimatedSprite2D")
-death_sound = NodePath("../../bullet_death")
 metadata/_custom_type_script = "uid://71savu34cj01"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1304854540]
@@ -347,17 +345,8 @@ volume_db = 14.0
 position = Vector2(-30, 7)
 target_position = Vector2(0, 25)
 
-[node name="bullet_death" type="AudioStreamPlayer2D" parent="." unique_id=731332171]
+[node name="bullet_death" type="AudioStreamPlayer" parent="." unique_id=651087788]
 stream = ExtResource("10_deem5")
 volume_db = 7.576
 
-[node name="bounce_detector" type="Area2D" parent="." unique_id=1350997880]
-position = Vector2(0, -2)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce_detector" unique_id=909788757]
-position = Vector2(1, 1)
-shape = SubResource("SegmentShape2D_0cgwx")
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="bounce_detector" to="." method="_on_bounce_detector_body_entered"]
