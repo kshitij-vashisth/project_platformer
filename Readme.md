@@ -1,5 +1,3 @@
-test push
-
 # Game Project Overview: Retro-Inspired 2D Action Platformer
 
 <kbd>New Update: Game is now called Kermitted! New updated footage available for viewing below</kbd>
