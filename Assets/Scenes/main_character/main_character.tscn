@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyfbis8fwvbqd" path="res://Assets/Scripts/main_character.gd" id="1_4rsxi"]
 [ext_resource type="Script" uid="uid://ne6xbq0iydbo" path="res://Assets/Scripts/Base State Code/state_machine.gd" id="1_alh7r"]
+[ext_resource type="Texture2D" uid="uid://dw1vpnopakk5m" path="res://Assets/Art/Character/Crouch_gun(32x32).png" id="2_hgjrd"]
 [ext_resource type="Script" uid="uid://ynsjbdfvc45d" path="res://Assets/Scripts/Player_States/state_idle.gd" id="2_mrqhj"]
 [ext_resource type="Texture2D" uid="uid://bn6wtlwl7kvlo" path="res://Assets/Art/Character/destruction1.png" id="2_ni71n"]
 [ext_resource type="Texture2D" uid="uid://cskv5tsxxtivt" path="res://Assets/Art/Character/Double Jump with Gun (32x32).png" id="2_wblgn"]
@@ -28,8 +29,13 @@
 [ext_resource type="AudioStream" uid="uid://b4hwbtlhab3fp" path="res://Assets/Sounds/SFX/warp-in.wav" id="20_wtvnm"]
 [ext_resource type="Script" uid="uid://brbmefbi70jct" path="res://Assets/Scripts/Player_States/state_dead.gd" id="23_mu4j4"]
 [ext_resource type="Script" uid="uid://sptd57vgewk0" path="res://Assets/Scripts/Player_States/state_bounce.gd" id="24_wnpwt"]
+[ext_resource type="Script" uid="uid://uuos4bgb435x" path="res://Assets/Scripts/Player_States/state_crouch.gd" id="25_fhjhk"]
 [ext_resource type="AudioStream" uid="uid://dbfl8wmnh7wv3" path="res://Assets/Sounds/SFX/defeated.mp3" id="28_cpqnk"]
 [ext_resource type="AudioStream" uid="uid://ci33yg8f4segf" path="res://Assets/Sounds/SFX/bullet_sounds/normal_bullet.mp3" id="29_sw1ma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbw2k"]
+atlas = ExtResource("2_hgjrd")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aokoc"]
 atlas = ExtResource("2_ni71n")
@@ -299,6 +305,14 @@ region = Rect2(576, 0, 96, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lbw2k")
+}],
+"loop": 0,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_aokoc")
 }, {
 "duration": 1.0,
@@ -561,14 +575,12 @@ collision_layer = 2
 script = ExtResource("1_4rsxi")
 firing_light_value = 2.0
 player_sprites = NodePath("Sprite2D")
-zip_range = 300.0
 shoot_light = NodePath("ShootLight")
 jump_sound = NodePath("SFX/jump_sound")
 player_hurt_sound = NodePath("SFX/player_hurt_sound")
 sfx_defeat = NodePath("SFX/defeat")
 sfx_normal_bullet = NodePath("SFX/normal_bullet_shoot")
 coyote_time = 100.0
-knockback_velocity = 1200.0
 jump_height = 150.0
 jump_time_to_peak = 0.5
 jump_time_to_descent = 0.25
@@ -583,7 +595,7 @@ autostart = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sw1ma")
-animation = &"wall_slide"
+animation = &"crouch"
 autoplay = "warp_in"
 
 [node name="MainCollider" type="CollisionShape2D" parent="." unique_id=373265813]
@@ -674,6 +686,11 @@ metadata/_custom_type_script = "uid://71savu34cj01"
 
 [node name="bounce" type="Node" parent="StateMachine" unique_id=559448144 node_paths=PackedStringArray("player")]
 script = ExtResource("24_wnpwt")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://71savu34cj01"
+
+[node name="crouch" type="Node" parent="StateMachine" unique_id=397977516 node_paths=PackedStringArray("player")]
+script = ExtResource("25_fhjhk")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://71savu34cj01"
 

@@ -1,0 +1,31 @@
+[33mda693fe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update addon files
+ addons/anima/anima_plugin.gd                                |  22 [31m-----[m
+ addons/anima/components/AnimatedControl.gd                  | 220 [31m---------------------------------------------[m
+ addons/anima/components/anima_animated_control_inspector.gd | 196 [31m----------------------------------------[m
+ addons/anima/core/anima_tween.gd                            |   6 [32m+[m[31m-[m
+ addons/anima/core/declaration/anima_declaration_for_base.gd |   6 [32m+[m[31m-[m
+ addons/anima/core/declaration/anima_declaration_node.gd     |   6 [32m+[m[31m-[m
+ addons/anima/icons/Add.svg                                  |   1 [31m-[m
+ addons/anima/icons/AnimationPlayer.svg                      |   1 [31m-[m
+ addons/anima/icons/Closed.svg                               |  48 [31m----------[m
+ addons/anima/icons/Collapse.svg                             |  45 [31m----------[m
+ addons/anima/icons/GuiVisibilityHidden.svg                  |   1 [31m-[m
+ addons/anima/icons/GuiVisibilityVisible.svg                 |   1 [31m-[m
+ addons/anima/icons/Play.svg                                 |   1 [31m-[m
+ addons/anima/icons/Remove.svg                               |   1 [31m-[m
+ addons/anima/icons/more.svg                                 |  53 [31m-----------[m
+ addons/anima/resources/Lato-Regular.ttf                     | Bin [31m75152[m -> [32m0[m bytes
+ addons/anima/resources/anima-preview.png                    | Bin [31m4925[m -> [32m0[m bytes
+ addons/anima/ui/AnimaButton.gd                              |  13 [31m---[m
+ addons/anima/ui/AnimationPicker/AnimationButton.tscn        |  28 [31m------[m
+ addons/anima/ui/AnimationPicker/AnimationPicker.gd          | 127 [31m--------------------------[m
+ addons/anima/ui/AnimationPicker/AnimationPicker.tscn        | 237 [31m------------------------------------------------[m
+ addons/anima/ui/AnimationPicker/CTAPrimaryButton.tscn       |  26 [31m------[m
+ addons/anima/ui/AnimationPicker/CTASecondaryButton.tscn     |  41 [31m---------[m
+ addons/anima/ui/AnimationPicker/HeaderButton.gd             |   8 [31m--[m
+ addons/anima/ui/AnimationPicker/HeaderButton.tscn           |  43 [31m---------[m
+ addons/anima/ui/EventItem.gd                                | 148 [31m------------------------------[m
+ addons/anima/ui/EventItem.tscn                              | 255 [31m----------------------------------------------------[m
+ addons/anima/ui/NodeEventPicker/NodeEventPicker.gd          | 173 [31m-----------------------------------[m
+ addons/anima/ui/NodeEventPicker/NodeEventPicker.tscn        | 115 [31m------------------------[m
+ 29 files changed, 9 insertions(+), 1813 deletions(-)

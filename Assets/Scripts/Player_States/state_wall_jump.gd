@@ -1,6 +1,11 @@
 extends State
 
+var jump_smoothener: int = 80
 @export var player: CharacterBody2D
+
+func air_flow(delta: float)-> void:
+	var target_x = player.stored_sign_x_velocity * (player.move_speed)
+	player.velocity.x = lerp(player.velocity.x, target_x, player.air_accel * delta)
 
 func enter() -> void:
 	player.jump_sound.play() 

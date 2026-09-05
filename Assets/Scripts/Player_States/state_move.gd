@@ -39,5 +39,7 @@ func physics_update(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("shoot"):
 		player.shoot_function(player.shoot_knockback)
-		
+	
+	if Input.is_action_just_pressed("down"):
+		player.change_state("crouch",player.state_access)
 	player.move_and_slide()

@@ -51,9 +51,6 @@ func physics_update(delta: float) -> void:
 	
 	#player.wall_end_fall()
 	
-	if Input.is_action_just_pressed("tongue_zip"):
-		player.change_state("tongue_zip", state_machine)
-	
 	
 	#TODO: work on wall fall off===============================>
 	if not player.is_on_wall() and not player.is_on_floor():
@@ -62,6 +59,9 @@ func physics_update(delta: float) -> void:
 	if player.is_on_floor_only():
 		print("wall slide->idle")
 		player.change_state("idle", player.state_access)
+	
+	if Input.is_action_just_pressed("tongue_zip"):
+		player.change_state("tongue_zip", state_machine)
 	
 	if Input.is_action_just_pressed("right") and player.is_on_wall_only():
 		if not player.wall_pushoff_available:

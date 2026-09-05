@@ -124,7 +124,7 @@ func jump_using_coyote_timer(_state_machine) -> void:
 @onready var wall_check_left: RayCast2D = %wall_direction_checker_left       #
 @onready var wall_check_right: RayCast2D = %wall_direction_checker_right     #
 #----------------------------------------------------------------------------#
-@export var knockback_velocity: float = 800.0
+@export var knockback_velocity: float = 1000.0
 #gravity_parameters_for jump---------------------------------------------------------------------------------------#
 @export var jump_height : float
 @export var jump_time_to_peak : float
@@ -203,13 +203,12 @@ func player_muzzle_position_on_wall() -> void:
 		muzzle.position.x = muzzle_position.x
 
 
-func bullet_and_shell_instance(recoil_value: int)-> void:
+func bullet_and_shell_instance(direction: int)-> void:
 	sfx_normal_bullet.play()
 	var shell_instance = shell.instantiate() as Node2D
 	var bullet_instance = bullet.instantiate() as Node2D
-	bullet_instance.direction = look_dir
+	bullet_instance.direction = direction * look_dir
 	shell_instance.direction = - bullet_instance.direction
-	shooting_knockback(recoil_value)
 	shell_instance.global_position = muzzle.global_position
 	bullet_instance.global_position = muzzle.global_position
 	get_parent().add_child(shell_instance)
@@ -225,15 +224,9 @@ func shoot_function(recoil_value: int) -> void:
 	tween.tween_property(shoot_light, "energy", 0.0, 0.08)
 	
 	sfx_normal_bullet.play()
-	var shell_instance = shell.instantiate() as Node2D
-	var bullet_instance = bullet.instantiate() as Node2D
-	bullet_instance.direction = look_dir
-	shell_instance.direction = - bullet_instance.direction
+	bullet_and_shell_instance(1) #1 specifies direction
+	#recoil on ground
 	shooting_knockback(recoil_value)
-	shell_instance.global_position = muzzle.global_position
-	bullet_instance.global_position = muzzle.global_position
-	get_parent().add_child(shell_instance)
-	get_parent().add_child(bullet_instance)
 	
 func on_wall_shoot_function() -> void:
 	player_muzzle_position_on_wall()
@@ -243,16 +236,8 @@ func on_wall_shoot_function() -> void:
 
 	var tween = create_tween()
 	tween.tween_property(shoot_light, "energy", 0.0, 0.08)
-	
-	sfx_normal_bullet.play()
-	var shell_instance = shell.instantiate() as Node2D
-	var bullet_instance = bullet.instantiate() as Node2D
-	bullet_instance.direction = -look_dir
-	shell_instance.direction = - bullet_instance.direction
-	bullet_instance.global_position = muzzle.global_position
-	shell_instance.global_position = muzzle.global_position
-	get_parent().add_child(bullet_instance)
-	get_parent().add_child(shell_instance)
+	# initialise bullet and shell
+	bullet_and_shell_instance(-1) #-1 specifies opposite direction of where player sprite looks
 
 func shooting_knockback(shoot_knockback: int)->void:
 	if look_dir > 0:
