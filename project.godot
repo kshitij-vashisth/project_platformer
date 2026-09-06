@@ -17,6 +17,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Kermitted"
 run/main_scene="uid://mohqakaakyy2"
 config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/show_image=false
+boot_splash/image="uid://s3u0j7wbfim6"
 config/icon="res://icon.svg"
 
 [autoload]

@@ -42,7 +42,7 @@ func physics_update(delta: float) -> void:
 		player.change_state("idle", state_machine)
 	
 	# --- Wall Slide ---	
-	if player.is_on_wall_only():
+	if player.is_on_wall():
 		player.change_state("wall_slide", state_machine)
 		
 	# --- Apply movement ---

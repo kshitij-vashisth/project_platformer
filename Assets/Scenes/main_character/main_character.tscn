@@ -572,6 +572,7 @@ fill_to = Vector2(1, 0.5)
 [node name="Player" type="CharacterBody2D" unique_id=2026125797 node_paths=PackedStringArray("player_sprites", "shoot_light", "jump_sound", "player_hurt_sound", "sfx_defeat", "sfx_normal_bullet", "state_access")]
 texture_filter = 1
 collision_layer = 2
+safe_margin = 1.0
 script = ExtResource("1_4rsxi")
 firing_light_value = 2.0
 player_sprites = NodePath("Sprite2D")

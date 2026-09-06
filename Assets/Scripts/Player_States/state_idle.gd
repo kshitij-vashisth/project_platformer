@@ -15,7 +15,7 @@ func enter() -> void:
 	#player.player_sprites.flip_h = leftStore
 
 func change_to_wall_slide():
-	if player.is_on_wall_only():
+	if player.is_on_wall():
 		player.change_state("wall_slide", state_machine)
 
 func physics_update(delta: float) -> void:

@@ -20,7 +20,7 @@ func physics_update(delta: float) -> void:
 		player.change_state("double_jump",state_machine)
 	
 	# switch to wall slide
-	if player.is_on_wall_only():
+	if player.is_on_wall():
 		player.playerLastLeft = player.isLeft
 		player.change_state("wall_slide", state_machine)
 	
